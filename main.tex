@@ -1,0 +1,555 @@
+%! TeX program = lualatex
+\documentclass[10pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+%\usepackage[utf8]{inputenc}
+
+\usepackage[export]{adjustbox}
+
+\usepackage{float}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage[most]{tcolorbox}
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+
+%\moderncvcolor{grey} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage[scale=1]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3.5cm} 
+%\newcommand{\trig}{$\blacktriangleright$\hspace{1mm}}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{fontawesome5} %funny symbols
+\usepackage{fontspec} %fonts: require LuaTex or XeTex
+\usepackage[fontsize=10.85pt]{fontsize} %fuck yeah I can use floats as fontsize
+\usepackage{afterpage} %page color i guess
+\usepackage{tikz} %its tikz, dummy
+\usepackage{todonotes}
+\usepackage{framed} %frames
+\usepackage{svg}
+\usepackage{circledsteps}
+
+%New commands
+\newcommand{\CPP}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny \textbf{+}}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny \textbf{+}}\hspace{1mm}}
+
+\newcommand{\Cs}{C\nolinebreak\raisebox{.4ex}{\scriptsize \textbf{\#}}}
+%font stuff
+%set font for my name
+\setmonofont[Path = fonts/, Scale=1]{FredokaOne-Regular}
+%defaut font
+\defaultfontfeatures{LetterSpace=100.0}
+
+\newcommand{\trig}{\faAngleRight\hspace{1mm}}
+\newcommand{\mycvitem}[4]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+            \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline\normalsize \trig \small #4 \normalsize\\ 
+        \end{tabular}
+    \end{center}
+}
+
+%date, title, address, subtitle
+\newcommand{\mycvitemafter}[4]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+            \centering \small\textcolor{darkgrey}{\textit{(#3)}}\newline \normalsize#1& & & \textbf{#2}  \newline\normalsize \trig \small #4 \normalsize\\ 
+        \end{tabular}
+    \end{center}
+}
+
+
+\newcommand{\jobitem}[5]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+            \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
+            \vspace{1mm}\newline \trig #5 \normalsize\\
+        \end{tabular}
+    \end{center}
+}
+
+\newcommand{\jobitemi}[4]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
+            \centering #1& & & \textbf{#2} \newline\normalsize  #3
+            \vspace{1mm}\newline\normalsize \trig  #4\\
+        \end{tabular}
+    \end{center}
+}
+\newcommand{\jobitemii}[3]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
+            \centering #1& & & \textbf{#2}
+            \newline\normalsize  #3\\
+        \end{tabular}
+    \end{center}
+}
+
+
+\newcommand{\jobitebreakline}[5]{
+        \begin{center}
+            \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+                \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
+            \end{tabular}
+        \end{center}
+        \vspace*{-2.5mm}
+        \begin{minipage}[t]{0.06\textwidth}
+            \hfill
+        \end{minipage}
+        \begin{minipage}[t]{0.9\textwidth}
+            \small \trig #5 \normalsize\\
+        \end{minipage}        
+}
+
+\newcommand{\infoitem}[2]{
+    \begin{center}
+        \begin{tabular}{ p{0.15\textwidth} p{0.8\textwidth} } 
+            \centering#1&\small#2
+        \end{tabular}
+    \end{center}
+    \vspace*{-8.5mm}
+    \normalsize
+}
+
+
+\firstname{Joe} % Your first name
+\familyname{Scholtz} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+
+\setlength{\hintscolumnwidth}{1cm} 
+
+\definecolor{green1}{rgb}{0.35,0.70,0.30}% green
+\definecolor{darkgrey}{rgb}{0.529,0.52,0.588}% dark grey
+\definecolor{bluegrey}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{bluelightgrey}{rgb}{0.935,0.925,1}% blue gray
+
+%\definecolor{darkdarkgrey}{rgb}{0.184,0.184,0.227}% dark dark grey
+
+\definecolor{darkdarkgrey}{rgb}{0.22,0.22,0.23}% dark dark grey
+
+
+
+\definecolor{color0}{rgb}{0,0,0}
+\definecolor{color1}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+\definecolor{dockercolor}{HTML}{384d54}
+\definecolor{cppcolor}{HTML}{f34b7d}
+\definecolor{reponamecolor}{HTML}{4493f8}
+%multi-language settings
+%
+\newif\ifen
+\newif\iffr
+\newif\ifpt
+
+\newcommand{\en}[2][]{\ifen#2\else#1\fi}
+\newcommand{\fr}[2][]{\iffr#2\else#1\fi}
+\newcommand{\pt}[2][]{\ifpt#2\else#1\fi}
+
+%
+\newcommand{\brazil}{\en{Brazil}\fr{Brésil}\pt{Brasil}}
+\newcommand{\france}{\pt[France]{França}}
+
+\newcommand{\january}{Jan}
+\newcommand{\february}{\en{Feb}\fr{Fév}\pt{Fev}}
+\newcommand{\mars}{Mar}
+\newcommand{\april}{\en{Apr}\fr{Avr}\pt{Abr}}
+\newcommand{\may}{\en[Mai]{May}}
+\newcommand{\june}{\fr[Jun]{Juin}}
+\newcommand{\july}{\fr[Jul]{Juil}}
+\newcommand{\august}{\en{Aug}\fr{Août}\pt{Ago}}
+\newcommand{\september}{\pt[Sep]{Set}}
+\newcommand{\october}{\pt[Oct]{Out}}
+\newcommand{\november}{Nov}
+\newcommand{\december}{\en{Dec}\fr{Déc}\pt{Dez}}
+\newcommand{\currently}{\en{Currently}\fr{Actuellement}\pt{Atualmente}}
+%%%%
+\entrue
+% \frtrue
+%\pttrue
+
+\begin{document}
+
+\pagecolor{bluegrey}
+
+\tcbset{grow to right by=0.1cm,colframe=darkdarkgrey,colback=darkdarkgrey,arc=0mm}
+\begin{tcolorbox}
+    \begin{minipage}[t]{0.375\textwidth}
+        
+        \vspace*{-5mm}
+        \begin{tcolorbox}[grow to left by=0.6cm,colback=darkdarkgrey,colframe=darkdarkgrey,arc=0mm]
+        \color{white}
+        
+            \begin{tcolorbox}[colback=bluegrey,enlarge top by=-5mm,enlarge left by=-10mm,arc=4mm,sharp corners=north]
+            \vspace{2mm}
+            
+            \end{tcolorbox}
+
+            \vspace*{-11mm}
+            
+            \begin{center}
+                \includegraphics[width=0.6\textwidth]{pictures/circ_cracha.png}
+            \end{center}
+
+            
+            \vspace*{-6mm}
+         
+            
+            \section{\textbf{\faAddressCard \hspace{1mm}\en{Contact}\fr{Contact}\pt{Contato}}}
+            
+            \infoitem{\faEnvelope}{\footnotesize joefscholtz@gmail.com}
+            \vspace{1mm}
+            
+            \infoitem{\faMobile*}{+55 51 99917-2042}
+            \vspace{1mm}
+            
+            \infoitem{\faMapMarked*}{Canoas, \brazil}
+            \vspace*{-7mm}
+            
+            \begin{center}
+                \begin{tabular}{p{0.012\textwidth} p{0.478\textwidth}p{0.49\textwidth}} 
+                     & \infoitem{\href{https://www.linkedin.com/in/joe-scholtz-50293113b/}{\faLinkedin}}{\href{https://www.linkedin.com/in/joe-scholtz-50293113b/}{Joe Scholtz}} & \infoitem{\href{https://github.com/joefscholtz/}{\faGithub}}{\href{https://github.com/joefscholtz}{joefscholtz}}
+                \end{tabular}
+            \end{center}
+
+            \vspace*{-10mm}
+
+            \setlength{\hintscolumnwidth}{1cm}
+            \section{\textbf{\faAlignLeft\hspace{1mm}
+            \en{Skills}\fr{Compétences}\pt{Competências}}}
+            \setlength{\hintscolumnwidth}{0.5cm}
+            \vspace*{-5mm}
+            \section{\textbf{\faTerminal\hspace{1mm}
+            \en[\textit{Software}]{Software}
+            }}
+            \vspace*{-3mm}
+
+            \textcolor{bluegrey}{\hrulefill\newline}
+            \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\en{Relevant projects}\fr{Projets pertinents}\pt{Projetos relevantes}}}
+
+            \vspace*{-2mm}
+            
+
+            \pgfkeys{/csteps/inner ysep=7pt}
+            \pgfkeys{/csteps/inner xsep=7pt}
+            \begin{tcolorbox}[left = 2mm,right = 2mm,colback=darkdarkgrey,colframe=bluegrey,coltext=white,arc=1mm]
+            \small 
+            \vspace*{-1mm}
+                \begin{center}
+                    \begin{tabular}{m{0.1\textwidth} m{0.25\textwidth} m{0.15\textwidth} m{0.51\textwidth} } 
+                        \includesvg{pictures/git_repo.svg} & \textcolor{reponamecolor}{\textbf{\href{https://github.com/joefscholtz/forg_bot}{forg\_bot}}} &  \Circled{\footnotesize{Public}} & \text{ }
+                    \end{tabular}
+                \end{center}
+                \vspace*{-2.8mm}
+                \scriptsize{Navigation with Curiosity Rover inspired mobile robot in ROS 2 }\\
+                \vspace*{-1.5mm}
+                
+                \footnotesize{\CircledTop[fill color=cppcolor,outer color=cppcolor]{} \CPP}
+                \vspace*{-0.5mm}
+            \end{tcolorbox}
+
+            \vspace*{-3mm}
+
+            \begin{tcolorbox}[left = 2mm,right = 2mm,colback=darkdarkgrey,colframe=bluegrey,coltext=white,arc=1mm]
+            \small 
+            \vspace*{-1mm}
+                \begin{center}
+                    \begin{tabular}{m{0.1\textwidth} m{0.35\textwidth} m{0.15\textwidth} m{0.41\textwidth} } 
+                        \includesvg{pictures/git_repo.svg} & \textcolor{reponamecolor}{\textbf{\href{https://github.com/joefscholtz/ros2_docker}{ros2\_docker}}} &  \Circled{\footnotesize{Public}} & \text{ }
+                    \end{tabular}
+                \end{center}
+                \vspace*{-2.8mm}
+                \scriptsize{My workflow to run ROS 2 applications inside Docker, including base stage to deploy applications and} \ldots\\
+                \vspace*{-1.5mm}
+                
+                \footnotesize{\CircledTop[fill color=dockercolor,outer color=dockercolor]{} Dockerfile}
+                \vspace*{-0.5mm}
+            \end{tcolorbox}
+            
+            % \textcolor{bluegrey}{\hrulefill\newline}
+            % \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\en{OS}\fr{Systèmes d'exploitation}\pt{Sistemas operacionais}}}
+            
+            % \en{Windows and Linux.}
+            % \fr{Windows et Linux.}
+            % \pt{Windows e Linux.}
+            \vspace*{-3mm}
+            
+            \textcolor{bluegrey}{\hrulefill\newline}
+            \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\en{Languages, tools and frameworks}\fr{Langages, outils et  \textit{frameworks}}\pt{Linguagens, ferramentas e \textit{frameworks}}}}
+            %frameworks = environnements de développement
+        
+            \small 
+
+            \begin{itemize}
+                \item[\faAngleRight] C, \en{Embedded }C\fr{ Embarqué}\pt{ Embarcado}, \en{Modern }\CPP\fr{ moderne}\pt{ moderno}.
+                \item[\faAngleRight] ROS \en{and}\fr{et}\pt{e} ROS 2:
+                    \begin{itemize}
+                        \item URDF, ros2\_control, SLAM, Nav2, Open-RMF.
+                        % \item URDF, xacro, Rviz, SLAM, MoveIt, Nav2.
+                    \end{itemize}
+                \item[\faAngleRight] Python:
+                    \begin{itemize}
+                        \item NumPy, SciPy, Pandas, Matplotlib.
+                    \end{itemize}
+                % \item[\faAngleRight] IEC 61131-3
+                %     \begin{itemize}
+                %         \item  Instruction List, Ladder Diagram, Structured Text, Function Block Diagram, Sequential Flow Chart.
+                %     \end{itemize}
+                % \item[\faAngleRight] Web Development
+                %     \begin{itemize}
+                %         \item HTML, CSS, Javascript, PHP.
+                %     \end{itemize}
+                % \item[\faAngleRight] \Cs, MATLAB, Java, Git, SQL, \LaTeX.
+                \item[\faAngleRight] MATLAB, Git, Docker, \LaTeX, bash, IEC 61131-3 (ST, IL/ASSEMBLY, LADDER, FBD, SFC).
+                
+                % \item[\faAngleRight] \en{Communication Protocols}\fr{Protocoles de communication}\pt{Protocolos de comunicação}:
+                % \begin{itemize}
+                %     \item LPWA, 6LOWPAN, LORA, MQTT, TCP, TLS/SSL, Wifi, Bluetooth/BLE, ZIGBEE, RS422, RS485, CAN.
+                % \end{itemize}
+            \end{itemize}
+            
+            \normalsize
+            
+            \vspace*{-1mm}
+            
+            \textcolor{bluegrey}{\hrulefill\newline}
+            \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\pt[Simulation]{Simulação}}}
+            
+            \small 
+            
+            \begin{itemize}
+                \item[\faAngleRight] Gazebo, Isaac Sim, Simulink, Micro-Cap, PSIM, Proteus, LabView. 
+            \end{itemize}
+            
+            \normalsize
+            
+            \vspace*{-3mm}
+            
+            \textcolor{bluegrey}{\hrulefill\newline}
+            \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\en{CAD and 3D modelling}\fr{CAO et modélisation 3D}\pt{\textit{CAD} e modelagem 3D}}}
+            
+            \small 
+            
+            \begin{itemize}
+                \item[\faAngleRight] SolidWorks, FreeCAD, Blender.
+            \end{itemize}
+            
+            \normalsize
+            
+            \vspace*{-3mm}
+            
+            
+            \section{\textbf{\faCalculator\hspace{1mm}\en[\textit{Hardware}]{Hardware}}}
+            
+            \small 
+
+            \begin{itemize}
+                \item[\faAngleRight] \en{Controllers and computers}\fr{Microcontrôleur et ordinateurs}\pt{Controladores e computadores}
+                \begin{itemize}
+                    \item  Arduino, Intel MCS-51, Atmel AVR, ARM Cortex, dSPACE, NI DAQ, IoT, RTOS.
+                    % \item  Raspberry Pi 3, Arduino, Intel MCS-51, Atmel AVR, ARM Cortex, dSPACE, National Instruments DAQ.
+                \end{itemize}
+                \item[\faAngleRight] \en{Sensors}\fr{Capteurs}\pt{Sensores}
+                \begin{itemize}
+                    \item  LIDARs,\fr{ Caméras}\pt{ Câmeras} RGBD\en{ Cameras}, IMU, GNSS.
+                \end{itemize}
+                \item[\faAngleRight] \en{Others}\fr{Autres}\pt{Outros}
+                \begin{itemize}
+                    \item \en{Mechatronic prototyping, PCB manufacturing, Instrumentation, Communication Protocols}\fr{Prototypage mécatronique, fabrication de circuits imprimés, Instrumentation, pProtocoles de Communication}\pt{Prototipagem Mecatrônica, Fabricação de PCBs, Instrumentação, Protocolos de Comunicação}.
+                \end{itemize}
+            \end{itemize}
+            
+            
+            \normalsize
+            
+            \vspace*{-3mm}
+
+            
+            \section{\textbf{\faGlobeAmericas\hspace{1mm}\en{Languages}\fr{Langues}\pt{Línguas}}}
+            \vspace*{-1mm}
+            \small
+            \begin{center}
+                \begin{tabular}{p{0.4\textwidth} p{0.6\textwidth}} 
+                    \en{Portuguese}\fr{Portugais}\pt{Português}&\pt[Native]{Nativa}\\
+                    \en{English}\fr{Anglais}\pt{Inglês}&\en{Fluent}\fr{Courant}\pt{Fluente}\\
+                    \en{French}\fr{Français}\pt{Francês}&\en{Fluent}\fr{Courant}\pt{Fluente}\\
+                \end{tabular}
+            \end{center}
+            \vspace*{-8mm}
+            % \section{\textbf{\faChartPie\hspace{1mm}\en[\textit{Softskills}]{Softskills}}}
+            % \small \en[\textit{Problem-Solving}]{Problem-Solving}, \en{adaptability e flexibility, driven to learn, autonomy, pro-activity. Familiar with Agile methodologies}\fr{adaptation et flexibilité, volonté d’apprendre, autonomie, proactivité. Habituée avec des methodologies Agile}\pt{adaptação e flexibilidade, vontade de aprender, autonomia, proatividade. Familiarizada com metodologias ágeis}.\normalsize
+            
+            \vspace*{-3mm}
+            
+            % \section{\textbf{\faCloudsmith\hspace{1mm}\textit{Personal Interests}}}
+            % \small \trig Literature, Philosophy, Digital Art, Game development, Chess.  \textbf{Approaches:} Biomimetics, Open Source, IoT.
+            
+            % \vspace*{-5mm}
+            
+            % \normalsize
+        
+        \end{tcolorbox}
+    \end{minipage}
+    \begin{minipage}[t]{0.625\textwidth}
+    \vspace*{-0.5cm}
+            
+            \begin{tcolorbox}[grow to left by=0.5cm,grow to right by=0.7cm,left = 0mm,colback=darkdarkgrey,colframe=darkdarkgrey,arc=0mm]
+                \begin{center}
+                \vspace{1mm}
+                \LARGE{\textcolor{white}{\texttt{ \textbf{Joe \en{Ferreira Scholtz }\fr{FERREIRA SCHOLTZ}\pt{Ferreira Scholtz}}\raisebox{1mm}{\footnotesize{ \en{(she/her)}\fr{(elle/d'elle)}\pt{ela/dela}}}}}}
+            
+                \normalsize
+
+                \vspace*{-2mm}
+
+                \textcolor{bluegrey}{\hrulefill\newline}
+
+                \vspace*{-3mm}
+                
+                % \textcolor{white}{\textbf{\faBullseye\hspace{1.5mm}Motivation}}
+
+                % \small\textcolor{white}{\textbf{\en{Engineer with double degree in mechatronics and robotics seek a job in France. Currently living in Brazil and planning to move to France.}\fr{Ingénieure Double-diplômée en mécatronique et robotique résidant actuellement au Brésil, je recherche un emploi dans ce secteur sur le territoire français.}\pt{\vspace*{-5mm}}}}\normalsize
+
+                \vspace*{-3mm}
+                
+                
+            \end{center} 
+            \end{tcolorbox}
+
+            % \begin{tcolorbox}[grow to right by=0.1cm,grow to left by=0.2cm,left = 0mm,right = 0mm,colback=white,colframe=white,arc=2mm]
+
+            %         \textbf{Control and Automation (Mechatronics) engineering student searching for remote job after finishing her double degree in \france.}
+            %     \end{tcolorbox}
+
+            
+            % \vspace*{-2mm}
+            % \normalsize
+            % \begin{tcolorbox}[colframe=bluegrey,colback=white,grow to right by=0.1cm,grow to left by=0.2cm,boxrule=2mm,bottomrule=5mm,sharp corners=south,title=\textbf{\faBullseye\hspace{1.5mm}Motivation}]
+            %     \centering
+
+            %     \textbf{Control and Automation (Mechatronics) engineering student searching for remote job after finishing her double degree in \france.}
+                
+            %     %\textbf{Mobilité: \france}
+                
+                
+            % \normalsize
+            % \end{tcolorbox}
+            % %sharp corners=south
+        
+            % \vspace*{-0.5cm}
+        \begin{tcolorbox}[grow to right by=0.1cm,grow to left by=0.2cm,left = 0mm,right = 0mm,colback=white,colframe=white,arc=2mm]
+            
+            
+            \setlength{\hintscolumnwidth}{2cm} 
+            
+            %\begin{tcolorbox}[blanker,colback=bluegrey,left=5mm,right=5mm, borderline vertical={4pt}{0pt}{darkdarkgrey}]
+                
+            %\end{tcolorbox}
+
+            %Python, C,\CPP, instrumentation, traitement du signal, techniques d’estimation et fusion des mesures, robotique (sous-)marine, ROS 1/2, planification de trajectoire, planification automatique de tâches, optimisation numérique
+            
+            %\CPP moderne, modélisation des robots et concéption mécanique
+            %\CPP, ROS, ROS 2, modélisation des robots
+            %\CPP moderne, robotique mobile planification
+            %ROS, \CPP moderne, modélisation et commande de robots, optimisation
+            %ROS, \CPP, instrumentation, prototypage, électronique pour traitement du signal
+            %Instrumentation, design et le prototypage de systèmes électroniques
+            \vspace*{-1mm}
+            \normalsize
+            \section{\textbf{\faGraduationCap\hspace{1mm}\en{Academic}\fr{Formation}\pt{Formação Acadêmica}}}
+            
+            
+            \begin{tcolorbox}[colback=white, left = -2mm,right = -2mm, boxrule=1mm, title=\textbf{\hspace{2mm} \faGraduationCap \hspace{1mm}
+            \en{Double Degree}
+            \fr{Double Diplôme}
+            \pt{Duplo Diploma}}]
+            
+                \mycvitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}{ECN - École Centrale de Nantes}{Nantes, \france}{\en{\textbf{
+                Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.}\fr{\textbf{Diplôme d'ingénieur.e avec spécialisation en Robotique et Recherche et Développement \textit{(Master's degree)}}. Grand École d'Ingénieurs, 4$^\text{ème}$ place en France selon le classement de l'Étudiant en 2021.}\pt{\textbf{Diploma de Engenharia com especialização em Robótica e em Pesquisa e Desenvolvimento \textit{(Master's degree)}}. \textit{Grand École d'Ingénieurs}, 4$^\circ$ lugar na França de acordo com o \textit{l'Étudiant} em 2021.}}
+                
+                
+                \mycvitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}{UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}{\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
+                
+                \vspace*{-6mm}
+            \end{tcolorbox}
+            
+            
+            % \vspace*{-3mm}
+            
+            
+            
+            % \mycvitem{\text{ }2015\text{ } \text{ }2016\text{ }}{Colégio Luterano Concórdia Canoas}{Canoas, \brazil}{\en{\textbf{IT Technician}. Focus in web development.}\fr{\textbf{Technicienne Informatique}. Spécialisation en développement web.}\pt{\textbf{Técnica em Informática}. Especialização em desenvolvimento web.}}
+            
+            
+            
+            \vspace*{-1mm}
+            
+            
+            
+%--------------Expérience------------------------            
+          \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
+
+          \jobitem{\november\text{ }2023 \newline \hspace*{-1mm}\april\text{ }2025}{Instituto SENAI de Inovação em Sistemas de Sensoriamento}{São Leopoldo, \brazil}{\en{Mobile Robotics Researcher}\fr{Chercheuse en Robotique Mobile}\pt{Pesquisadora em Robótica Móvel}}{\en{\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}\fr{\textbf{Robots mobiles autonomse:} Experiénce avec ROS 2, y compris \textit{drivers} et communication pour le \textit{hardware} avec ros2\_control, navegation, planification et asservissement avec Nav2, gestion de flotte avec Open-RMF, et simulation avec Gazebo, Isaac Sim et Unreal Engine.}\pt{\textbf{Robôs móveis autônomos:} Experiência com ROS 2, incluindo \textit{drivers} e comunicação para hardware com ros2\_control, SLAM e navegação com Nav2, gerenciamento de frota com Open-RMF, e simulação com Gazebo, Isaac Sim e Unreal Engine.}}
+
+          \jobitem{\mars\text{ }2023 \newline \hspace*{-1mm}\september\text{ }2023}{Aprix}{Porto Alegre, \brazil}{\en{Machine Learning Intern}\fr{Stagiaire en \textit{Machine Learning}}\pt{Estagiária em \textit{Machine Learning}}}{\en{\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}\fr{\textbf{\textit{Data Science} pour l'optimisation de prix:} Expérience avec Python (NumPy, Pandas, \textit{back-end}), analyse et visualisation de données, SQL, expérience limitée avec: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}\pt{\textbf{\textit{Data Science} para otimização de preços:} Experiência com Python (NumPy, Pandas, \textit{back-end}), análise e visualização de dados, SQL, experiência limitada com: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}}
+          
+          \jobitem{\april\text{ }2022 \newline \hspace*{-1mm}\september\text{ }2022}{TRIMBLE Nantes}{Carquefou, \france}{
+          \en{Software Engineer Intern}\fr{Stagiaire  en \textit{Software Engineering}}\pt{Estagiária em Engenharia de Software}}{\en{\textbf{IMU-only Data-driven Positioning:}
+          Experience with Python, Linux, IMUs, GNSS and limited experience with: Machine Learning.}\fr{\textbf{\textit{IMU-only Data-driven Positioning}:} Algorithme basé-donées de localisation avec IMU. Expérience avec Python, Linux, centrale inertielle, \textit{GNSS} et expérience limitée avec: \textit{Machine Learning}.}\pt{\textbf{\textit{IMU-only Data-driven Positioning}:} Algoritmo baseado em dados para localização utilizando apenas uma \textit{IMU}. Experiência com Python, Linux, \textit{IMU}, \textit{GNSS} e experiência limitada com: \textit{Machine Learning}.}}
+
+          
+          \jobitem{\mars\text{ }2021 \newline \august\text{ }2021}{Axter Automation}{Vaucresson, \france}{
+          \en{Robotics Intern}\fr{Stagiaire en Robotique}\pt{Estagiária em Robótica}}{\en{\textbf{Development with industrial mobile robots (\textit{AGV}):} Development with smart sensors, robot-server communication, obstacle dectection securiy system. Experience with app dev for Windows and Linux, communication protocols, ROS and SLAM.}\fr{\textbf{Développement avec robots mobiles industriels (\textit{AGV}):} Développement avec capteurs intelligent,  Communication entre robots-serveur, système de détection d'obstacles. Expérience en développement d'application Windows et Linux, protocoles de communication, ROS et SLAM.}\pt{\textbf{Desenvolvimento com robôs móveis industriais (\textit{AGV}):} Desenvolvimento com sensores inteligentes, comunicação robô-server, sistema de detecção de obstáculos. Experiência com desenvolvimento de aplicação Windows e Linux, protocolos de comunicação, ROS e SLAM.}}
+          
+          \jobitem{\may\text{ }2021 \newline \hspace*{-1mm}\july\text{ }2021}{LAEROMEC Engenharia}{Porto Alegre, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{
+          \en{Mechatronics Designer}\fr{Mécatronicienne}\pt{Projetista Mecatrônica}}{\en{\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Experience in mechatronics, electronics and mechanical design.}\fr{\textbf{Projet en conjonction avec AGCO Amerique du Sud:} Conception d'un distributeur agricole automatisé. Expérience en mécatronique, électronique et conception mécanique.}\pt{\textbf{Projeto em conjunção com a AGCO América do Sul:} Concepção de um distribuidor agrícola automatizado. Experiência em mecatrônica, eletrônica e concepção mecânica.}}
+          
+          % \jobitem{\july\text{ }2020 \newline \hspace*{-.5mm}\december\text{ }2020}{AuRos Robotics}{Rio Grande, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{\en{Back-End and Front-End Developer}\fr{Développeuse \textit{Back-End} et \textit{Front-End}}\pt{Desenvolvedora \textit{Back-End} e \textit{Front-End}}}{\en{\textbf{
+          % Decision making in the agricultural context with the help of AI and visual recognition:} Experience in web development and mobile applications, using various sensors.}\fr{\textbf{Prise de décision dans le contexte agricole avec l'aide d'une IA et reconnaissance visuelle:} Expérience en développement web et d'application mobile avec utilisation de plusieurs capteurs.}\pt{\textbf{
+          % Tomada de decisão no contexto agrícola com ajuda de IA e reconhecimento visual:} Experiência em desenvolvimento web e de aplicativos móveis, com utilização de diversos sensores.}}
+          
+          \jobitem{\august\text{ }2018 \newline \hspace*{-.5mm}\july\text{ }2020}{LAMECC - UFRGS \footnotesize(\en{Mechatronics and Control Lab}\fr{Laboratoire de Mécatronique et Commande}\pt{Laboratório de Mecatrônica e Controle})\normalsize}{Porto Alegre, \brazil}{
+          \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
+          
+          
+          \vspace*{-6mm}
+          
+        
+         % \faMedapps\\
+% \faAddressCard\\
+ %\faCaretRight\\
+ %\faChevronRight\\
+% \faSuitcase\\
+%\faMobile*\\
+%\faMapMarker*\\
+%\faMapMarked*\\
+%\faGraduationCap\\
+%\faLinkedin\\
+%\faAlignLeft\\
+%\faAndroid\\
+%\faChartPie\\
+%\faCheck\\
+%\faCheckCircle\\
+%\faCommentDots\\
+%\faEnvelope\\
+%\faGlobeAmericas\\
+%\faQuoteLeft\\
+%\faTerminal\\
+%\faCalculator\\
+%\faGamepad\\
+%\faHdd\\
+
+%\faCloudsmith
+        %\vfill
+            
+        \end{tcolorbox}
+    \end{minipage}
+    
+    \vfill
+    
+\end{tcolorbox}
+
+\end{document}

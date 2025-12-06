@@ -1,0 +1,176 @@
+\documentclass[10pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+%\usepackage[utf8]{inputenc}
+
+\usepackage[export]{adjustbox}
+
+\usepackage{float}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage[most]{tcolorbox}
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+
+%\moderncvcolor{grey} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage[scale=1]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3.5cm} 
+%\newcommand{\trig}{$\blacktriangleright$\hspace{1mm}}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{fontawesome5} %funny symbols
+\usepackage{fontspec} %fonts: require LuaTex or XeTex
+\usepackage[fontsize=10.85pt]{fontsize} %fuck yeah I can use floats as fontsize
+\usepackage{afterpage} %page color i guess
+\usepackage{tikz} %its tikz, dummy
+\usepackage{todonotes}
+\usepackage{framed} %frames
+\usepackage{svg}
+\usepackage{circledsteps}
+
+%New commands
+\newcommand{\CPP}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny \textbf{+}}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny \textbf{+}}\hspace{1mm}}
+
+\newcommand{\Cs}{C\nolinebreak\raisebox{.4ex}{\scriptsize \textbf{\#}}}
+%font stuff
+%set font for my name
+\setmonofont[Path = fonts/, Scale=1]{FredokaOne-Regular}
+%defaut font
+\defaultfontfeatures{LetterSpace=100.0}
+
+\newcommand{\trig}{\faAngleRight\hspace{1mm}}
+\newcommand{\mycvitem}[4]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+            \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline\normalsize \trig \small #4 \normalsize\\ 
+        \end{tabular}
+    \end{center}
+}
+
+%date, title, address, subtitle
+\newcommand{\mycvitemafter}[4]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+            \centering \small\textcolor{darkgrey}{\textit{(#3)}}\newline \normalsize#1& & & \textbf{#2}  \newline\normalsize \trig \small #4 \normalsize\\ 
+        \end{tabular}
+    \end{center}
+}
+
+
+\newcommand{\jobitem}[5]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+            \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
+            \vspace{1mm}\newline \trig #5 \normalsize\\
+        \end{tabular}
+    \end{center}
+}
+
+\newcommand{\jobitemi}[4]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
+            \centering #1& & & \textbf{#2} \newline\normalsize  #3
+            \vspace{1mm}\newline\normalsize \trig  #4\\
+        \end{tabular}
+    \end{center}
+}
+\newcommand{\jobitemii}[3]{
+    \begin{center}
+        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
+            \centering #1& & & \textbf{#2}
+            \newline\normalsize  #3\\
+        \end{tabular}
+    \end{center}
+}
+
+
+\newcommand{\jobitebreakline}[5]{
+        \begin{center}
+            \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+                \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
+            \end{tabular}
+        \end{center}
+        \vspace*{-2.5mm}
+        \begin{minipage}[t]{0.06\textwidth}
+            \hfill
+        \end{minipage}
+        \begin{minipage}[t]{0.9\textwidth}
+            \small \trig #5 \normalsize\\
+        \end{minipage}        
+}
+
+\newcommand{\infoitem}[2]{
+    \begin{center}
+        \begin{tabular}{ p{0.15\textwidth} p{0.8\textwidth} } 
+            \centering#1&\small#2
+        \end{tabular}
+    \end{center}
+    \vspace*{-8.5mm}
+    \normalsize
+}
+
+
+\firstname{Joe} % Your first name
+\familyname{Scholtz} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+
+\setlength{\hintscolumnwidth}{1cm} 
+
+\definecolor{green1}{rgb}{0.35,0.70,0.30}% green
+\definecolor{darkgrey}{rgb}{0.529,0.52,0.588}% dark grey
+\definecolor{bluegrey}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{bluelightgrey}{rgb}{0.935,0.925,1}% blue gray
+
+%\definecolor{darkdarkgrey}{rgb}{0.184,0.184,0.227}% dark dark grey
+
+\definecolor{darkdarkgrey}{rgb}{0.22,0.22,0.23}% dark dark grey
+
+
+
+\definecolor{color0}{rgb}{0,0,0}
+\definecolor{color1}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+\definecolor{dockercolor}{HTML}{384d54}
+\definecolor{cppcolor}{HTML}{f34b7d}
+\definecolor{reponamecolor}{HTML}{4493f8}
+%multi-language settings
+%
+\newif\ifen
+\newif\iffr
+\newif\ifpt
+
+\newcommand{\en}[2][]{\ifen#2\else#1\fi}
+\newcommand{\fr}[2][]{\iffr#2\else#1\fi}
+\newcommand{\pt}[2][]{\ifpt#2\else#1\fi}
+
+%
+\newcommand{\brazil}{\en{Brazil}\fr{Brésil}\pt{Brasil}}
+\newcommand{\france}{\pt[France]{França}}
+
+\newcommand{\january}{Jan}
+\newcommand{\february}{\en{Feb}\fr{Fév}\pt{Fev}}
+\newcommand{\mars}{Mar}
+\newcommand{\april}{\en{Apr}\fr{Avr}\pt{Abr}}
+\newcommand{\may}{\en[Mai]{May}}
+\newcommand{\june}{\fr[Jun]{Juin}}
+\newcommand{\july}{\fr[Jul]{Juil}}
+\newcommand{\august}{\en{Aug}\fr{Août}\pt{Ago}}
+\newcommand{\september}{\pt[Sep]{Set}}
+\newcommand{\october}{\pt[Oct]{Out}}
+\newcommand{\november}{Nov}
+\newcommand{\december}{\en{Dec}\fr{Déc}\pt{Dez}}
+\newcommand{\currently}{\en{Currently}\fr{Actuellement}\pt{Atualmente}}
+%%%%
+\entrue
+% \frtrue
+%\pttrue
+
+\begin{document}
+\usepackage{fontawesome5} %funny symbols
+\usepackage{fontspec} %fonts: require LuaTex or XeTex
+\end{document}

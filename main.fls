@@ -340,8 +340,8 @@ INPUT ./main.out
 INPUT ./main.out
 INPUT ./main.out
 OUTPUT main.out
-INPUT ./pictures/circ_cracha.png
-INPUT ./pictures/circ_cracha.png
+INPUT ./pictures/circ_photo_01.png
+INPUT ./pictures/circ_photo_01.png
 INPUT /home/joe/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmsans17-regular.luc
 INPUT /home/joe/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmsans10-bold.luc
 INPUT /usr/share/texmf-dist/tex/latex/microtype/mt-TU-empty.cfg

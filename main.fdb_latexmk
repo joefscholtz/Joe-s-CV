@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1765058397.42248 "main.tex" "main.pdf" "main" 1765058399.79075 2
+["lualatex"] 1765059575.39976 "main.tex" "main.pdf" "main" 1765059577.15872 2
   "/etc/fonts/conf.d/10-hinting-slight.conf" 1751438605 620 5da52d777c5af2cb4b7445b81ead6c3d ""
   "/etc/fonts/conf.d/10-scale-bitmap-fonts.conf" 1751438605 2068 8588f87eaf68a1eb73920066f6817b48 ""
   "/etc/fonts/conf.d/10-yes-antialias.conf" 1751438605 258 908d9e324c24bf809448ca7041db580b ""
@@ -355,14 +355,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1765053132 5311557 9da84c45f5b388655502706482323571 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1765053123 5586381 36e0e8de33ec559f7bd6bed0b1f8b6de ""
   "fonts/FredokaOne-Regular.ttf" 1765064252 42452 4a2f2ea45a0bb1abe81b47d0afde4aae ""
-  "main.aux" 1765058399.64634 1501 b1643743427af8added49000ce98813b "lualatex"
-  "main.out" 1765058399.64733 1502 735480f70957d9b4529ca5bce3006508 "lualatex"
-  "main.tex" 1765058396.19716 30637 ee49f55887c0a2d737ebcbdba9952cc6 ""
+  "main.aux" 1765059577.02141 1501 b1643743427af8added49000ce98813b "lualatex"
+  "main.out" 1765059577.02248 1502 735480f70957d9b4529ca5bce3006508 "lualatex"
+  "main.tex" 1765059575.15307 30639 52280a7a13fc730d8f2144f74f541576 ""
   "moderncv.cls" 1765064252 17552 b1d732f76cf38ff9502fd84c78077c2b ""
   "moderncvcompatibility.sty" 1765064252 3397 6646c8798a6ebba586650d124c645c99 ""
   "moderncvstylecasual.sty" 1765064252 8979 57e8db152a23040cf6772fb88e1c1c28 ""
   "moderncvstyleclassic.sty" 1765064252 13047 a46aa7ced537d21ba9f1d9a22c434cb7 ""
-  "pictures/circ_cracha.png" 1765064252 7965975 edb9aed63ca596c2c065616bbb7b456f ""
+  "pictures/circ_photo_01.png" 1765059511.27386 9718453 273a2b4062303546580e2ab738766abf ""
   "svg-inkscape/git_repo_svg-tex.pdf" 1765054061.57212 1358 e51d6dfec66cd53469fc52d781c9169b ""
   "svg-inkscape/git_repo_svg-tex.pdf_tex" 1765054061.5727 2086 5e5cb95fecb71a558aefe4f7b7003f41 ""
   "tweaklist.sty" 1765064252 1965 7ec24f2691e7167d3f5445b230b1b4e4 ""

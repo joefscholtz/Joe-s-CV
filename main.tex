@@ -87,7 +87,7 @@
 }
 
 
-\newcommand{\jobitebreakline}[5]{
+\newcommand{\jobitembreakline}[5]{
         \begin{center}
             \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
                 \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
@@ -97,9 +97,12 @@
         \begin{minipage}[t]{0.06\textwidth}
             \hfill
         \end{minipage}
-        \begin{minipage}[t]{0.9\textwidth}
-            \small \trig #5 \normalsize\\
+        \hspace*{-0.8cm}
+        \begin{minipage}[t]{0.98\textwidth}
+          \small \trig #5 \normalsize\\
         \end{minipage}        
+        \textcolor{bluegrey}{\hrulefill\newline}
+        \vspace*{-0.5cm}
 }
 
 \newcommand{\infoitem}[2]{
@@ -177,7 +180,7 @@
 
 \tcbset{grow to right by=0.1cm,colframe=darkdarkgrey,colback=darkdarkgrey,arc=0mm}
 \begin{tcolorbox}
-    \begin{minipage}[t]{0.375\textwidth}
+    \begin{minipage}[t]{0.33\textwidth}
         
         \vspace*{-5mm}
         \begin{tcolorbox}[grow to left by=0.6cm,colback=darkdarkgrey,colframe=darkdarkgrey,arc=0mm]
@@ -191,7 +194,7 @@
             \vspace*{-11mm}
             
             \begin{center}
-                \includegraphics[width=0.6\textwidth]{pictures/circ_cracha.png}
+                \includegraphics[width=0.55\textwidth]{pictures/circ_cracha.png}
             \end{center}
 
             
@@ -382,7 +385,6 @@
             % \section{\textbf{\faChartPie\hspace{1mm}\en[\textit{Softskills}]{Softskills}}}
             % \small \en[\textit{Problem-Solving}]{Problem-Solving}, \en{adaptability e flexibility, driven to learn, autonomy, pro-activity. Familiar with Agile methodologies}\fr{adaptation et flexibilité, volonté d’apprendre, autonomie, proactivité. Habituée avec des methodologies Agile}\pt{adaptação e flexibilidade, vontade de aprender, autonomia, proatividade. Familiarizada com metodologias ágeis}.\normalsize
             
-            \vspace*{-3mm}
             
             % \section{\textbf{\faCloudsmith\hspace{1mm}\textit{Personal Interests}}}
             % \small \trig Literature, Philosophy, Digital Art, Game development, Chess.  \textbf{Approaches:} Biomimetics, Open Source, IoT.
@@ -393,7 +395,7 @@
         
         \end{tcolorbox}
     \end{minipage}
-    \begin{minipage}[t]{0.625\textwidth}
+    \begin{minipage}[t]{0.67\textwidth}
     \vspace*{-0.5cm}
             
             \begin{tcolorbox}[grow to left by=0.5cm,grow to right by=0.7cm,left = 0mm,colback=darkdarkgrey,colframe=darkdarkgrey,arc=0mm]
@@ -492,14 +494,15 @@
 %--------------Expérience------------------------            
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
 
+          \jobitem{\jun\text{ }2025 \newline \hspace*{-1mm}\currently}{Conceptu Protótipos \& Sistemas}{Porto Alegre, \brazil}{\en{Senior Software Quality Assurance C++ Engineer}\fr{Senior Software Quality Assurance C++ Engineer}\pt{Senior Software Quality Assurance C++ Engineer}}{\en{\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32: Experience with: ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, Ninja, Docker, CI/CD}\fr{}\pt{}}
+
           \jobitem{\november\text{ }2023 \newline \hspace*{-1mm}\april\text{ }2025}{Instituto SENAI de Inovação em Sistemas de Sensoriamento}{São Leopoldo, \brazil}{\en{Mobile Robotics Researcher}\fr{Chercheuse en Robotique Mobile}\pt{Pesquisadora em Robótica Móvel}}{\en{\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}\fr{\textbf{Robots mobiles autonomse:} Experiénce avec ROS 2, y compris \textit{drivers} et communication pour le \textit{hardware} avec ros2\_control, navegation, planification et asservissement avec Nav2, gestion de flotte avec Open-RMF, et simulation avec Gazebo, Isaac Sim et Unreal Engine.}\pt{\textbf{Robôs móveis autônomos:} Experiência com ROS 2, incluindo \textit{drivers} e comunicação para hardware com ros2\_control, SLAM e navegação com Nav2, gerenciamento de frota com Open-RMF, e simulação com Gazebo, Isaac Sim e Unreal Engine.}}
 
-          \jobitem{\mars\text{ }2023 \newline \hspace*{-1mm}\september\text{ }2023}{Aprix}{Porto Alegre, \brazil}{\en{Machine Learning Intern}\fr{Stagiaire en \textit{Machine Learning}}\pt{Estagiária em \textit{Machine Learning}}}{\en{\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}\fr{\textbf{\textit{Data Science} pour l'optimisation de prix:} Expérience avec Python (NumPy, Pandas, \textit{back-end}), analyse et visualisation de données, SQL, expérience limitée avec: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}\pt{\textbf{\textit{Data Science} para otimização de preços:} Experiência com Python (NumPy, Pandas, \textit{back-end}), análise e visualização de dados, SQL, experiência limitada com: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}}
+          % \jobitem{\mars\text{ }2023 \newline \hspace*{-1mm}\september\text{ }2023}{Aprix}{Porto Alegre, \brazil}{\en{Machine Learning Intern}\fr{Stagiaire en \textit{Machine Learning}}\pt{Estagiária em \textit{Machine Learning}}}{\en{\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}\fr{\textbf{\textit{Data Science} pour l'optimisation de prix:} Expérience avec Python (NumPy, Pandas, \textit{back-end}), analyse et visualisation de données, SQL, expérience limitée avec: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}\pt{\textbf{\textit{Data Science} para otimização de preços:} Experiência com Python (NumPy, Pandas, \textit{back-end}), análise e visualização de dados, SQL, experiência limitada com: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}}
           
           \jobitem{\april\text{ }2022 \newline \hspace*{-1mm}\september\text{ }2022}{TRIMBLE Nantes}{Carquefou, \france}{
           \en{Software Engineer Intern}\fr{Stagiaire  en \textit{Software Engineering}}\pt{Estagiária em Engenharia de Software}}{\en{\textbf{IMU-only Data-driven Positioning:}
           Experience with Python, Linux, IMUs, GNSS and limited experience with: Machine Learning.}\fr{\textbf{\textit{IMU-only Data-driven Positioning}:} Algorithme basé-donées de localisation avec IMU. Expérience avec Python, Linux, centrale inertielle, \textit{GNSS} et expérience limitée avec: \textit{Machine Learning}.}\pt{\textbf{\textit{IMU-only Data-driven Positioning}:} Algoritmo baseado em dados para localização utilizando apenas uma \textit{IMU}. Experiência com Python, Linux, \textit{IMU}, \textit{GNSS} e experiência limitada com: \textit{Machine Learning}.}}
-
           
           \jobitem{\mars\text{ }2021 \newline \august\text{ }2021}{Axter Automation}{Vaucresson, \france}{
           \en{Robotics Intern}\fr{Stagiaire en Robotique}\pt{Estagiária em Robótica}}{\en{\textbf{Development with industrial mobile robots (\textit{AGV}):} Development with smart sensors, robot-server communication, obstacle dectection securiy system. Experience with app dev for Windows and Linux, communication protocols, ROS and SLAM.}\fr{\textbf{Développement avec robots mobiles industriels (\textit{AGV}):} Développement avec capteurs intelligent,  Communication entre robots-serveur, système de détection d'obstacles. Expérience en développement d'application Windows et Linux, protocoles de communication, ROS et SLAM.}\pt{\textbf{Desenvolvimento com robôs móveis industriais (\textit{AGV}):} Desenvolvimento com sensores inteligentes, comunicação robô-server, sistema de detecção de obstáculos. Experiência com desenvolvimento de aplicação Windows e Linux, protocolos de comunicação, ROS e SLAM.}}
@@ -515,7 +518,7 @@
           \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
           
           
-          \vspace*{-6mm}
+          % \vspace*{-6mm}
           
         
          % \faMedapps\\

@@ -1,4 +1,4 @@
-PWD /home/joe/latex/Joe's CV v2.26 (EN-FR-PT)
+PWD /home/joe/latex/Joe_s_CV
 INPUT /var/lib/texmf/web2c/luahbtex/lualatex.fmt
 INPUT ./main.tex
 OUTPUT main.log

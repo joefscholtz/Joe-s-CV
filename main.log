@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2026/dev/Arch Linux)  (format=lualatex 2025.12.6)  6 DEC 2025 19:19
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2026/dev/Arch Linux)  (format=lualatex 2025.12.6)  7 DEC 2025 14:22
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -1218,17 +1218,12 @@ File: ./svg-inkscape/git_repo_svg-tex.pdf Graphic file (type pdf)
 Package luatex.def Info: ./svg-inkscape/git_repo_svg-tex.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 9.03374pt x 11.8573pt.
 )
-Overfull \hbox (0.94228pt too wide) in paragraph at lines 246--246
-[]|[][]\TU/lmss/bx/n/9.90063 forg_bot[][]| 
- []
-
-
 Overfull \hbox (8.05925pt too wide) in paragraph at lines 246--246
 []|[]| 
  []
 
 
-Overfull \hbox (1.53558pt too wide) in paragraph at lines 245--248
+Overfull \hbox (1.53793pt too wide) in paragraph at lines 245--248
  [] 
  []
 
@@ -1244,17 +1239,12 @@ File: ./svg-inkscape/git_repo_svg-tex.pdf Graphic file (type pdf)
 Package luatex.def Info: ./svg-inkscape/git_repo_svg-tex.pdf , page1 used on input line 56.
 (luatex.def)             Requested size: 9.03374pt x 11.8573pt.
 )
-Overfull \hbox (0.95535pt too wide) in paragraph at lines 264--264
-[]|[][]\TU/lmss/bx/n/9.90063 ros2_docker[][]| 
- []
-
-
 Overfull \hbox (8.05925pt too wide) in paragraph at lines 264--264
 []|[]| 
  []
 
 
-Overfull \hbox (1.53793pt too wide) in paragraph at lines 263--266
+Overfull \hbox (1.5356pt too wide) in paragraph at lines 263--266
  [] 
  []
 
@@ -1353,17 +1343,6 @@ Overfull \hbox (244.69444pt too wide) in paragraph at lines 495--495
 [][] [] 
  []
 
-./main.tex:497: Undefined control sequence.
-<argument> \jun 
-                \text { }2025 \newline \hspace *{-1mm}\currently 
-l.497 ..., CMake, Ninja, Docker, CI/CD}\fr{}\pt{}}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <9.90063> not available
 (Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 508.
 
@@ -1389,16 +1368,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 39435 strings out of 475506
- 195340,1648299 words of node,token memory allocated
+ 39434 strings out of 475506
+ 195338,1648299 words of node,token memory allocated
  1421 words of node memory still in use:
    31 hlist, 2 vlist, 14 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 3 glyph, 83 attribute, 69 glue_spec, 83 attribute_list, 3 write, 24 pdf_literal, 24 pdf_colorstack nodes
-   avail lists: 1:4,2:3799,3:2533,4:718,5:774,6:423,7:15747,8:6,9:3134,10:14,11:961
- 61397 multiletter control sequences out of 65536+600000
+   avail lists: 1:5,2:3799,3:2533,4:718,5:774,6:423,7:15756,8:7,9:3134,10:14,11:961
+ 61396 multiletter control sequences out of 65536+600000
  80 fonts using 6698231 bytes
  98i,23n,97p,1309b,2143s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/opentype/public/lm/lmsans10-boldoblique.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmsans10-oblique.otf><./fonts/FredokaOne-Regular.ttf></usr/share/texmf-dist/fonts/opentype/public/lm/lmsans8-regular.otf></usr/share/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Brands-Regular-400.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmsans10-regular.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmsans9-regular.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf>
-Output written on main.pdf (1 page, 15021414 bytes).
+Output written on main.pdf (1 page, 15021403 bytes).
 
 PDF statistics: 156 PDF objects out of 1000 (max. 8388607)
  96 compressed objects within 1 object stream

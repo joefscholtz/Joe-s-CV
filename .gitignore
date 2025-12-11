@@ -9,4 +9,10 @@
 *.zip
 *.tar
 *.rar
+*.bcf
+*.nav
+*.run.xml
+*.snm
+*.toc
+*.vrb
 svg-inkscape

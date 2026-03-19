@@ -18,3 +18,4 @@
 *.bbl
 *.blg
 svg-inkscape
+*.synctex*

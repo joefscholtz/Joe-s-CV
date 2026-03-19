@@ -1,5 +1,6 @@
 %! TeX program = lualatex
-\documentclass[10pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\documentclass[10pt,a4paper,sans]{article} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\usepackage[hidelinks]{hyperref}
 
 %\usepackage[utf8]{inputenc}
 
@@ -10,10 +11,6 @@
 \usepackage{multicol}
 \usepackage[most]{tcolorbox}
 
-\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
-
-%\moderncvcolor{grey} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
-
 \usepackage[scale=1]{geometry} % Reduce document margins
 %\setlength{\hintscolumnwidth}{3.5cm} 
 %\newcommand{\trig}{$\blacktriangleright$\hspace{1mm}}
@@ -23,13 +20,47 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{fontawesome5} %funny symbols
 \usepackage{fontspec} %fonts: require LuaTex or XeTex
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\renewcommand{\familydefault}{\sfdefault} % Set sans as the default
 \usepackage[fontsize=10.85pt]{fontsize} %fuck yeah I can use floats as fontsize
+\usepackage{setspace}
+\setstretch{1.0} % Force tight single spacing
+\setlength{\parskip}{0pt} % Remove space between paragraphs
+\setlength{\parsep}{0pt}
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.0} % moderncv uses a tight stretch
+\setlength{\lineskip}{0pt}
+\setlength{\normallineskip}{0pt}
+
+\usepackage{enumitem}
+\setlist[itemize]{nosep, topsep=0pt, partopsep=0pt, leftmargin=0.8em}
+
+\setlength{\tabcolsep}{0pt} % Remove default padding between columns
+\renewcommand{\arraystretch}{1.0} % Ensure rows aren't stretched
+
 \usepackage{afterpage} %page color i guess
 \usepackage{tikz} %its tikz, dummy
 \usepackage{todonotes}
 \usepackage{framed} %frames
 \usepackage{svg}
 \usepackage{circledsteps}
+
+%override commands
+
+\newlength{\hintscolumnwidth}
+\setlength{\hintscolumnwidth}{1cm}
+
+\renewcommand{\section}[1]{%
+  \par\vspace{2.5ex}%
+  \phantomsection{}%
+  \begin{tabular}{@{}p{\hintscolumnwidth}@{\hspace{0.2cm}}p{0.8\textwidth}@{}}
+    % This is the "bar" feature:
+    \raggedleft\raisebox{0.2ex}{\color{bluegrey}\rule{\hintscolumnwidth}{0.95ex}} & 
+    \Large\bfseries\upshape\textcolor{bluegrey}{#1}
+  \end{tabular}
+  \par\vspace{1ex}%
+}
 
 %New commands
 \newcommand{\CPP}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny \textbf{+}}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny \textbf{+}}\hspace{1mm}}
@@ -43,11 +74,11 @@
 
 \newcommand{\trig}{\faAngleRight\hspace{1mm}}
 \newcommand{\mycvitem}[4]{
-    \begin{center}
-        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
-            \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline\normalsize \trig \small #4 \normalsize\\ 
-        \end{tabular}
-    \end{center}
+  \begin{center}
+    \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
+        \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline\normalsize \trig \small #4 \normalsize\\ 
+    \end{tabular}
+  \end{center}
 }
 
 %date, title, address, subtitle
@@ -115,9 +146,6 @@
     \normalsize
 }
 
-
-\firstname{Joe} % Your first name
-\familyname{Scholtz} % Your last name
 
 % All information in this block is optional, comment out any lines you don't need
 \title{Curriculum Vitae}
@@ -198,11 +226,13 @@
             \end{center}
 
             
-            \vspace*{-6mm}
+            \vspace*{-8mm}
          
             
             \section{\textbf{\faAddressCard \hspace{1mm}\en{Contact}\fr{Contact}\pt{Contato}}}
             
+            \vspace*{-4mm}
+
             \infoitem{\faEnvelope}{\footnotesize joefscholtz@gmail.com}
             \vspace{1mm}
             
@@ -283,6 +313,8 @@
             \textcolor{bluegrey}{\hrulefill\newline}
             \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\en{Languages, tools and frameworks}\fr{Langages, outils et  \textit{frameworks}}\pt{Linguagens, ferramentas e \textit{frameworks}}}}
             %frameworks = environnements de développement
+            \vspace*{1mm}
+
         
             \small 
 
@@ -329,7 +361,7 @@
             
             \normalsize
             
-            \vspace*{-3mm}
+            \vspace*{-1mm}
             
             \textcolor{bluegrey}{\hrulefill\newline}
             \hspace*{-1.5mm}\textcolor{bluegrey}{\textbf{\en{CAD and 3D modelling}\fr{CAO et modélisation 3D}\pt{\textit{CAD} e modelagem 3D}}}
@@ -342,7 +374,7 @@
             
             \normalsize
             
-            \vspace*{-3mm}
+            \vspace*{-1mm}
             
             
             \section{\textbf{\faCalculator\hspace{1mm}\en[\textit{Hardware}]{Hardware}}}
@@ -368,11 +400,9 @@
             
             \normalsize
             
-            \vspace*{-3mm}
-
-            
-            \section{\textbf{\faGlobeAmericas\hspace{1mm}\en{Languages}\fr{Langues}\pt{Línguas}}}
             \vspace*{-1mm}
+            \section{\textbf{\faGlobeAmericas\hspace{1mm}\en{Languages}\fr{Langues}\pt{Línguas}}}
+            \vspace*{-3mm}
             \small
             \begin{center}
                 \begin{tabular}{p{0.4\textwidth} p{0.6\textwidth}} 
@@ -459,12 +489,12 @@
             %ROS, \CPP moderne, modélisation et commande de robots, optimisation
             %ROS, \CPP, instrumentation, prototypage, électronique pour traitement du signal
             %Instrumentation, design et le prototypage de systèmes électroniques
-            \vspace*{-1mm}
+            \vspace*{-5mm}
             \normalsize
             \section{\textbf{\faGraduationCap\hspace{1mm}\en{Academic}\fr{Formation}\pt{Formação Acadêmica}}}
+            \vspace*{-2mm}
             
-            
-            \begin{tcolorbox}[colback=white, left = -2mm,right = -2mm, boxrule=1mm, title=\textbf{\hspace{2mm} \faGraduationCap \hspace{1mm}
+            \begin{tcolorbox}[breakable,colback=white, left = -2mm,right = -2mm, boxrule=1mm, title=\textbf{\hspace{2mm} \faGraduationCap \hspace{1mm}
             \en{Double Degree}
             \fr{Double Diplôme}
             \pt{Duplo Diploma}}]
@@ -487,14 +517,14 @@
             
             
             
-            \vspace*{-1mm}
-            
-            
+            \vspace*{-3mm}
             
 %--------------Expérience------------------------            
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
 
-          \jobitem{\june\text{ }2025 \newline \hspace*{-1mm}\december\text{}2025}{Conceptu Protótipos \& Sistemas}{Porto Alegre, \brazil}{\en{Senior Software Quality Assurance C++ Engineer}\fr{Senior Software Quality Assurance C++ Engineer}\pt{Senior Software Quality Assurance C++ Engineer}}{\en{\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32: Experience with: Embedded C and C++, Python, Linux, ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD with Git}\fr{}\pt{}}
+            \vspace*{-4mm}
+
+          \jobitem{\june\text{ }2025 \newline \hspace*{-1mm}\december\text{ }2025}{Conceptu Protótipos \& Sistemas}{Porto Alegre, \brazil}{\en{Senior Software Quality Assurance C++ Engineer}\fr{Senior Software Quality Assurance C++ Engineer}\pt{Senior Software Quality Assurance C++ Engineer}}{\en{\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32: Experience with: Embedded C and C++, Python, Linux, ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD with Git}\fr{}\pt{}}
 
           \jobitem{\november\text{ }2023 \newline \hspace*{-1mm}\april\text{ }2025}{Instituto SENAI de Inovação em Sistemas de Sensoriamento}{São Leopoldo, \brazil}{\en{Mobile Robotics Researcher}\fr{Chercheuse en Robotique Mobile}\pt{Pesquisadora em Robótica Móvel}}{\en{\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}\fr{\textbf{Robots mobiles autonomse:} Experiénce avec ROS 2, y compris \textit{drivers} et communication pour le \textit{hardware} avec ros2\_control, navegation, planification et asservissement avec Nav2, gestion de flotte avec Open-RMF, et simulation avec Gazebo, Isaac Sim et Unreal Engine.}\pt{\textbf{Robôs móveis autônomos:} Experiência com ROS 2, incluindo \textit{drivers} e comunicação para hardware com ros2\_control, SLAM e navegação com Nav2, gerenciamento de frota com Open-RMF, e simulação com Gazebo, Isaac Sim e Unreal Engine.}}
 

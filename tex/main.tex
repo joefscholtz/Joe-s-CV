@@ -2,13 +2,12 @@
 \documentclass[10pt,a4paper,sans]{article} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 \usepackage[hidelinks]{hyperref}
 
-%\usepackage[utf8]{inputenc}
-
 \usepackage[export]{adjustbox}
 
 \usepackage{float}
 \usepackage{array}
 \usepackage{multicol}
+\usepackage{multirow}
 \usepackage[most]{tcolorbox}
 
 \usepackage[scale=1]{geometry} % Reduce document margins
@@ -73,7 +72,7 @@
 \defaultfontfeatures{LetterSpace=100.0}
 
 \newcommand{\trig}{\faAngleRight\hspace{1mm}}
-\newcommand{\mycvitem}[4]{
+\newcommand{\academicitem}[4]{
   \begin{center}
     \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
         \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline\normalsize \trig \small #4 \normalsize\\ 
@@ -82,7 +81,7 @@
 }
 
 %date, title, address, subtitle
-\newcommand{\mycvitemafter}[4]{
+\newcommand{\academicitemafter}[4]{
     \begin{center}
         \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
             \centering \small\textcolor{darkgrey}{\textit{(#3)}}\newline \normalsize#1& & & \textbf{#2}  \newline\normalsize \trig \small #4 \normalsize\\ 
@@ -100,40 +99,47 @@
     \end{center}
 }
 
-\newcommand{\jobitemi}[4]{
+% The Timeline Container
+\newenvironment{jobtimeline}{
+    \begin{tikzpicture}[remember picture]
     \begin{center}
-        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
-            \centering #1& & & \textbf{#2} \newline\normalsize  #3
-            \vspace{1mm}\newline\normalsize \trig  #4\\
-        \end{tabular}
+}{
     \end{center}
-}
-\newcommand{\jobitemii}[3]{
-    \begin{center}
-        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
-            \centering #1& & & \textbf{#2}
-            \newline\normalsize  #3\\
-        \end{tabular}
-    \end{center}
+    \end{tikzpicture}
 }
 
+% The Timeline Item
+% #1: id 
+% #2: company name
+% #3: logo (path)
+% #4: location
+% #5: role
+% #6: start date
+% #7: end date
+% #8: description
+% #9: skills
+\newcommand{\jobitemtimeline}[9]{
+    % ROW 1: The Dot, The Logo, and the Company Name
+    \node[circle, fill=bluegrey, inner sep=2.5pt] (#1) {};
+    \draw[thick, bluegrey] (#1.center) -- (0, -2.5); 
+    % Col 1: Timeline (0.05) | Col 2: Logo/Dates (0.15) | Col 3: Content (0.75)
+    \begin{tabular}{@{} p{0.05\textwidth} @{} p{0.15\textwidth} @{\hspace{2mm}} p{0.75\textwidth} @{}}
 
-\newcommand{\jobitembreakline}[5]{
-        \begin{center}
-            \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
-                \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
-            \end{tabular}
-        \end{center}
-        \vspace*{-2.5mm}
-        \begin{minipage}[t]{0.06\textwidth}
-            \hfill
-        \end{minipage}
-        \hspace*{-0.8cm}
-        \begin{minipage}[t]{0.98\textwidth}
-          \small \trig #5 \normalsize\\
-        \end{minipage}        
-        \textcolor{bluegrey}{\hrulefill\newline}
-        \vspace*{-0.5cm}
+    
+    &\centering \includegraphics[width=0.12\textwidth, height=0.9cm, keepaspectratio]{#3}\newline
+    \footnotesize #6\newline
+    \footnotesize #7\newline
+    & 
+    \normalsize \textbf{#2} \small\textcolor{darkgrey}{\textit{(#4)}}\newline
+    \footnotesize #5\newline
+    \footnotesize #8\newline
+    \end{tabular}
+
+    % Col 1: Timeline (0.05) | Col 2: Skils (0.90)
+    \begin{tabular}{@{} p{0.05\textwidth} @{} p{0.90\textwidth} @{}}
+    & \footnotesize \trig \textbf{Skills:} #9 \vspace{4mm} \\ 
+    \end{tabular}
+    \normalsize
 }
 
 \newcommand{\infoitem}[2]{
@@ -499,11 +505,11 @@
             \fr{Double Diplôme}
             \pt{Duplo Diploma}}]
             
-                \mycvitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}{ECN - École Centrale de Nantes}{Nantes, \france}{\en{\textbf{
+                \academicitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}{ECN - École Centrale de Nantes}{Nantes, \france}{\en{\textbf{
                 Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.}\fr{\textbf{Diplôme d'ingénieur.e avec spécialisation en Robotique et Recherche et Développement \textit{(Master's degree)}}. Grand École d'Ingénieurs, 4$^\text{ème}$ place en France selon le classement de l'Étudiant en 2021.}\pt{\textbf{Diploma de Engenharia com especialização em Robótica e em Pesquisa e Desenvolvimento \textit{(Master's degree)}}. \textit{Grand École d'Ingénieurs}, 4$^\circ$ lugar na França de acordo com o \textit{l'Étudiant} em 2021.}}
                 
                 
-                \mycvitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}{UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}{\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
+                \academicitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}{UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}{\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
                 
                 \vspace*{-6mm}
             \end{tcolorbox}
@@ -513,7 +519,7 @@
             
             
             
-            % \mycvitem{\text{ }2015\text{ } \text{ }2016\text{ }}{Colégio Luterano Concórdia Canoas}{Canoas, \brazil}{\en{\textbf{IT Technician}. Focus in web development.}\fr{\textbf{Technicienne Informatique}. Spécialisation en développement web.}\pt{\textbf{Técnica em Informática}. Especialização em desenvolvimento web.}}
+            % \academicitem{\text{ }2015\text{ } \text{ }2016\text{ }}{Colégio Luterano Concórdia Canoas}{Canoas, \brazil}{\en{\textbf{IT Technician}. Focus in web development.}\fr{\textbf{Technicienne Informatique}. Spécialisation en développement web.}\pt{\textbf{Técnica em Informática}. Especialização em desenvolvimento web.}}
             
             
             
@@ -524,31 +530,53 @@
 
             \vspace*{-4mm}
 
-          \jobitem{\june\text{ }2025 \newline \hspace*{-1mm}\december\text{ }2025}{Conceptu Protótipos \& Sistemas}{Porto Alegre, \brazil}{\en{Senior Software Quality Assurance C++ Engineer}\fr{Senior Software Quality Assurance C++ Engineer}\pt{Senior Software Quality Assurance C++ Engineer}}{\en{\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32: Experience with: Embedded C and C++, Python, Linux, ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD with Git}\fr{}\pt{}}
+            \begin{jobtimeline}
+              \jobitemtimeline
+                  {conceptu}
+                  {Conceptu Protótipos} % Company
+                  {pictures/conceptu_logo.jpg} % Logo
+                  {Porto Alegre, Brazil} % Location
+                  {Senior QA C++ Engineer} % Role
+                  {June 2025} % Start
+                  {Dec 2025}  % End
+                  {DevOps for embedded systems, including various MCUs such as ESP32 and STM32.} % Description
+                  {Embedded C++, Python, Docker, CI/CD} % Skills
+              \jobitemtimeline
+                  {senai}
+                  {Instituto SENAI}
+                  {pictures/senai_logo.jpg}
+                  {São Leopoldo, Brazil}
+                  {Mobile Robotics Researcher}
+                  {Nov 2023}
+                  {Apr 2025}
+                  {Autonomous mobile robots for logistics using ROS 2, Nav2, and Isaac Sim.}
+                  {ROS 2, C++, SLAM, Gazebo}
+          \end{jobtimeline}
 
-          \jobitem{\november\text{ }2023 \newline \hspace*{-1mm}\april\text{ }2025}{Instituto SENAI de Inovação em Sistemas de Sensoriamento}{São Leopoldo, \brazil}{\en{Mobile Robotics Researcher}\fr{Chercheuse en Robotique Mobile}\pt{Pesquisadora em Robótica Móvel}}{\en{\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}\fr{\textbf{Robots mobiles autonomse:} Experiénce avec ROS 2, y compris \textit{drivers} et communication pour le \textit{hardware} avec ros2\_control, navegation, planification et asservissement avec Nav2, gestion de flotte avec Open-RMF, et simulation avec Gazebo, Isaac Sim et Unreal Engine.}\pt{\textbf{Robôs móveis autônomos:} Experiência com ROS 2, incluindo \textit{drivers} e comunicação para hardware com ros2\_control, SLAM e navegação com Nav2, gerenciamento de frota com Open-RMF, e simulação com Gazebo, Isaac Sim e Unreal Engine.}}
-
-          % \jobitem{\mars\text{ }2023 \newline \hspace*{-1mm}\september\text{ }2023}{Aprix}{Porto Alegre, \brazil}{\en{Machine Learning Intern}\fr{Stagiaire en \textit{Machine Learning}}\pt{Estagiária em \textit{Machine Learning}}}{\en{\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}\fr{\textbf{\textit{Data Science} pour l'optimisation de prix:} Expérience avec Python (NumPy, Pandas, \textit{back-end}), analyse et visualisation de données, SQL, expérience limitée avec: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}\pt{\textbf{\textit{Data Science} para otimização de preços:} Experiência com Python (NumPy, Pandas, \textit{back-end}), análise e visualização de dados, SQL, experiência limitada com: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}}
-          
-          \jobitem{\april\text{ }2022 \newline \hspace*{-1mm}\september\text{ }2022}{TRIMBLE Nantes}{Carquefou, \france}{
-          \en{Software Engineer Intern}\fr{Stagiaire  en \textit{Software Engineering}}\pt{Estagiária em Engenharia de Software}}{\en{\textbf{IMU-only Data-driven Positioning:}
-          Experience with Python, Linux, IMUs, GNSS and limited experience with: Machine Learning.}\fr{\textbf{\textit{IMU-only Data-driven Positioning}:} Algorithme basé-donées de localisation avec IMU. Expérience avec Python, Linux, centrale inertielle, \textit{GNSS} et expérience limitée avec: \textit{Machine Learning}.}\pt{\textbf{\textit{IMU-only Data-driven Positioning}:} Algoritmo baseado em dados para localização utilizando apenas uma \textit{IMU}. Experiência com Python, Linux, \textit{IMU}, \textit{GNSS} e experiência limitada com: \textit{Machine Learning}.}}
-          
-          \jobitem{\mars\text{ }2021 \newline \august\text{ }2021}{Axter Automation}{Vaucresson, \france}{
-          \en{Robotics Intern}\fr{Stagiaire en Robotique}\pt{Estagiária em Robótica}}{\en{\textbf{Development with industrial mobile robots (\textit{AGV}):} Development with smart sensors, robot-server communication, obstacle dectection securiy system. Experience with app dev for Windows and Linux, communication protocols, ROS and SLAM.}\fr{\textbf{Développement avec robots mobiles industriels (\textit{AGV}):} Développement avec capteurs intelligent,  Communication entre robots-serveur, système de détection d'obstacles. Expérience en développement d'application Windows et Linux, protocoles de communication, ROS et SLAM.}\pt{\textbf{Desenvolvimento com robôs móveis industriais (\textit{AGV}):} Desenvolvimento com sensores inteligentes, comunicação robô-server, sistema de detecção de obstáculos. Experiência com desenvolvimento de aplicação Windows e Linux, protocolos de comunicação, ROS e SLAM.}}
-          
-          \jobitem{\may\text{ }2021 \newline \hspace*{-1mm}\july\text{ }2021}{LAEROMEC Engenharia}{Porto Alegre, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{
-          \en{Mechatronics Designer}\fr{Mécatronicienne}\pt{Projetista Mecatrônica}}{\en{\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Experience in mechatronics, electronics and mechanical design.}\fr{\textbf{Projet en conjonction avec AGCO Amerique du Sud:} Conception d'un distributeur agricole automatisé. Expérience en mécatronique, électronique et conception mécanique.}\pt{\textbf{Projeto em conjunção com a AGCO América do Sul:} Concepção de um distribuidor agrícola automatizado. Experiência em mecatrônica, eletrônica e concepção mecânica.}}
+          % \jobitem{\june\text{ }2025 \newline \hspace*{-1mm}\december\text{ }2025}{Conceptu Protótipos \& Sistemas}{Porto Alegre, \brazil}{\en{Senior Software Quality Assurance C++ Engineer}\fr{Senior Software Quality Assurance C++ Engineer}\pt{Senior Software Quality Assurance C++ Engineer}}{\en{\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32: Experience with: Embedded C and C++, Python, Linux, ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD with Git}\fr{}\pt{}}
+          %
+          % \jobitem{\november\text{ }2023 \newline \hspace*{-1mm}\april\text{ }2025}{Instituto SENAI de Inovação em Sistemas de Sensoriamento}{São Leopoldo, \brazil}{\en{Mobile Robotics Researcher}\fr{Chercheuse en Robotique Mobile}\pt{Pesquisadora em Robótica Móvel}}{\en{\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}\fr{\textbf{Robots mobiles autonomse:} Experiénce avec ROS 2, y compris \textit{drivers} et communication pour le \textit{hardware} avec ros2\_control, navegation, planification et asservissement avec Nav2, gestion de flotte avec Open-RMF, et simulation avec Gazebo, Isaac Sim et Unreal Engine.}\pt{\textbf{Robôs móveis autônomos:} Experiência com ROS 2, incluindo \textit{drivers} e comunicação para hardware com ros2\_control, SLAM e navegação com Nav2, gerenciamento de frota com Open-RMF, e simulação com Gazebo, Isaac Sim e Unreal Engine.}}
+          %
+          % % \jobitem{\mars\text{ }2023 \newline \hspace*{-1mm}\september\text{ }2023}{Aprix}{Porto Alegre, \brazil}{\en{Machine Learning Intern}\fr{Stagiaire en \textit{Machine Learning}}\pt{Estagiária em \textit{Machine Learning}}}{\en{\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}\fr{\textbf{\textit{Data Science} pour l'optimisation de prix:} Expérience avec Python (NumPy, Pandas, \textit{back-end}), analyse et visualisation de données, SQL, expérience limitée avec: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}\pt{\textbf{\textit{Data Science} para otimização de preços:} Experiência com Python (NumPy, Pandas, \textit{back-end}), análise e visualização de dados, SQL, experiência limitada com: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}}
+          %
+          % \jobitem{\april\text{ }2022 \newline \hspace*{-1mm}\september\text{ }2022}{TRIMBLE Nantes}{Carquefou, \france}{
+          % \en{Software Engineer Intern}\fr{Stagiaire  en \textit{Software Engineering}}\pt{Estagiária em Engenharia de Software}}{\en{\textbf{IMU-only Data-driven Positioning:}
+          % Experience with Python, Linux, IMUs, GNSS and limited experience with: Machine Learning.}\fr{\textbf{\textit{IMU-only Data-driven Positioning}:} Algorithme basé-donées de localisation avec IMU. Expérience avec Python, Linux, centrale inertielle, \textit{GNSS} et expérience limitée avec: \textit{Machine Learning}.}\pt{\textbf{\textit{IMU-only Data-driven Positioning}:} Algoritmo baseado em dados para localização utilizando apenas uma \textit{IMU}. Experiência com Python, Linux, \textit{IMU}, \textit{GNSS} e experiência limitada com: \textit{Machine Learning}.}}
+          %
+          % \jobitem{\mars\text{ }2021 \newline \august\text{ }2021}{Axter Automation}{Vaucresson, \france}{
+          % \en{Robotics Intern}\fr{Stagiaire en Robotique}\pt{Estagiária em Robótica}}{\en{\textbf{Development with industrial mobile robots (\textit{AGV}):} Development with smart sensors, robot-server communication, obstacle dectection securiy system. Experience with app dev for Windows and Linux, communication protocols, ROS and SLAM.}\fr{\textbf{Développement avec robots mobiles industriels (\textit{AGV}):} Développement avec capteurs intelligent,  Communication entre robots-serveur, système de détection d'obstacles. Expérience en développement d'application Windows et Linux, protocoles de communication, ROS et SLAM.}\pt{\textbf{Desenvolvimento com robôs móveis industriais (\textit{AGV}):} Desenvolvimento com sensores inteligentes, comunicação robô-server, sistema de detecção de obstáculos. Experiência com desenvolvimento de aplicação Windows e Linux, protocolos de comunicação, ROS e SLAM.}}
+          %
+          % \jobitem{\may\text{ }2021 \newline \hspace*{-1mm}\july\text{ }2021}{LAEROMEC Engenharia}{Porto Alegre, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{
+          % \en{Mechatronics Designer}\fr{Mécatronicienne}\pt{Projetista Mecatrônica}}{\en{\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Experience in mechatronics, electronics and mechanical design.}\fr{\textbf{Projet en conjonction avec AGCO Amerique du Sud:} Conception d'un distributeur agricole automatisé. Expérience en mécatronique, électronique et conception mécanique.}\pt{\textbf{Projeto em conjunção com a AGCO América do Sul:} Concepção de um distribuidor agrícola automatizado. Experiência em mecatrônica, eletrônica e concepção mecânica.}}
           
           % \jobitem{\july\text{ }2020 \newline \hspace*{-.5mm}\december\text{ }2020}{AuRos Robotics}{Rio Grande, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{\en{Back-End and Front-End Developer}\fr{Développeuse \textit{Back-End} et \textit{Front-End}}\pt{Desenvolvedora \textit{Back-End} e \textit{Front-End}}}{\en{\textbf{
           % Decision making in the agricultural context with the help of AI and visual recognition:} Experience in web development and mobile applications, using various sensors.}\fr{\textbf{Prise de décision dans le contexte agricole avec l'aide d'une IA et reconnaissance visuelle:} Expérience en développement web et d'application mobile avec utilisation de plusieurs capteurs.}\pt{\textbf{
           % Tomada de decisão no contexto agrícola com ajuda de IA e reconhecimento visual:} Experiência em desenvolvimento web e de aplicativos móveis, com utilização de diversos sensores.}}
           
-          \jobitem{\august\text{ }2018 \newline \hspace*{-.5mm}\july\text{ }2020}{LAMECC - UFRGS \footnotesize(\en{Mechatronics and Control Lab}\fr{Laboratoire de Mécatronique et Commande}\pt{Laboratório de Mecatrônica e Controle})\normalsize}{Porto Alegre, \brazil}{
-          \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
+          % \jobitem{\august\text{ }2018 \newline \hspace*{-.5mm}\july\text{ }2020}{LAMECC - UFRGS \footnotesize(\en{Mechatronics and Control Lab}\fr{Laboratoire de Mécatronique et Commande}\pt{Laboratório de Mecatrônica e Controle})\normalsize}{Porto Alegre, \brazil}{
+          % \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
           
           
-          % \vspace*{-6mm}
           
         
          % \faMedapps\\

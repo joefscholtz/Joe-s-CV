@@ -72,6 +72,7 @@
 \defaultfontfeatures{LetterSpace=100.0}
 
 \newcommand{\trig}{\faAngleRight\hspace{1mm}}
+\newcommand{\skills}{\faAlignLeft\hspace{1mm}}
 \newcommand{\academicitem}[4]{
   \begin{center}
     \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
@@ -88,6 +89,34 @@
         \end{tabular}
     \end{center}
 }
+% #1: id, #2: institution, #3: logo, #4: location, #5: start, #6: end, #7: desc, #8: skills
+\newcommand{\academicitemtimeline}[7]{
+    \noindent
+    \begin{minipage}[t]{0.15\textwidth}
+        \vspace{0pt}
+        \centering
+        \adjincludegraphics[width=0.4\linewidth, keepaspectratio, valign=t]{#3}
+        \par\vspace{2mm}
+        \footnotesize #5\par
+        \footnotesize #6
+        \vspace{2mm}
+    \end{minipage}%
+    \begin{minipage}[t]{0.82\textwidth}
+        \vspace{0pt}
+        \normalsize \textbf{#2} \small\textcolor{darkgrey}{\textit{(#4)}} \par
+        \vspace{1mm}
+        \footnotesize \trig #7
+    \end{minipage}
+
+
+    % \vspace{2mm}
+    % \noindent
+    % \begin{minipage}[t]{0.90\textwidth}
+    %     \footnotesize \skills \textbf{Skills:} #9
+    % \end{minipage}
+    \vspace{2mm} % Vertical gap between items
+
+}
 
 
 \newcommand{\jobitem}[5]{
@@ -99,14 +128,6 @@
     \end{center}
 }
 
-\newenvironment{jobtimeline}{
-    % We don't wrap the whole thing in a tikzpicture here 
-    % because minipages can't live inside it.
-    \begin{center}
-}{
-    \end{center}
-}
-
 % #1: id, #2: company, #3: logo, #4: location, #5: role, #6: start, #7: end, #8: desc, #9: skills
 \newcommand{\jobitemtimeline}[9]{
     \noindent
@@ -115,13 +136,13 @@
         \centering
         \begin{tikzpicture}[remember picture, baseline=(#1.north)]
             \node[circle, fill=bluegrey, inner sep=1.2mm] (#1) {};
-            \draw[line width=1mm , bluegrey] (#1.center) -- (0,-1.5);
+            \draw[line width=1mm , bluegrey] (#1.center) -- (0,-1);
         \end{tikzpicture}
     \end{minipage}%
     \begin{minipage}[t]{0.15\textwidth}
         \vspace{0pt}
         \centering
-        \adjincludegraphics[width=0.5\linewidth, keepaspectratio, valign=t]{#3}
+        \adjincludegraphics[width=0.45\linewidth, keepaspectratio, valign=t]{#3}
         \par\vspace{2mm}
         \footnotesize #6\par
         \footnotesize #7
@@ -136,10 +157,9 @@
     \end{minipage}
 
     \vspace{2mm}
-
     \noindent
-    \begin{minipage}[t]{0.90\textwidth}
-        \footnotesize \trig \textbf{Skills:} #9
+    \begin{minipage}[t]{0.9\textwidth}
+        \footnotesize \skills \textbf{Skills:} #9
     \end{minipage}
     
     \vspace{5mm} % Vertical gap between items
@@ -267,7 +287,7 @@
             \vspace*{-10mm}
 
             \setlength{\hintscolumnwidth}{1cm}
-            \section{\textbf{\faAlignLeft\hspace{1mm}
+            \section{\textbf{\skills
             \en{Skills}\fr{Compétences}\pt{Competências}}}
             \setlength{\hintscolumnwidth}{0.5cm}
             \vspace*{-5mm}
@@ -492,32 +512,43 @@
             \fr{Double Diplôme}
             \pt{Duplo Diploma}}]
             
-                \academicitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}{ECN - École Centrale de Nantes}{Nantes, \france}{\en{\textbf{
-                Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.}\fr{\textbf{Diplôme d'ingénieur.e avec spécialisation en Robotique et Recherche et Développement \textit{(Master's degree)}}. Grand École d'Ingénieurs, 4$^\text{ème}$ place en France selon le classement de l'Étudiant en 2021.}\pt{\textbf{Diploma de Engenharia com especialização em Robótica e em Pesquisa e Desenvolvimento \textit{(Master's degree)}}. \textit{Grand École d'Ingénieurs}, 4$^\circ$ lugar na França de acordo com o \textit{l'Étudiant} em 2021.}}
+                % \academicitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}
+            % {ECN - École Centrale de Nantes}
+            % {Nantes, \france}
+            % {\en{\textbf{Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.}\fr{\textbf{Diplôme d'ingénieur.e avec spécialisation en Robotique et Recherche et Développement \textit{(Master's degree)}}. Grand École d'Ingénieurs, 4$^\text{ème}$ place en France selon le classement de l'Étudiant en 2021.}\pt{\textbf{Diploma de Engenharia com especialização em Robótica e em Pesquisa e Desenvolvimento \textit{(Master's degree)}}. \textit{Grand École d'Ingénieurs}, 4$^\circ$ lugar na França de acordo com o \textit{l'Étudiant} em 2021.}}
+              % #1: id, #2: institution, #3: logo, #4: location, #5: start, #6: end, #7: desc, #8: skills
+              \academicitemtimeline
+                  {ecn}
+                  {ECN - École Centrale de Nantes} % Institution
+                  {pictures/ecn_logo.jpg} % Logo
+                  {Nantes, France} % Location
+                  {Sep 2020} % Start
+                  {Sep 2022}  % End
+                  {\textbf{Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.} % Description
+                  % {} % Skills
+              % \academicitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}
+              % {UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}
+                  % {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
+              \academicitemtimeline
+                  {ecaufrgs}
+                  {UFRGS - Universidade Federal do Rio Grande do Sul} % Institution
+                  {pictures/ufrgs.png} % Logo
+                  {Porto Alegre, Brazil} % Location
+                  {Feb 2017} % Start
+                  {Nov 2023}  % End
+                  {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}} % Description
+                  % {} % Skills
                 
-                
-                \academicitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}{UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}{\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
-                
-                \vspace*{-6mm}
+            \vspace*{-2mm}
             \end{tcolorbox}
-            
-            
-            % \vspace*{-3mm}
-            
-            
-            
-            % \academicitem{\text{ }2015\text{ } \text{ }2016\text{ }}{Colégio Luterano Concórdia Canoas}{Canoas, \brazil}{\en{\textbf{IT Technician}. Focus in web development.}\fr{\textbf{Technicienne Informatique}. Spécialisation en développement web.}\pt{\textbf{Técnica em Informática}. Especialização em desenvolvimento web.}}
-            
-            
-            
-            \vspace*{-3mm}
+            \vspace*{-4mm}
             
 %--------------Expérience------------------------            
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
 
             \vspace*{-4mm}
 
-            \begin{jobtimeline}
+            \begin{center}
               \jobitemtimeline
                   {conceptu}
                   {Conceptu Protótipos \& Sistemas} % Company
@@ -526,8 +557,8 @@
                   {Senior QA C++ Engineer} % Role
                   {Jun 2025} % Start
                   {Dec 2025}  % End
-                  {\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32.} % Description
-                  {Embedded C and C++, Python, Linux, ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD, Git} % Skills
+                  {\textbf{DevOps for embedded systems:}} % Description
+                  {Embedded C and C++, Python, Linux, ESP32, ESP-IDF, AVR, SAM, ASF, CMISIS, Nxp MCX, STM32, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD, Git} % Skills
               \jobitemtimeline
                   {senai}
                   {SENAI ISI Sistemas de Sensoriamento}
@@ -536,7 +567,7 @@
                   {Mobile Robotics Researcher}
                   {Nov 2023}
                   {Apr 2025}
-                  {\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}
+                  {\textbf{Autonomous mobile robots for logistics and transportation:} }
                   {ROS 2, hardware drivers, ros2\_control, SLAM, Nav2, fleet management, Open-RMF, simulation, Gazebo, Isaac Sim, Unreal Engine}
               % \jobitemtimeline
               %     {aprix}
@@ -566,7 +597,7 @@
                   {Mechatronics Designer}
                   {Mai 2021}
                   {Jul 2021}
-                  {\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Experience in mechatronics, electronics and mechanical design.}
+                  {\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor.}
                   {Mechatronics, Electronics, Mechanical design.}
               \jobitemtimeline
                   {axter}
@@ -576,8 +607,8 @@
                   {Robotics Intern}
                   {Mar 2021}
                   {Aug 2021}
-                  {\textbf{Development with industrial mobile robots (\textit{AGV}):} Development with smart sensors, robot-server communication, obstacle dectection securiy system. Experience with app dev for Windows and Linux, communication protocols, ROS and SLAM.}
-                  {Desktop App DeveloMobile Robotics Researcherpment for Windows and Linux, Communication Protocols, ROS and SLAM.}
+                  {\textbf{Development with industrial mobile robots (\textit{AGV}):}}
+                  {Cross-Plataform Desktop App Development, Communication Protocols, ROS, SLAM, Obstacle Detection, Robot-Server Communication, Delphi, Pascal.}
               % \jobitemtimeline
               %     {auros}
               %     {AuRos Robotics}
@@ -600,7 +631,7 @@
                   {Jul 2020}
                   {\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10".}
                   {Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}
-          \end{jobtimeline}
+          \end{center}
           \connectjobs{conceptu}{senai}
           \connectjobs{senai}{trimble}
           \connectjobs{trimble}{axter}

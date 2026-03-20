@@ -1,0 +1,38 @@
+tables:
+  experiences:
+    columns:
+      id: "INTEGER PRIMARY KEY"
+      company: "TEXT"
+      logo_path: "TEXT"
+      location: "TEXT"
+      role: "TEXT"
+      start_date: "TEXT"
+      end_date: "TEXT"
+      intro: "TEXT"
+
+  descriptions:
+    columns:
+      id: "INTEGER PRIMARY KEY"
+      exp_id: "INTEGER"
+      text: "TEXT"
+      tags: "TEXT"
+      is_default: "INTEGER" # 1 for True, 0 for False
+    foreign_keys:
+      - "FOREIGN KEY(exp_id) REFERENCES experiences(id)"
+
+  skills:
+    columns:
+      id: "INTEGER PRIMARY KEY"
+      name: "TEXT"
+      category: "TEXT"
+      tags: "TEXT"
+
+  # Junction Table
+  experience_skills:
+    columns:
+      exp_id: "INTEGER"
+      skill_id: "INTEGER"
+      is_default: "INTEGER" # Is this skill shown in the default version of this job?
+    foreign_keys:
+      - "FOREIGN KEY(exp_id) REFERENCES experiences(id)"
+      - "FOREIGN KEY(skill_id) REFERENCES skills(id)"

@@ -90,7 +90,7 @@
     \end{center}
 }
 % #1: id, #2: institution, #3: logo, #4: location, #5: start, #6: end, #7: desc, #8: skills
-\newcommand{\academicitemtimeline}[7]{
+\newcommand{\academicitemtimeline}[8]{
     \noindent
     \begin{minipage}[t]{0.15\textwidth}
         \vspace{0pt}
@@ -109,12 +109,11 @@
     \end{minipage}
 
 
-    % \vspace{2mm}
-    % \noindent
-    % \begin{minipage}[t]{0.90\textwidth}
-    %     \footnotesize \skills \textbf{Skills:} #9
-    % \end{minipage}
-    \vspace{2mm} % Vertical gap between items
+    \vspace{1mm}
+    \hspace{3mm}
+    \begin{minipage}[t]{0.90\textwidth}
+      \footnotesize \skills \textbf{Skills:} #8
+    \end{minipage}
 
 }
 
@@ -505,7 +504,7 @@
             \vspace*{-5mm}
             \normalsize
             \section{\textbf{\faGraduationCap\hspace{1mm}\en{Academic}\fr{Formation}\pt{Formação Acadêmica}}}
-            \vspace*{-2mm}
+            \vspace*{-3mm}
             
             \begin{tcolorbox}[breakable,colback=white, left = -2mm,right = -2mm, boxrule=1mm, title=\textbf{\hspace{2mm} \faGraduationCap \hspace{1mm}
             \en{Double Degree}
@@ -525,7 +524,7 @@
                   {Sep 2020} % Start
                   {Sep 2022}  % End
                   {\textbf{Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.} % Description
-                  % {} % Skills
+                  {Robotics Modeling, Non-Linear Control, Electronics, C++, ROS 2.} % Skills
               % \academicitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}
               % {UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}
                   % {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
@@ -537,16 +536,16 @@
                   {Feb 2017} % Start
                   {Nov 2023}  % End
                   {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}} % Description
-                  % {} % Skills
+                  {Control Theory, Automation, Electronics, Electric Machines, Solid Mechanics, Mechanisms, Mathematical Modeling, C.} % Skills
                 
-            \vspace*{-2mm}
+            \vspace*{-1mm}
             \end{tcolorbox}
             \vspace*{-4mm}
             
 %--------------Expérience------------------------            
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
 
-            \vspace*{-4mm}
+            \vspace*{-6mm}
 
             \begin{center}
               \jobitemtimeline

@@ -2,13 +2,12 @@
 \documentclass[10pt,a4paper,sans]{article} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 \usepackage[hidelinks]{hyperref}
 
-%\usepackage[utf8]{inputenc}
-
 \usepackage[export]{adjustbox}
 
 \usepackage{float}
 \usepackage{array}
 \usepackage{multicol}
+\usepackage{multirow}
 \usepackage[most]{tcolorbox}
 
 \usepackage[scale=1]{geometry} % Reduce document margins
@@ -73,7 +72,8 @@
 \defaultfontfeatures{LetterSpace=100.0}
 
 \newcommand{\trig}{\faAngleRight\hspace{1mm}}
-\newcommand{\mycvitem}[4]{
+\newcommand{\skills}{\faAlignLeft\hspace{1mm}}
+\newcommand{\academicitem}[4]{
   \begin{center}
     \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
         \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline\normalsize \trig \small #4 \normalsize\\ 
@@ -82,12 +82,39 @@
 }
 
 %date, title, address, subtitle
-\newcommand{\mycvitemafter}[4]{
+\newcommand{\academicitemafter}[4]{
     \begin{center}
         \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
             \centering \small\textcolor{darkgrey}{\textit{(#3)}}\newline \normalsize#1& & & \textbf{#2}  \newline\normalsize \trig \small #4 \normalsize\\ 
         \end{tabular}
     \end{center}
+}
+% #1: id, #2: institution, #3: logo, #4: location, #5: start, #6: end, #7: desc, #8: skills
+\newcommand{\academicitemtimeline}[8]{
+    \noindent
+    \begin{minipage}[t]{0.15\textwidth}
+        \vspace{0pt}
+        \centering
+        \adjincludegraphics[width=0.4\linewidth, keepaspectratio, valign=t]{#3}
+        \par\vspace{2mm}
+        \footnotesize #5\par
+        \footnotesize #6
+        \vspace{2mm}
+    \end{minipage}%
+    \begin{minipage}[t]{0.82\textwidth}
+        \vspace{0pt}
+        \normalsize \textbf{#2} \small\textcolor{darkgrey}{\textit{(#4)}} \par
+        \vspace{1mm}
+        \footnotesize \trig #7
+    \end{minipage}
+
+
+    \vspace{1mm}
+    \hspace{3mm}
+    \begin{minipage}[t]{0.90\textwidth}
+      \footnotesize \skills \textbf{Skills:} #8
+    \end{minipage}
+
 }
 
 
@@ -100,40 +127,47 @@
     \end{center}
 }
 
-\newcommand{\jobitemi}[4]{
-    \begin{center}
-        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
-            \centering #1& & & \textbf{#2} \newline\normalsize  #3
-            \vspace{1mm}\newline\normalsize \trig  #4\\
-        \end{tabular}
-    \end{center}
-}
-\newcommand{\jobitemii}[3]{
-    \begin{center}
-        \begin{tabular}{p{0.14\textwidth} p{0.01\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.75\textwidth} } 
-            \centering #1& & & \textbf{#2}
-            \newline\normalsize  #3\\
-        \end{tabular}
-    \end{center}
+% #1: id, #2: company, #3: logo, #4: location, #5: role, #6: start, #7: end, #8: desc, #9: skills
+\newcommand{\jobitemtimeline}[9]{
+    \noindent
+    \begin{minipage}[t]{0.02\textwidth}
+        \vspace{0pt} 
+        \centering
+        \begin{tikzpicture}[remember picture, baseline=(#1.north)]
+            \node[circle, fill=bluegrey, inner sep=1.2mm] (#1) {};
+            \draw[line width=1mm , bluegrey] (#1.center) -- (0,-1);
+        \end{tikzpicture}
+    \end{minipage}%
+    \begin{minipage}[t]{0.15\textwidth}
+        \vspace{0pt}
+        \centering
+        \adjincludegraphics[width=0.45\linewidth, keepaspectratio, valign=t]{#3}
+        \par\vspace{2mm}
+        \footnotesize #6\par
+        \footnotesize #7
+        \vspace{2mm}
+    \end{minipage}%
+    \begin{minipage}[t]{0.8\textwidth}
+        \vspace{0pt}
+        \normalsize \textbf{#2} \small\textcolor{darkgrey}{\textit{(#4)}} \par
+        \footnotesize #5 \par
+        \vspace{1mm}
+        \footnotesize \trig #8
+    \end{minipage}
+
+    \vspace{2mm}
+    \noindent
+    \begin{minipage}[t]{0.9\textwidth}
+        \footnotesize \skills \textbf{Skills:} #9
+    \end{minipage}
+    
+    \vspace{5mm} % Vertical gap between items
 }
 
-
-\newcommand{\jobitembreakline}[5]{
-        \begin{center}
-            \begin{tabular}{p{0.14\textwidth} p{0.008\textwidth} !{\vrule width 2pt} p{0.015\textwidth} p{0.8\textwidth} } 
-                \centering #1& & & \textbf{#2} \small\textcolor{darkgrey}{\textit{(#3)}} \newline  #4
-            \end{tabular}
-        \end{center}
-        \vspace*{-2.5mm}
-        \begin{minipage}[t]{0.06\textwidth}
-            \hfill
-        \end{minipage}
-        \hspace*{-0.8cm}
-        \begin{minipage}[t]{0.98\textwidth}
-          \small \trig #5 \normalsize\\
-        \end{minipage}        
-        \textcolor{bluegrey}{\hrulefill\newline}
-        \vspace*{-0.5cm}
+\newcommand{\connectjobs}[2]{
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width=1mm , bluegrey] (#1.center) -- (#2.center);
+    \end{tikzpicture}
 }
 
 \newcommand{\infoitem}[2]{
@@ -208,7 +242,7 @@
 
 \tcbset{grow to right by=0.1cm,colframe=darkdarkgrey,colback=darkdarkgrey,arc=0mm}
 \begin{tcolorbox}
-    \begin{minipage}[t]{0.33\textwidth}
+    \begin{minipage}[t]{0.32\textwidth}
         
         \vspace*{-5mm}
         \begin{tcolorbox}[grow to left by=0.6cm,colback=darkdarkgrey,colframe=darkdarkgrey,arc=0mm]
@@ -219,15 +253,16 @@
             
             \end{tcolorbox}
 
-            \vspace*{-11mm}
+            \vspace*{-12mm}
             
             \begin{center}
                 \includegraphics[width=0.52\textwidth]{pictures/photo_cv_circ_20260225.png}
             \end{center}
-
             
-            \vspace*{-8mm}
+            \vspace*{-4mm}
+            \normalsize{\textcolor{white}{\texttt{ \textbf{Joe \en{Ferreira Scholtz }\fr{FERREIRA SCHOLTZ}\pt{Ferreira Scholtz}}\raisebox{0mm}{\footnotesize{ \en{(she/her)}\fr{(elle/d'elle)}\pt{ela/dela}}}}}}
          
+            \vspace*{-2mm}
             
             \section{\textbf{\faAddressCard \hspace{1mm}\en{Contact}\fr{Contact}\pt{Contato}}}
             
@@ -251,7 +286,7 @@
             \vspace*{-10mm}
 
             \setlength{\hintscolumnwidth}{1cm}
-            \section{\textbf{\faAlignLeft\hspace{1mm}
+            \section{\textbf{\skills
             \en{Skills}\fr{Compétences}\pt{Competências}}}
             \setlength{\hintscolumnwidth}{0.5cm}
             \vspace*{-5mm}
@@ -295,7 +330,7 @@
                     \end{tabular}
                 \end{center}
                 \vspace*{-2.8mm}
-                \scriptsize{My workflow to run ROS 2 applications inside Docker, including base stage to deploy applications and} \ldots\\
+                \scriptsize{My workflow to run ROS 2 applications inside Docker, including base stage to deploy appli} \ldots\\
                 \vspace*{-1.5mm}
                 
                 \footnotesize{\CircledTop[fill color=dockercolor,outer color=dockercolor]{} Dockerfile}
@@ -425,32 +460,9 @@
         
         \end{tcolorbox}
     \end{minipage}
-    \begin{minipage}[t]{0.67\textwidth}
-    \vspace*{-0.5cm}
+    \begin{minipage}[t]{0.68\textwidth}
+    \vspace*{-0.2cm}
             
-            \begin{tcolorbox}[grow to left by=0.5cm,grow to right by=0.7cm,left = 0mm,colback=darkdarkgrey,colframe=darkdarkgrey,arc=0mm]
-                \begin{center}
-                \vspace{1mm}
-                \LARGE{\textcolor{white}{\texttt{ \textbf{Joe \en{Ferreira Scholtz }\fr{FERREIRA SCHOLTZ}\pt{Ferreira Scholtz}}\raisebox{1mm}{\footnotesize{ \en{(she/her)}\fr{(elle/d'elle)}\pt{ela/dela}}}}}}
-            
-                \normalsize
-
-                \vspace*{-2mm}
-
-                \textcolor{bluegrey}{\hrulefill\newline}
-
-                \vspace*{-3mm}
-                
-                % \textcolor{white}{\textbf{\faBullseye\hspace{1.5mm}Motivation}}
-
-                % \small\textcolor{white}{\textbf{\en{Engineer with double degree in mechatronics and robotics seek a job in France. Currently living in Brazil and planning to move to France.}\fr{Ingénieure Double-diplômée en mécatronique et robotique résidant actuellement au Brésil, je recherche un emploi dans ce secteur sur le territoire français.}\pt{\vspace*{-5mm}}}}\normalsize
-
-                \vspace*{-3mm}
-                
-                
-            \end{center} 
-            \end{tcolorbox}
-
             % \begin{tcolorbox}[grow to right by=0.1cm,grow to left by=0.2cm,left = 0mm,right = 0mm,colback=white,colframe=white,arc=2mm]
 
             %         \textbf{Control and Automation (Mechatronics) engineering student searching for remote job after finishing her double degree in \france.}
@@ -492,97 +504,148 @@
             \vspace*{-5mm}
             \normalsize
             \section{\textbf{\faGraduationCap\hspace{1mm}\en{Academic}\fr{Formation}\pt{Formação Acadêmica}}}
-            \vspace*{-2mm}
+            \vspace*{-3mm}
             
             \begin{tcolorbox}[breakable,colback=white, left = -2mm,right = -2mm, boxrule=1mm, title=\textbf{\hspace{2mm} \faGraduationCap \hspace{1mm}
             \en{Double Degree}
             \fr{Double Diplôme}
             \pt{Duplo Diploma}}]
             
-                \mycvitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}{ECN - École Centrale de Nantes}{Nantes, \france}{\en{\textbf{
-                Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.}\fr{\textbf{Diplôme d'ingénieur.e avec spécialisation en Robotique et Recherche et Développement \textit{(Master's degree)}}. Grand École d'Ingénieurs, 4$^\text{ème}$ place en France selon le classement de l'Étudiant en 2021.}\pt{\textbf{Diploma de Engenharia com especialização em Robótica e em Pesquisa e Desenvolvimento \textit{(Master's degree)}}. \textit{Grand École d'Ingénieurs}, 4$^\circ$ lugar na França de acordo com o \textit{l'Étudiant} em 2021.}}
+                % \academicitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}
+            % {ECN - École Centrale de Nantes}
+            % {Nantes, \france}
+            % {\en{\textbf{Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.}\fr{\textbf{Diplôme d'ingénieur.e avec spécialisation en Robotique et Recherche et Développement \textit{(Master's degree)}}. Grand École d'Ingénieurs, 4$^\text{ème}$ place en France selon le classement de l'Étudiant en 2021.}\pt{\textbf{Diploma de Engenharia com especialização em Robótica e em Pesquisa e Desenvolvimento \textit{(Master's degree)}}. \textit{Grand École d'Ingénieurs}, 4$^\circ$ lugar na França de acordo com o \textit{l'Étudiant} em 2021.}}
+              % #1: id, #2: institution, #3: logo, #4: location, #5: start, #6: end, #7: desc, #8: skills
+              \academicitemtimeline
+                  {ecn}
+                  {ECN - École Centrale de Nantes} % Institution
+                  {pictures/ecn_logo.jpg} % Logo
+                  {Nantes, France} % Location
+                  {Sep 2020} % Start
+                  {Sep 2022}  % End
+                  {\textbf{Engineering degree with specialization in Robotics and R\&D (Master's degree)}. \textit{Grand École d'Ingénieurs}, 4$^\text{th}$ place in France according to \textit{l'Étudiant} in 2021.} % Description
+                  {Robotics Modeling, Non-Linear Control, Electronics, C++, ROS 2.} % Skills
+              % \academicitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}
+              % {UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}
+                  % {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
+              \academicitemtimeline
+                  {ecaufrgs}
+                  {UFRGS - Universidade Federal do Rio Grande do Sul} % Institution
+                  {pictures/ufrgs.png} % Logo
+                  {Porto Alegre, Brazil} % Location
+                  {Feb 2017} % Start
+                  {Nov 2023}  % End
+                  {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}} % Description
+                  {Control Theory, Automation, Electronics, Electric Machines, Solid Mechanics, Mechanisms, Mathematical Modeling, C.} % Skills
                 
-                
-                \mycvitem{\february\text{ }2017 \newline \december\text{ }2020 \newline\vfill \november\text{ }2022 \september\text{ }2023}{UFRGS - Universidade Federal do Rio Grande do Sul\newline}{Porto Alegre, \brazil}{\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}}
-                
-                \vspace*{-6mm}
+            \vspace*{-1mm}
             \end{tcolorbox}
-            
-            
-            % \vspace*{-3mm}
-            
-            
-            
-            % \mycvitem{\text{ }2015\text{ } \text{ }2016\text{ }}{Colégio Luterano Concórdia Canoas}{Canoas, \brazil}{\en{\textbf{IT Technician}. Focus in web development.}\fr{\textbf{Technicienne Informatique}. Spécialisation en développement web.}\pt{\textbf{Técnica em Informática}. Especialização em desenvolvimento web.}}
-            
-            
-            
-            \vspace*{-3mm}
+            \vspace*{-4mm}
             
 %--------------Expérience------------------------            
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
 
-            \vspace*{-4mm}
+            \vspace*{-6mm}
 
-          \jobitem{\june\text{ }2025 \newline \hspace*{-1mm}\december\text{ }2025}{Conceptu Protótipos \& Sistemas}{Porto Alegre, \brazil}{\en{Senior Software Quality Assurance C++ Engineer}\fr{Senior Software Quality Assurance C++ Engineer}\pt{Senior Software Quality Assurance C++ Engineer}}{\en{\textbf{DevOps for embedded systems}, including various MCUs such as ESP32, AVR, SAM, Nxp MCX, STM32: Experience with: Embedded C and C++, Python, Linux, ESP-IDF, ASF, CMISIS, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD with Git}\fr{}\pt{}}
+            \begin{center}
+              \jobitemtimeline
+                  {conceptu}
+                  {Conceptu Protótipos \& Sistemas} % Company
+                  {pictures/conceptu_logo.jpg} % Logo
+                  {Porto Alegre, Brazil} % Location
+                  {Senior QA C++ Engineer} % Role
+                  {Jun 2025} % Start
+                  {Dec 2025}  % End
+                  {\textbf{DevOps for embedded systems:}} % Description
+                  {Embedded C and C++, Python, Linux, ESP32, ESP-IDF, AVR, SAM, ASF, CMISIS, Nxp MCX, STM32, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD, Git} % Skills
+              \jobitemtimeline
+                  {senai}
+                  {SENAI ISI Sistemas de Sensoriamento}
+                  {pictures/senai_logo.jpg}
+                  {São Leopoldo, Brazil}
+                  {Mobile Robotics Researcher}
+                  {Nov 2023}
+                  {Apr 2025}
+                  {\textbf{Autonomous mobile robots for logistics and transportation:} }
+                  {ROS 2, hardware drivers, ros2\_control, SLAM, Nav2, fleet management, Open-RMF, simulation, Gazebo, Isaac Sim, Unreal Engine}
+              % \jobitemtimeline
+              %     {aprix}
+              %     {Aprix}
+              %     {pictures/aprix_logo.jpg}
+              %     {Porto Alegre, Brazil}
+              %     {Machine Learning Intern}
+              %     {Mar 2023}
+              %     {Aug 2023}
+              %     {\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}
+              %     {Python, NumPy, Pandas, Back-end, Data analysis,Data visualization, SQL,Machine Learning, Cloud, Microsoft Azure.}
+              \jobitemtimeline
+                  {trimble}
+                  {Trimble Nantes}
+                  {pictures/trimble_logo.jpg}
+                  {Carquefou, France}
+                  {Software Engineer Intern}
+                  {Sep 2021}
+                  {Mar 2022}
+                  {\textbf{IMU-only Data-driven Positioning:}.}
+                  {Experience with Python, Linux, IMUs, GNSS, Machine Learning.}
+              \jobitemtimeline
+                  {laeromec}
+                  {LAEROMEC Engenheria}
+                  {pictures/laeromec_logo.jpg}
+                  {Porto Alegre, Brazil - Remote}
+                  {Mechatronics Designer}
+                  {Mai 2021}
+                  {Jul 2021}
+                  {\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor.}
+                  {Mechatronics, Electronics, Mechanical design.}
+              \jobitemtimeline
+                  {axter}
+                  {Axter Automation}
+                  {pictures/axter_logo.jpg}
+                  {Vaucresson, France}
+                  {Robotics Intern}
+                  {Mar 2021}
+                  {Aug 2021}
+                  {\textbf{Development with industrial mobile robots (\textit{AGV}):}}
+                  {Cross-Plataform Desktop App Development, Communication Protocols, ROS, SLAM, Obstacle Detection, Robot-Server Communication, Delphi, Pascal.}
+              % \jobitemtimeline
+              %     {auros}
+              %     {AuRos Robotics}
+              %     {pictures/auros_logo.jpg}
+              %     {Rio Grande, Brazil - Remote}
+              %     {Full-Stack Developer}
+              %     {Jul 2020}
+              %     {Dec 2020}
+              %     {\textbf{Decision making in the agricultural context with the help of AI and visual recognition:} Experience in web development and mobile applications, using various sensors.}
+              %     {Java, Javascript, HTML, CSS}
+          % \jobitem{\august\text{ }2018 \newline \hspace*{-.5mm}\july\text{ }2020}{LAMECC - UFRGS \footnotesize(\en{Mechatronics and Control Lab}\fr{Laboratoire de Mécatronique et Commande}\pt{Laboratório de Mecatrônica e Controle})\normalsize}{Porto Alegre, \brazil}{
+          % \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
+              \jobitemtimeline
+                  {lamecc}
+                  {LAMECC - UFRGS}
+                  {pictures/lamecc_logo.jpg}
+                  {Porto Alegre, Brazil}
+                  {Undergrad Researcher}
+                  {Aug 2018}
+                  {Jul 2020}
+                  {\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10".}
+                  {Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}
+          \end{center}
+          \connectjobs{conceptu}{senai}
+          \connectjobs{senai}{trimble}
+          \connectjobs{trimble}{axter}
+          \connectjobs{axter}{laeromec}
+          \connectjobs{laeromec}{lamecc}
 
-          \jobitem{\november\text{ }2023 \newline \hspace*{-1mm}\april\text{ }2025}{Instituto SENAI de Inovação em Sistemas de Sensoriamento}{São Leopoldo, \brazil}{\en{Mobile Robotics Researcher}\fr{Chercheuse en Robotique Mobile}\pt{Pesquisadora em Robótica Móvel}}{\en{\textbf{Autonomous mobile robots for logistics and transportation:} Experience with ROS 2, including hardware drivers, communication and low-level control with ros2\_control, SLAM and navigation with Nav2, fleet management with Open-RMF, and simulation with Gazebo, Isaac Sim and Unreal Engine.}\fr{\textbf{Robots mobiles autonomse:} Experiénce avec ROS 2, y compris \textit{drivers} et communication pour le \textit{hardware} avec ros2\_control, navegation, planification et asservissement avec Nav2, gestion de flotte avec Open-RMF, et simulation avec Gazebo, Isaac Sim et Unreal Engine.}\pt{\textbf{Robôs móveis autônomos:} Experiência com ROS 2, incluindo \textit{drivers} e comunicação para hardware com ros2\_control, SLAM e navegação com Nav2, gerenciamento de frota com Open-RMF, e simulação com Gazebo, Isaac Sim e Unreal Engine.}}
-
-          % \jobitem{\mars\text{ }2023 \newline \hspace*{-1mm}\september\text{ }2023}{Aprix}{Porto Alegre, \brazil}{\en{Machine Learning Intern}\fr{Stagiaire en \textit{Machine Learning}}\pt{Estagiária em \textit{Machine Learning}}}{\en{\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}\fr{\textbf{\textit{Data Science} pour l'optimisation de prix:} Expérience avec Python (NumPy, Pandas, \textit{back-end}), analyse et visualisation de données, SQL, expérience limitée avec: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}\pt{\textbf{\textit{Data Science} para otimização de preços:} Experiência com Python (NumPy, Pandas, \textit{back-end}), análise e visualização de dados, SQL, experiência limitada com: \textit{Machine Learning}, \textit{cloud}, Microsoft Azure.}}
-          
-          \jobitem{\april\text{ }2022 \newline \hspace*{-1mm}\september\text{ }2022}{TRIMBLE Nantes}{Carquefou, \france}{
-          \en{Software Engineer Intern}\fr{Stagiaire  en \textit{Software Engineering}}\pt{Estagiária em Engenharia de Software}}{\en{\textbf{IMU-only Data-driven Positioning:}
-          Experience with Python, Linux, IMUs, GNSS and limited experience with: Machine Learning.}\fr{\textbf{\textit{IMU-only Data-driven Positioning}:} Algorithme basé-donées de localisation avec IMU. Expérience avec Python, Linux, centrale inertielle, \textit{GNSS} et expérience limitée avec: \textit{Machine Learning}.}\pt{\textbf{\textit{IMU-only Data-driven Positioning}:} Algoritmo baseado em dados para localização utilizando apenas uma \textit{IMU}. Experiência com Python, Linux, \textit{IMU}, \textit{GNSS} e experiência limitada com: \textit{Machine Learning}.}}
-          
-          \jobitem{\mars\text{ }2021 \newline \august\text{ }2021}{Axter Automation}{Vaucresson, \france}{
-          \en{Robotics Intern}\fr{Stagiaire en Robotique}\pt{Estagiária em Robótica}}{\en{\textbf{Development with industrial mobile robots (\textit{AGV}):} Development with smart sensors, robot-server communication, obstacle dectection securiy system. Experience with app dev for Windows and Linux, communication protocols, ROS and SLAM.}\fr{\textbf{Développement avec robots mobiles industriels (\textit{AGV}):} Développement avec capteurs intelligent,  Communication entre robots-serveur, système de détection d'obstacles. Expérience en développement d'application Windows et Linux, protocoles de communication, ROS et SLAM.}\pt{\textbf{Desenvolvimento com robôs móveis industriais (\textit{AGV}):} Desenvolvimento com sensores inteligentes, comunicação robô-server, sistema de detecção de obstáculos. Experiência com desenvolvimento de aplicação Windows e Linux, protocolos de comunicação, ROS e SLAM.}}
-          
-          \jobitem{\may\text{ }2021 \newline \hspace*{-1mm}\july\text{ }2021}{LAEROMEC Engenharia}{Porto Alegre, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{
-          \en{Mechatronics Designer}\fr{Mécatronicienne}\pt{Projetista Mecatrônica}}{\en{\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Experience in mechatronics, electronics and mechanical design.}\fr{\textbf{Projet en conjonction avec AGCO Amerique du Sud:} Conception d'un distributeur agricole automatisé. Expérience en mécatronique, électronique et conception mécanique.}\pt{\textbf{Projeto em conjunção com a AGCO América do Sul:} Concepção de um distribuidor agrícola automatizado. Experiência em mecatrônica, eletrônica e concepção mecânica.}}
-          
-          % \jobitem{\july\text{ }2020 \newline \hspace*{-.5mm}\december\text{ }2020}{AuRos Robotics}{Rio Grande, \brazil\text{ - }\en{Remote}\fr{Télétravail}\pt{Remoto}}{\en{Back-End and Front-End Developer}\fr{Développeuse \textit{Back-End} et \textit{Front-End}}\pt{Desenvolvedora \textit{Back-End} e \textit{Front-End}}}{\en{\textbf{
-          % Decision making in the agricultural context with the help of AI and visual recognition:} Experience in web development and mobile applications, using various sensors.}\fr{\textbf{Prise de décision dans le contexte agricole avec l'aide d'une IA et reconnaissance visuelle:} Expérience en développement web et d'application mobile avec utilisation de plusieurs capteurs.}\pt{\textbf{
-          % Tomada de decisão no contexto agrícola com ajuda de IA e reconhecimento visual:} Experiência em desenvolvimento web e de aplicativos móveis, com utilização de diversos sensores.}}
-          
-          \jobitem{\august\text{ }2018 \newline \hspace*{-.5mm}\july\text{ }2020}{LAMECC - UFRGS \footnotesize(\en{Mechatronics and Control Lab}\fr{Laboratoire de Mécatronique et Commande}\pt{Laboratório de Mecatrônica e Controle})\normalsize}{Porto Alegre, \brazil}{
-          \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
-          
-          
-          % \vspace*{-6mm}
-          
-        
-         % \faMedapps\\
-% \faAddressCard\\
- %\faCaretRight\\
- %\faChevronRight\\
-% \faSuitcase\\
-%\faMobile*\\
-%\faMapMarker*\\
-%\faMapMarked*\\
-%\faGraduationCap\\
-%\faLinkedin\\
-%\faAlignLeft\\
-%\faAndroid\\
-%\faChartPie\\
-%\faCheck\\
-%\faCheckCircle\\
-%\faCommentDots\\
-%\faEnvelope\\
-%\faGlobeAmericas\\
-%\faQuoteLeft\\
-%\faTerminal\\
-%\faCalculator\\
-%\faGamepad\\
-%\faHdd\\
-
-%\faCloudsmith
-        %\vfill
+          \vspace*{-10mm}
             
         \end{tcolorbox}
     \end{minipage}
     
     \vfill
     
+    \vspace*{-1mm}
 \end{tcolorbox}
+
 
 \end{document}

@@ -9,6 +9,7 @@ tables:
       start_date: "TEXT"
       end_date: "TEXT"
       intro: "TEXT"
+      is_default: "INTEGER" # 1 for True, 0 for False
 
   descriptions:
     columns:

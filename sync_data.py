@@ -4,7 +4,6 @@ import hashlib
 import os
 import sys
 
-# Ensure this path is correct and the 'data' folder exists
 CACHE_FILE = "data/.sync_cache"
 DB_PATH = "data/cv_database.db"
 

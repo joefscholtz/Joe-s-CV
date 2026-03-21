@@ -1,33 +1,84 @@
-- exp_id: 0
-  skill_id: 0
-  is_default: 1
-- exp_id: 0
-  skill_id: 1
-  is_default: 1
-- exp_id: 0
-  skill_id: 2
-  is_default: 1
-- exp_id: 0
-  skill_id: 3
-  is_default: 1
-- exp_id: 0
-  skill_id: 4
-  is_default: 1
-- exp_id: 0
-  skill_id: 5
-  is_default: 1
-- exp_id: 0
-  skill_id: 6
-  is_default: 1
-- exp_id: 0
-  skill_id: 7
-  is_default: 1
-- exp_id: 0
-  skill_id: 8
-  is_default: 1
-- exp_id: 0
-  skill_id: 9
-  is_default: 1
-- exp_id: 0
-  skill_id: 10
-  is_default: 1
+# Conceptu (exp_id: 0)
+- {exp_id: 0, skill_id: 0, is_default: 1} # Embedded C
+- {exp_id: 0, skill_id: 1, is_default: 1} # Embedded C++
+- {exp_id: 0, skill_id: 2, is_default: 1} # Python
+- {exp_id: 0, skill_id: 3, is_default: 1} # Linux
+- {exp_id: 0, skill_id: 4, is_default: 1} # ESP32
+- {exp_id: 0, skill_id: 5, is_default: 1} # ESP-IDF
+- {exp_id: 0, skill_id: 6, is_default: 1} # AVR
+- {exp_id: 0, skill_id: 7, is_default: 1} # SAM
+- {exp_id: 0, skill_id: 8, is_default: 1} # ASF
+- {exp_id: 0, skill_id: 9, is_default: 1} # CMISIS
+- {exp_id: 0, skill_id: 10, is_default: 1} # Nxp MCX
+- {exp_id: 0, skill_id: 11, is_default: 1} # STM32
+- {exp_id: 0, skill_id: 12, is_default: 1} # FreeRTOS
+- {exp_id: 0, skill_id: 13, is_default: 1} # GNU Arm
+- {exp_id: 0, skill_id: 14, is_default: 1} # GCC
+- {exp_id: 0, skill_id: 15, is_default: 1} # Clang
+- {exp_id: 0, skill_id: 16, is_default: 1} # CMake
+- {exp_id: 0, skill_id: 17, is_default: 1} # makefile
+- {exp_id: 0, skill_id: 18, is_default: 1} # Ninja
+- {exp_id: 0, skill_id: 19, is_default: 1} # Docker
+- {exp_id: 0, skill_id: 20, is_default: 1} # bash
+- {exp_id: 0, skill_id: 21, is_default: 1} # CI/CD
+- {exp_id: 0, skill_id: 22, is_default: 1} # Git
+
+# SENAI (exp_id: 1)
+- {exp_id: 1, skill_id: 23, is_default: 1} # ROS 2
+- {exp_id: 1, skill_id: 35, is_default: 1} # hardware drivers
+- {exp_id: 1, skill_id: 24, is_default: 1} # ros2_control
+- {exp_id: 1, skill_id: 25, is_default: 1} # SLAM
+- {exp_id: 1, skill_id: 26, is_default: 1} # Nav2
+- {exp_id: 1, skill_id: 36, is_default: 1} # fleet management
+- {exp_id: 1, skill_id: 27, is_default: 1} # Open-RMF
+- {exp_id: 1, skill_id: 37, is_default: 1} # simulation
+- {exp_id: 1, skill_id: 28, is_default: 1} # Gazebo
+- {exp_id: 1, skill_id: 29, is_default: 1} # Isaac Sim
+- {exp_id: 1, skill_id: 30, is_default: 1} # Unreal Engine
+
+# Aprix (exp_id: 2)
+- {exp_id: 2, skill_id: 2, is_default: 1}  # Python
+- {exp_id: 2, skill_id: 38, is_default: 1} # NumPy
+- {exp_id: 2, skill_id: 39, is_default: 1} # Pandas
+- {exp_id: 2, skill_id: 40, is_default: 1} # Back-end
+- {exp_id: 2, skill_id: 41, is_default: 1} # Data analysis
+- {exp_id: 2, skill_id: 42, is_default: 1} # Data visualization
+- {exp_id: 2, skill_id: 31, is_default: 1} # SQL
+- {exp_id: 2, skill_id: 43, is_default: 1} # Machine Learning
+- {exp_id: 2, skill_id: 44, is_default: 1} # Cloud
+- {exp_id: 2, skill_id: 32, is_default: 1} # Microsoft Azure
+
+# Trimble (exp_id: 3)
+- {exp_id: 3, skill_id: 2, is_default: 1}  # Python
+- {exp_id: 3, skill_id: 3, is_default: 1}  # Linux
+- {exp_id: 3, skill_id: 45, is_default: 1} # IMUs
+- {exp_id: 3, skill_id: 46, is_default: 1} # GNSS
+- {exp_id: 3, skill_id: 43, is_default: 1} # Machine Learning
+
+# Laeromec (exp_id: 6)
+- {exp_id: 6, skill_id: 33, is_default: 1} # Mechatronics
+- {exp_id: 6, skill_id: 47, is_default: 1} # Electronics
+- {exp_id: 6, skill_id: 34, is_default: 1} # Mechanical design
+
+# Axter (exp_id: 4)
+- {exp_id: 4, skill_id: 48, is_default: 1} # Cross-Plataform App
+- {exp_id: 4, skill_id: 49, is_default: 1} # Comm Protocols
+- {exp_id: 4, skill_id: 60, is_default: 1} # ROS
+- {exp_id: 4, skill_id: 25, is_default: 1} # SLAM
+- {exp_id: 4, skill_id: 50, is_default: 1} # Obstacle Detection
+- {exp_id: 4, skill_id: 51, is_default: 1} # Robot-Server Comm
+- {exp_id: 4, skill_id: 52, is_default: 1} # Delphi
+- {exp_id: 4, skill_id: 53, is_default: 1} # Pascal
+
+# AuRos (exp_id: 5)
+- {exp_id: 5, skill_id: 54, is_default: 1} # Java
+- {exp_id: 5, skill_id: 55, is_default: 1} # Javascript
+- {exp_id: 5, skill_id: 56, is_default: 1} # HTML
+- {exp_id: 5, skill_id: 57, is_default: 1} # CSS
+
+# LAMECC (exp_id: 7)
+- {exp_id: 7, skill_id: 33, is_default: 1} # Mechatronics
+- {exp_id: 7, skill_id: 47, is_default: 1} # Electronics
+- {exp_id: 7, skill_id: 58, is_default: 1} # Instrumentation
+- {exp_id: 7, skill_id: 59, is_default: 1} # Hydraulics
+- {exp_id: 7, skill_id: 34, is_default: 1} # Mechanical design

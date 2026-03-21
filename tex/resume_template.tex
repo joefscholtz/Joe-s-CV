@@ -547,19 +547,26 @@
 
             \vspace*{-6mm}
             \begin{center}
-              ((% for job in experiences %))
+          ((% for job in experiences %))
               \jobitemtimeline
-                  {((job.id))}
-                  {((job.company))} % Company
-                  {((job.logo_path))} % Logo
-                  {((job.location))} % Location
-                  {((job.role))} % Role
-                  {((job.start_date))} % Start
-                  {((job.end_date))}  % End
-                  {((job.intro))((job.description))} % Description
-                  {(( job.skills | join(', ') ))} % Skills
-              ((% endfor %))
+                  {job((job.id))} 
+                  {((job.company))} 
+                  {((job.logo_path))} 
+                  {((job.location))} 
+                  {((job.role))} 
+                  {((job.start_date))} 
+                  {((job.end_date))}  
+                  {((job.intro))((job.description))} 
+                  {(( job.skills | join(', ') ))}
+          ((% endfor %))
           \end{center}
+          ((% set ns = namespace(prev_id=none) %))
+          ((% for job in experiences %))
+              ((% if ns.prev_id is not none %))
+                  \connectjobs{job((ns.prev_id))}{job((job.id))}
+              ((% endif %))
+              ((% set ns.prev_id = job.id %))
+          ((% endfor %))
 
           \vspace*{-10mm}
             

@@ -1,92 +1,244 @@
 - id: 0
   name: "Embedded C"
   category: "Software"
-  tags: "Software"
+  tags: "Firmware, Low-level, Microcontrollers, Bare-metal, Real-time, Driver development"
 - id: 1
   name: "Embedded C++"
   category: "Software"
-  tags: "Software"
+  tags: "OOP, Firmware, C++11, C++14, C++17, Performance optimization, Memory management"
 - id: 2
   name: "Python"
   category: "Software"
-  tags: "Software"
+  tags: "Scripting, Automation, Data Science, AI, Backend, Prototyping, Pytest"
 - id: 3
   name: "Linux"
   category: "Software"
-  tags: "Software"
+  tags: "OS, Kernel, Shell, SysAdmin, POSIX, Debian, Arch, Embedded Linux, Ubuntu"
 - id: 4
   name: "ESP32"
   category: "Software"
-  tags: "Software"
+  tags: "MCU, Wi-Fi, Bluetooth, IoT, Espressif, Low-power, SoC"
 - id: 5
   name: "ESP-IDF"
   category: "Software"
-  tags: "Software"
+  tags: "SDK, Espressif, RTOS, IoT Development, Firmware Framework"
 - id: 6
   name: "AVR"
   category: "Software"
-  tags: "Software"
+  tags: "8-bit, Microchip, Arduino, ATMega, Legacy systems"
 - id: 7
   name: "SAM"
   category: "Software"
-  tags: "Software"
+  tags: "ARM Cortex-M, Atmel, Microchip, 32-bit MCU"
 - id: 8
   name: "ASF"
   category: "Software"
-  tags: "Software"
+  tags: "Atmel Software Framework, Drivers, HAL, Middleware"
 - id: 9
   name: "CMISIS"
   category: "Software"
-  tags: "Software"
+  tags: "ARM, Standard, DSP, RTOS API, Hardware Abstraction Layer"
 - id: 10
   name: "Nxp MCX"
   category: "Software"
-  tags: "Software"
+  tags: "Industrial MCU, NXP Semiconductors, ARM Cortex-M33"
 - id: 11
   name: "STM32"
   category: "Software"
-  tags: "Software"
+  tags: "STMicroelectronics, ARM Cortex, HAL, LL, CubeIDE, Industrial"
 - id: 12
   name: "FreeRTOS"
   category: "Software"
-  tags: "Software"
+  tags: "Real-time, Scheduler, Multitasking, Mutex, Semaphores, Embedded OS"
 - id: 13
   name: "GNU Arm Embedded Toolchain"
   category: "Software"
-  tags: "Software"
+  tags: "Compiler, Toolchain, Cross-compilation, Arm-none-eabi-gcc"
 - id: 14
   name: "GCC"
   category: "Software"
-  tags: "Software"
+  tags: "Compiler, C, C++, Build tools, Linux"
 - id: 15
   name: "Clang"
   category: "Software"
-  tags: "Software"
+  tags: "Compiler, LLVM, Static analysis, Linting, Diagnostics"
 - id: 16
   name: "CMake"
   category: "Software"
-  tags: "Software"
+  tags: "Build system, Meta-build, Cross-platform, Configuration"
 - id: 17
   name: "makefile"
   category: "Software"
-  tags: "Software"
+  tags: "GNU Make, Build automation, Incremental builds"
 - id: 18
   name: "Ninja"
   category: "Software"
-  tags: "Software"
+  tags: "Fast build, Small build system, Speed"
 - id: 19
   name: "Docker"
   category: "Software"
-  tags: "Software"
+  tags: "Containers, Virtualization, DevOps, Reproducible environments, Microservices"
 - id: 20
   name: "bash"
   category: "Software"
-  tags: "Software"
+  tags: "Shell, Scripting, CLI, Linux automation"
 - id: 21
   name: "CI/CD"
   category: "Software"
-  tags: "Software"
+  tags: "GitHub Actions, GitLab CI, DevOps, Jenkins, Automated testing, Pipelines"
 - id: 22
   name: "Git"
   category: "Software"
-  tags: "Software"
+  tags: "Version control, GitHub, GitLab, Collaboration, Branching"
+- id: 23
+  name: "ROS 2"
+  category: "Software"
+  tags: "Middleware, Robotics, DDS, Humble, Foxy, Galactic, Distributed systems"
+- id: 24
+  name: "ros2\\_control"
+  category: "Software"
+  tags: "Actuators, Feedback loops, Hardware interface, Controllers"
+- id: 25
+  name: "SLAM"
+  category: "Software"
+  tags: "Localization, Mapping, Navigation, LIDAR, Gmapping, Cartographer"
+- id: 26
+  name: "Nav2"
+  category: "Software"
+  tags: "Navigation, Path planning, Costmaps, Behavior trees, Obstacle avoidance"
+- id: 27
+  name: "Open-RMF"
+  category: "Software"
+  tags: "Fleet management, Interoperability, Robotics, Traffic control"
+- id: 28
+  name: "Gazebo"
+  category: "Software"
+  tags: "Simulation, Physics engine, ODE, Robot testing, 3D environment"
+- id: 29
+  name: "Isaac Sim"
+  category: "Software"
+  tags: "NVIDIA, Omniverse, GPU acceleration, Digital twins, AI training"
+- id: 30
+  name: "Unreal Engine"
+  category: "Software"
+  tags: "High-fidelity simulation, Game engine, Rendering, AirSim"
+- id: 31
+  name: "SQL"
+  category: "Software"
+  tags: "Database, PostgreSQL, SQLite, Querying, Relational"
+- id: 32
+  name: "Microsoft Azure"
+  category: "Software"
+  tags: "Cloud computing, DevOps, Infrastructure, Azure Pipelines"
+- id: 33
+  name: "Mechatronics"
+  category: "Engineering"
+  tags: "Interdisciplinary, Robotics, Sensors, Actuators, Systems design"
+- id: 34
+  name: "Mechanical design"
+  category: "Engineering"
+  tags: "CAD, SolidWorks, Prototyping, Manufacturing, Mechanisms"
+- id: 35
+  name: "hardware drivers"
+  category: "Software"
+  tags: "Peripheral, I2C, SPI, UART, HAL, Low-level communication"
+- id: 36
+  name: "fleet management"
+  category: "Software"
+  tags: "Multi-robot, Orchestration, Logistics, Scheduling"
+- id: 37
+  name: "Simulation"
+  category: "Software"
+  tags: "Testing, Virtual prototyping, Modeling, HIL, SIL"
+- id: 38
+  name: "NumPy"
+  category: "Software"
+  tags: "Linear algebra, Matrices, Scientific computing"
+- id: 39
+  name: "Pandas"
+  category: "Software"
+  tags: "Data manipulation, Dataframes, Analysis, CSV"
+- id: 40
+  name: "Back-end"
+  category: "Software"
+  tags: "Server-side, API, REST, Architecture"
+- id: 41
+  name: "Data analysis"
+  category: "Software"
+  tags: "Statistics, Insights, Processing, Visualization"
+- id: 42
+  name: "Data visualization"
+  category: "Software"
+  tags: "Matplotlib, Seaborn, Plotting, Dashboards"
+- id: 43
+  name: "Machine Learning"
+  category: "Software"
+  tags: "AI, Deep Learning, Scikit-learn, Neural Networks, Computer Vision"
+- id: 44
+  name: "Cloud"
+  category: "Software"
+  tags: "AWS, Azure, GCP, Distributed infrastructure"
+- id: 45
+  name: "IMUs"
+  category: "Software"
+  tags: "Inertial measurement, Accelerometer, Gyroscope, Kalman filter, Estimation"
+- id: 46
+  name: "GNSS"
+  category: "Software"
+  tags: "GPS, Positioning, Satellite navigation, RTK"
+- id: 47
+  name: "Electronics"
+  category: "Engineering"
+  tags: "PCB, Circuits, Hardware, Signal processing, Analog, Digital"
+- id: 48
+  name: "Cross-Plataform Desktop App Development"
+  category: "Software"
+  tags: "GUI, Qt, Delphi, Pascal, Windows, Linux"
+- id: 49
+  name: "Communication Protocols"
+  category: "Software"
+  tags: "CAN, RS485, Modbus, MQTT, TCP/IP, UDP"
+- id: 50
+  name: "Obstacle Detection"
+  category: "Software"
+  tags: "Safety, Sensors, Perception, Computer Vision"
+- id: 51
+  name: "Robot-Server Communication"
+  category: "Software"
+  tags: "Telemetry, Network, JSON, XML, Sockets"
+- id: 52
+  name: "Delphi"
+  category: "Software"
+  tags: "Pascal, RAD, Legacy GUI, Windows application"
+- id: 53
+  name: "Pascal"
+  category: "Software"
+  tags: "Strongly typed, Academic, Algorithmic programming"
+- id: 54
+  name: "Java"
+  category: "Software"
+  tags: "JVM, Android, OOP, Enterprise software"
+- id: 55
+  name: "Javascript"
+  category: "Software"
+  tags: "Web, Frontend, NodeJS, React, DOM"
+- id: 56
+  name: "HTML"
+  category: "Software"
+  tags: "Structure, Web development, Markup"
+- id: 57
+  name: "CSS"
+  category: "Software"
+  tags: "Styling, Layout, Responsive design"
+- id: 58
+  name: "Instrumentation"
+  category: "Engineering"
+  tags: "Measurement, Data acquisition, Sensors, NI, LabVIEW"
+- id: 59
+  name: "Hydraulics"
+  category: "Engineering"
+  tags: "Fluid power, Cylinders, Pumps, Control valves"
+- id: 60
+  name: "ROS"
+  category: "Software"
+  tags: "Robot Operating System, ROS 1, Noetic, Middleware"

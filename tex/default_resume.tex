@@ -45,6 +45,28 @@
 \usepackage{svg}
 \usepackage{circledsteps}
 
+%colors
+
+\definecolor{green1}{rgb}{0.35,0.70,0.30}% green
+\definecolor{darkgrey}{rgb}{0.529,0.52,0.588}% dark grey
+\definecolor{bluegrey}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{bluelightgrey}{rgb}{0.935,0.925,1}% blue gray
+
+%\definecolor{darkdarkgrey}{rgb}{0.184,0.184,0.227}% dark dark grey
+
+\definecolor{darkdarkgrey}{rgb}{0.22,0.22,0.23}% dark dark grey
+\definecolor{draculared}{rgb}{1, 0.33, 0.33}% dracula red
+
+
+
+\definecolor{color0}{rgb}{0,0,0}
+\definecolor{color1}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+\definecolor{dockercolor}{HTML}{384d54}
+\definecolor{cppcolor}{HTML}{f34b7d}
+\definecolor{reponamecolor}{HTML}{4493f8}
+
 %override commands
 
 \newlength{\hintscolumnwidth}
@@ -62,6 +84,7 @@
 }
 
 %New commands
+\newcommand{\highlight}[1]{\textbf{\textcolor{draculared}{#1}}}
 \newcommand{\CPP}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny \textbf{+}}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny \textbf{+}}\hspace{1mm}}
 
 \newcommand{\Cs}{C\nolinebreak\raisebox{.4ex}{\scriptsize \textbf{\#}}}
@@ -186,24 +209,6 @@
 
 \setlength{\hintscolumnwidth}{1cm} 
 
-\definecolor{green1}{rgb}{0.35,0.70,0.30}% green
-\definecolor{darkgrey}{rgb}{0.529,0.52,0.588}% dark grey
-\definecolor{bluegrey}{rgb}{0.529,0.52,0.588}% blue gray
-\definecolor{bluelightgrey}{rgb}{0.935,0.925,1}% blue gray
-
-%\definecolor{darkdarkgrey}{rgb}{0.184,0.184,0.227}% dark dark grey
-
-\definecolor{darkdarkgrey}{rgb}{0.22,0.22,0.23}% dark dark grey
-
-
-
-\definecolor{color0}{rgb}{0,0,0}
-\definecolor{color1}{rgb}{0.529,0.52,0.588}% blue gray
-\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
-
-\definecolor{dockercolor}{HTML}{384d54}
-\definecolor{cppcolor}{HTML}{f34b7d}
-\definecolor{reponamecolor}{HTML}{4493f8}
 %multi-language settings
 %
 \newif\ifen

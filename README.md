@@ -5,10 +5,10 @@ My LaTeX Curriculum Vitae builder.
 ```
 .
 ├── data
-│   ├── schema.yaml										# Sqlite database architeture
-│   ├── table_descriptions.yaml				# Data for the table descriptions
+│   ├── schema.yaml                 	# Sqlite database architeture
+│   ├── table_descriptions.yaml     	# Data for the table descriptions
 │   ├── table_experience_skills.yaml	# Junction table between experiences and skills
-│   ├── table_experiences.yaml				# Data for the table experiences
+│   ├── table_experiences.yaml      	# Data for the table experiences
 │   └── table_skils.yaml							# Data for the table skills
 ├── tex
 │   ├── fonts													# Fonts used in the LaTeX generation

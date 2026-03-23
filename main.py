@@ -53,10 +53,13 @@ def get_default_cv():
 
     experiences.sort(
         key=lambda x: (
-            0 if x["end_date"] == "Present" else 1,
-            datetime.strptime(x["start_date"], "%b %Y"),
+            1 if x["end_date"] == "Present" else 0,
+            datetime.strptime(
+                x["start_date"],
+                "%b %Y",
+            ),
         ),
-        reverse=False,
+        reverse=True,
     )
 
     return experiences

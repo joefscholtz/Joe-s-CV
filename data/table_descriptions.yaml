@@ -1,40 +1,45 @@
-- id: 0
-  exp_id: 0
-  text: " "
-  tags: "DevOps, QA, C++, Software Development, Embedded Systems, CI/CD, Testing"
+- exp_id: "conceptu"
+  text: "Shifted 25\\% of bugs from production to the development stage by implementing full DevOps pipeline from static code analysis, unit tests, build automation, cryptography to embedded systems simulation and hardware-in-loop features testing"
+  tags: "DevOps, QA, Embedded Systems, CI/CD, Testing"
   is_default: 1
-- id: 1
-  exp_id: 1
+
+- exp_id: "conceptu"
   text: " "
-  tags: "Robotics, ROS 2, Navigation, SLAM, Simulation, Autonomous Vehicles, Research"
+  tags: "DevOps, QA, Embedded Systems, CI/CD, Testing, C++, Software Development, Embedded Systems"
+  is_default: 0
+
+- exp_id: "senai"
+  text: "Developed real-time kinematic control system for double Ackermann steering vehicle in C++ using ros2\\_control framework"
+  # tags: "Robotics, ROS 2, Navigation, SLAM, Simulation, Autonomous Vehicles, Research"
+  tags: "Robotics, ROS 2, Control, C++"
   is_default: 1
-- id: 2
-  exp_id: 2
+
+- exp_id: "aprix"
   text: " "
   tags: "Machine Learning, Data Science, Python, SQL, Cloud, Price Optimization, Analytics"
   is_default: 1
-- id: 3
-  exp_id: 3
-  text: " "
+
+- exp_id: "trimble"
+  text: ""
   tags: "Positioning, IMU, GNSS, Machine Learning, Python, Signal Processing, Navigation"
   is_default: 1
-- id: 4
-  exp_id: 4
+
+- exp_id: "axter"
   text: " "
   tags: "AGV, Industrial Robotics, SLAM, Perception, Delphi, Pascal, ROS, Mobile Robots"
   is_default: 1
-- id: 5
-  exp_id: 5
+
+- exp_id: "auros"
   text: " "
   tags: "Full-Stack, Web Development, Java, Javascript, Computer Vision, Agriculture, AI"
   is_default: 1
-- id: 6
-  exp_id: 6
+
+- exp_id: "laeromec"
   text: " "
   tags: "Mechanical Design, CAD, Mechatronics, Automation, Agricultural Machinery, Electronics"
   is_default: 1
-- id: 7
-  exp_id: 7
+
+- exp_id: "lamecc"
   text: " "
   tags: "R&D, Prototyping, Mechatronics, Instrumentation, Oil & Gas, Robotics Design"
   is_default: 1

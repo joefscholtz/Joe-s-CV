@@ -554,7 +554,7 @@
             \begin{center}
           ((% for job in experiences %))
               \jobitemtimeline
-                  {job((job.id))} 
+                  {((job.id))} 
                   {((job.company))} 
                   {((job.logo_path))} 
                   {((job.location))} 
@@ -568,12 +568,12 @@
           ((% set ns = namespace(prev_id=none) %))
           ((% for job in experiences %))
               ((% if ns.prev_id is not none %))
-                  \connectjobs{job((ns.prev_id))}{job((job.id))}
+                  \connectjobs{((ns.prev_id))}{((job.id))}
               ((% endif %))
               ((% set ns.prev_id = job.id %))
           ((% endfor %))
 
-          \vspace*{-10mm}
+          \vspace*{-12mm}
             
         \end{tcolorbox}
     \end{minipage}

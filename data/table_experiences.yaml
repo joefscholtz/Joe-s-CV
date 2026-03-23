@@ -1,79 +1,79 @@
-- id: 0
+- id: "conceptu"
   company: "Conceptu Protótipos \\& Sistemas"
   logo_path: "pictures/conceptu_logo.jpg"
   location: "Porto Alegre, Brazil"
   role: "Senior QA C++ Engineer"
   start_date: "Jun 2025"
   end_date: "Dec 2025"
-  intro: "\\textbf{DevOps for embedded systems:}"
+  intro: "\\textbf{DevOps for embedded systems: }"
   is_default: 1
 
-- id: 1
+- id: "senai"
   company: "SENAI ISI Sistemas de Sensoriamento"
   logo_path: "pictures/senai_logo.jpg"
   location: "São Leopoldo, Brazil"
   role: "Mobile Robotics Researcher"
   start_date: "Nov 2023"
   end_date: "Apr 2025"
-  intro: "\\textbf{Autonomous mobile robots for logistics and transportation:}"
+  intro: "\\textbf{Autonomous mobile robots for logistics and transportation: }"
   is_default: 1
 
-- id: 2
+- id: "aprix"
   company: "Aprix"
   logo_path: "pictures/aprix_logo.jpg"
   location: "Porto Alegre, Brazil"
   role: "Machine Learning Intern"
   start_date: "Mar 2023"
   end_date: "Aug 2023"
-  intro: "\\textbf{Data Science for price optimization:}"
+  intro: "\\textbf{Data Science for price optimization: }"
   is_default: 0
 
-- id: 3
+- id: "trimble"
   company: "Trimble Nantes"
   logo_path: "pictures/trimble_logo.jpg"
   location: "Carquefou, France"
   role: "Software Engineer Intern"
   start_date: "Sep 2021"
   end_date: "Mar 2022"
-  intro: "\\textbf{IMU-only Data-driven Positioning:}"
+  intro: "\\textbf{IMU-only Data-driven Positioning: }"
   is_default: 1
 
-- id: 4
+- id: "axter"
   company: "Axter Automation"
   logo_path: "pictures/axter_logo.jpg"
   location: "Vaucresson, France"
   role: "Robotics Intern"
   start_date: "Mar 2021"
   end_date: "Aug 2021"
-  intro: "\\textbf{Development with industrial mobile robots (\\textit{AGV}):}"
+  intro: "\\textbf{Development with industrial mobile robots (\\textit{AGV}): }"
   is_default: 1
 
-- id: 5
+- id: "auros"
   company: "AuRos Robotics"
   logo_path: "pictures/auros_logo.jpg"
   location: "Rio Grande, Brazil - Remote"
   role: "Full-Stack Developer"
   start_date: "Jul 2020"
   end_date: "Dec 2020"
-  intro: "\\textbf{Decision making in the agricultural context with the help of AI and visual recognition:}"
+  intro: "\\textbf{Decision making in the agricultural context with the help of AI and visual recognition: }"
   is_default: 0
 
-- id: 6
+- id: "laeromec"
   company: "LAEROMEC Engenheria"
   logo_path: "pictures/laeromec_logo.jpg"
   location: "Porto Alegre, Brazil - Remote"
   role: "Mechatronics Designer"
   start_date: "May 2021"
   end_date: "Jul 2021"
-  intro: "\\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor."
+  intro: "\\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. "
   is_default: 1
 
-- id: 7
+- id: "lamecc"
   company: "LAMECC - UFRGS"
   logo_path: "pictures/lamecc_logo.jpg"
   location: "Porto Alegre, Brazil"
   role: "Undergrad Researcher"
   start_date: "Aug 2018"
   end_date: "Jul 2020"
-  intro: "\\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4\" to 10\"."
+  intro: "\\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4\" to 10\". "
   is_default: 1

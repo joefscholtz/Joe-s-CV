@@ -1,5 +1,6 @@
 alias r := run
 alias o:=open_default
+alias z:=open_zathura
 
 default:
   just --list
@@ -11,3 +12,5 @@ run:
 open_default:
   xdg-open ./tex/default_resume.pdf
 
+open_zathura:
+  zathura ./tex/default_resume.pdf

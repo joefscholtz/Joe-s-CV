@@ -1,7 +1,7 @@
 tables:
   experiences:
     columns:
-      id: "INTEGER PRIMARY KEY"
+      id: "TEXT PRIMARY KEY"
       company: "TEXT"
       logo_path: "TEXT"
       location: "TEXT"
@@ -14,7 +14,7 @@ tables:
   descriptions:
     columns:
       id: "INTEGER PRIMARY KEY"
-      exp_id: "INTEGER"
+      exp_id: "TEXT"
       text: "TEXT"
       tags: "TEXT"
       is_default: "INTEGER" # 1 for True, 0 for False
@@ -23,7 +23,7 @@ tables:
 
   skills:
     columns:
-      id: "INTEGER PRIMARY KEY"
+      id: "TEXT PRIMARY KEY"
       name: "TEXT"
       category: "TEXT"
       tags: "TEXT"
@@ -31,8 +31,8 @@ tables:
   # Junction Table
   experience_skills:
     columns:
-      exp_id: "INTEGER"
-      skill_id: "INTEGER"
+      exp_id: "TEXT"
+      skill_id: "TEXT"
       is_default: "INTEGER" # Is this skill shown in the default version of this job?
     foreign_keys:
       - "FOREIGN KEY(exp_id) REFERENCES experiences(id)"

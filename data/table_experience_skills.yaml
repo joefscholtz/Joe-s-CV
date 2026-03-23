@@ -1,84 +1,76 @@
-# Conceptu (exp_id: 0)
-- {exp_id: 0, skill_id: 0, is_default: 1} # Embedded C
-- {exp_id: 0, skill_id: 1, is_default: 1} # Embedded C++
-- {exp_id: 0, skill_id: 2, is_default: 1} # Python
-- {exp_id: 0, skill_id: 3, is_default: 1} # Linux
-- {exp_id: 0, skill_id: 4, is_default: 1} # ESP32
-- {exp_id: 0, skill_id: 5, is_default: 1} # ESP-IDF
-- {exp_id: 0, skill_id: 6, is_default: 1} # AVR
-- {exp_id: 0, skill_id: 7, is_default: 1} # SAM
-- {exp_id: 0, skill_id: 8, is_default: 1} # ASF
-- {exp_id: 0, skill_id: 9, is_default: 1} # CMISIS
-- {exp_id: 0, skill_id: 10, is_default: 1} # Nxp MCX
-- {exp_id: 0, skill_id: 11, is_default: 1} # STM32
-- {exp_id: 0, skill_id: 12, is_default: 1} # FreeRTOS
-- {exp_id: 0, skill_id: 13, is_default: 1} # GNU Arm
-- {exp_id: 0, skill_id: 14, is_default: 1} # GCC
-- {exp_id: 0, skill_id: 15, is_default: 1} # Clang
-- {exp_id: 0, skill_id: 16, is_default: 1} # CMake
-- {exp_id: 0, skill_id: 17, is_default: 1} # makefile
-- {exp_id: 0, skill_id: 18, is_default: 1} # Ninja
-- {exp_id: 0, skill_id: 19, is_default: 1} # Docker
-- {exp_id: 0, skill_id: 20, is_default: 1} # bash
-- {exp_id: 0, skill_id: 21, is_default: 1} # CI/CD
-- {exp_id: 0, skill_id: 22, is_default: 1} # Git
+- {exp_id: "conceptu", skill_id: "embedded_c", is_default: 1}
+- {exp_id: "conceptu", skill_id: "embedded_cpp", is_default: 1}
+- {exp_id: "conceptu", skill_id: "python", is_default: 1}
+- {exp_id: "conceptu", skill_id: "linux", is_default: 1}
+- {exp_id: "conceptu", skill_id: "esp32", is_default: 1}
+- {exp_id: "conceptu", skill_id: "esp_idf", is_default: 1}
+- {exp_id: "conceptu", skill_id: "avr", is_default: 1}
+- {exp_id: "conceptu", skill_id: "sam", is_default: 1}
+- {exp_id: "conceptu", skill_id: "asf", is_default: 0}
+- {exp_id: "conceptu", skill_id: "cmisis", is_default: 0}
+- {exp_id: "conceptu", skill_id: "nxp_mcx", is_default: 1}
+- {exp_id: "conceptu", skill_id: "stm32", is_default: 1}
+- {exp_id: "conceptu", skill_id: "freertos", is_default: 0}
+- {exp_id: "conceptu", skill_id: "gnu_arm_toolchain", is_default: 1}
+- {exp_id: "conceptu", skill_id: "gcc", is_default: 0}
+- {exp_id: "conceptu", skill_id: "clang", is_default: 1}
+- {exp_id: "conceptu", skill_id: "cmake", is_default: 0}
+- {exp_id: "conceptu", skill_id: "makefile", is_default: 0}
+- {exp_id: "conceptu", skill_id: "ninja", is_default: 0}
+- {exp_id: "conceptu", skill_id: "docker", is_default: 1}
+- {exp_id: "conceptu", skill_id: "bash", is_default: 1}
+- {exp_id: "conceptu", skill_id: "ci_cd", is_default: 1}
+- {exp_id: "conceptu", skill_id: "git", is_default: 1}
 
-# SENAI (exp_id: 1)
-- {exp_id: 1, skill_id: 23, is_default: 1} # ROS 2
-- {exp_id: 1, skill_id: 35, is_default: 1} # hardware drivers
-- {exp_id: 1, skill_id: 24, is_default: 1} # ros2_control
-- {exp_id: 1, skill_id: 25, is_default: 1} # SLAM
-- {exp_id: 1, skill_id: 26, is_default: 1} # Nav2
-- {exp_id: 1, skill_id: 36, is_default: 1} # fleet management
-- {exp_id: 1, skill_id: 27, is_default: 1} # Open-RMF
-- {exp_id: 1, skill_id: 37, is_default: 1} # simulation
-- {exp_id: 1, skill_id: 28, is_default: 1} # Gazebo
-- {exp_id: 1, skill_id: 29, is_default: 1} # Isaac Sim
-- {exp_id: 1, skill_id: 30, is_default: 1} # Unreal Engine
+- {exp_id: "senai", skill_id: "ros2", is_default: 1}
+- {exp_id: "senai", skill_id: "hardware_drivers", is_default: 1}
+- {exp_id: "senai", skill_id: "ros2_control", is_default: 1}
+- {exp_id: "senai", skill_id: "slam", is_default: 1}
+- {exp_id: "senai", skill_id: "nav2", is_default: 1}
+- {exp_id: "senai", skill_id: "fleet_management", is_default: 1}
+- {exp_id: "senai", skill_id: "open_rmf", is_default: 1}
+- {exp_id: "senai", skill_id: "simulation", is_default: 1}
+- {exp_id: "senai", skill_id: "gazebo", is_default: 1}
+- {exp_id: "senai", skill_id: "isaac_sim", is_default: 1}
+- {exp_id: "senai", skill_id: "unreal_engine", is_default: 1}
 
-# Aprix (exp_id: 2)
-- {exp_id: 2, skill_id: 2, is_default: 1}  # Python
-- {exp_id: 2, skill_id: 38, is_default: 1} # NumPy
-- {exp_id: 2, skill_id: 39, is_default: 1} # Pandas
-- {exp_id: 2, skill_id: 40, is_default: 1} # Back-end
-- {exp_id: 2, skill_id: 41, is_default: 1} # Data analysis
-- {exp_id: 2, skill_id: 42, is_default: 1} # Data visualization
-- {exp_id: 2, skill_id: 31, is_default: 1} # SQL
-- {exp_id: 2, skill_id: 43, is_default: 1} # Machine Learning
-- {exp_id: 2, skill_id: 44, is_default: 1} # Cloud
-- {exp_id: 2, skill_id: 32, is_default: 1} # Microsoft Azure
+- {exp_id: "aprix", skill_id: "python", is_default: 1}
+- {exp_id: "aprix", skill_id: "numpy", is_default: 1}
+- {exp_id: "aprix", skill_id: "pandas", is_default: 1}
+- {exp_id: "aprix", skill_id: "backend", is_default: 1}
+- {exp_id: "aprix", skill_id: "data_analysis", is_default: 1}
+- {exp_id: "aprix", skill_id: "data_visualization", is_default: 1}
+- {exp_id: "aprix", skill_id: "sql", is_default: 1}
+- {exp_id: "aprix", skill_id: "machine_learning", is_default: 1}
+- {exp_id: "aprix", skill_id: "cloud", is_default: 1}
+- {exp_id: "aprix", skill_id: "azure", is_default: 1}
 
-# Trimble (exp_id: 3)
-- {exp_id: 3, skill_id: 2, is_default: 1}  # Python
-- {exp_id: 3, skill_id: 3, is_default: 1}  # Linux
-- {exp_id: 3, skill_id: 45, is_default: 1} # IMUs
-- {exp_id: 3, skill_id: 46, is_default: 1} # GNSS
-- {exp_id: 3, skill_id: 43, is_default: 1} # Machine Learning
+- {exp_id: "trimble", skill_id: "python", is_default: 1}
+- {exp_id: "trimble", skill_id: "linux", is_default: 1}
+- {exp_id: "trimble", skill_id: "imus", is_default: 1}
+- {exp_id: "trimble", skill_id: "gnss", is_default: 1}
+- {exp_id: "trimble", skill_id: "machine_learning", is_default: 1}
 
-# Laeromec (exp_id: 6)
-- {exp_id: 6, skill_id: 33, is_default: 1} # Mechatronics
-- {exp_id: 6, skill_id: 47, is_default: 1} # Electronics
-- {exp_id: 6, skill_id: 34, is_default: 1} # Mechanical design
+- {exp_id: "laeromec", skill_id: "mechatronics", is_default: 1}
+- {exp_id: "laeromec", skill_id: "electronics", is_default: 1}
+- {exp_id: "laeromec", skill_id: "mechanical_design", is_default: 1}
 
-# Axter (exp_id: 4)
-- {exp_id: 4, skill_id: 48, is_default: 1} # Cross-Plataform App
-- {exp_id: 4, skill_id: 49, is_default: 1} # Comm Protocols
-- {exp_id: 4, skill_id: 60, is_default: 1} # ROS
-- {exp_id: 4, skill_id: 25, is_default: 1} # SLAM
-- {exp_id: 4, skill_id: 50, is_default: 1} # Obstacle Detection
-- {exp_id: 4, skill_id: 51, is_default: 1} # Robot-Server Comm
-- {exp_id: 4, skill_id: 52, is_default: 1} # Delphi
-- {exp_id: 4, skill_id: 53, is_default: 1} # Pascal
+- {exp_id: "axter", skill_id: "cross_platform_app", is_default: 1}
+- {exp_id: "axter", skill_id: "comm_protocols", is_default: 1}
+- {exp_id: "axter", skill_id: "ros", is_default: 1}
+- {exp_id: "axter", skill_id: "slam", is_default: 1}
+- {exp_id: "axter", skill_id: "obstacle_detection", is_default: 1}
+- {exp_id: "axter", skill_id: "robot_server_comm", is_default: 1}
+- {exp_id: "axter", skill_id: "delphi", is_default: 1}
+- {exp_id: "axter", skill_id: "pascal", is_default: 1}
 
-# AuRos (exp_id: 5)
-- {exp_id: 5, skill_id: 54, is_default: 1} # Java
-- {exp_id: 5, skill_id: 55, is_default: 1} # Javascript
-- {exp_id: 5, skill_id: 56, is_default: 1} # HTML
-- {exp_id: 5, skill_id: 57, is_default: 1} # CSS
+- {exp_id: "auros", skill_id: "java", is_default: 1}
+- {exp_id: "auros", skill_id: "javascript", is_default: 1}
+- {exp_id: "auros", skill_id: "html", is_default: 1}
+- {exp_id: "auros", skill_id: "css", is_default: 1}
 
-# LAMECC (exp_id: 7)
-- {exp_id: 7, skill_id: 33, is_default: 1} # Mechatronics
-- {exp_id: 7, skill_id: 47, is_default: 1} # Electronics
-- {exp_id: 7, skill_id: 58, is_default: 1} # Instrumentation
-- {exp_id: 7, skill_id: 59, is_default: 1} # Hydraulics
-- {exp_id: 7, skill_id: 34, is_default: 1} # Mechanical design
+- {exp_id: "lamecc", skill_id: "mechatronics", is_default: 1}
+- {exp_id: "lamecc", skill_id: "electronics", is_default: 1}
+- {exp_id: "lamecc", skill_id: "instrumentation", is_default: 1}
+- {exp_id: "lamecc", skill_id: "hydraulics", is_default: 1}
+- {exp_id: "lamecc", skill_id: "mechanical_design", is_default: 1}

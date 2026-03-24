@@ -5,8 +5,8 @@ alias z:=open_zathura
 default:
   just --list
 
-run:
-  uv run src/joe-s-cv/process_cv.py
+run args="":
+  uv run src/joe-s-cv/process_cv.py {{args}}
 
 open_default:
   xdg-open ./tex/default_resume_compressed.pdf

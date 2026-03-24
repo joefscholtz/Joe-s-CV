@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 import subprocess
 from datetime import datetime
@@ -8,7 +9,7 @@ from db import Db
 
 
 class ResumeFactory:
-    def __init__(self):
+    def __init__(self, force_default_generation=False):
         self.db = Db()
         self.tex_dir = Path("tex")
         self.template_tex = self.tex_dir / "resume_template.tex"
@@ -17,7 +18,21 @@ class ResumeFactory:
         self.compressed_pdf = self.output_pdf.with_name(
             f"{self.output_pdf.stem}_compressed{self.output_pdf.suffix}"
         )
-        if not self.check_for_changes():
+        self.jinja2env = Environment(
+            block_start_string="((%",
+            block_end_string="%))",
+            variable_start_string="((",
+            variable_end_string="))",
+            comment_start_string="((#",
+            trim_blocks=True,
+            lstrip_blocks=True,
+            comment_end_string="#))",
+            loader=FileSystemLoader(str(self.tex_dir)),
+        )
+        self.jinja2_tex_template = self.jinja2env.get_template(
+            str(self.template_tex.name)
+        )
+        if not self.check_for_changes() and not force_default_generation:
             print("─ No changes detected. Skipping default cv generation.")
         else:
             self.generate_default_cv()
@@ -73,47 +88,70 @@ class ResumeFactory:
         )
         return experiences
 
-    def update_pdf_metadata(self, pdf_path, metadata):
+    def update_pdf_metadata(self, pdf_path, data):
         if not pdf_path.exists():
             print(f"✘ Failed to find PDF at {pdf_path}")
             return
 
-        reader = PdfReader(pdf_path)
-        writer = PdfWriter()
+        kw_str = ", ".join(data["keyword"])
 
-        for page in reader.pages:
-            writer.add_page(page)
+        cmd = [
+            "exiftool",
+            "-overwrite_original",
+            # --- Standard Info Dictionary ---
+            f"-Title={data['title']}",
+            f"-Author={data['creator']}",
+            f"-Subject={data['description']}",
+            f"-Keywords={kw_str}",
+            # --- XMP Dublin Core (DC), Core Properties (CP / Adobe) ---
+            f"-XMP-dc:Title={data['title']}",
+            f"-XMP-dc:Creator={data['creator']}",
+            f"-XMP-dc:Description={data['description']}",
+            f"-XMP-dc:Subject={kw_str}",  # DC Subject is often used for keywords
+            f"-XMP-pdf:Keywords={kw_str}",
+            f"-XMP-xmp:Nickname={data['nickname']}",
+            f"-Category={data['category']}",
+            # --- DC/CP ---
+            f"-DC:TITLE={data['title']}",
+            f"-DC:CREATOR={data['creator']}",
+            f"-CP:SUBJECT={kw_str}",
+            f"-CP:KEYWORD={kw_str}",
+            f"-CP:DESCRIPTION={data['description']}",
+            f"-CP:CATEGORY={data['category']}",
+            str(pdf_path.resolve()),
+        ]
 
-        writer.add_metadata(metadata)
-
-        with pdf_path.open("wb") as f:
-            writer.write(f)
-
-        print(f"✔ Metadata updated: {str(pdf_path)}")
+        try:
+            subprocess.run(cmd, check=True, capture_output=True)
+            print(f"✔ Metadata synchronized (Info + XMP): {pdf_path.name}")
+        except subprocess.CalledProcessError as e:
+            print(f"✘ ExifTool failed: {e.stderr.decode()}")
 
     def generate_default_cv(self):
+        experiences = self.get_default_cv()
+        all_skills = set()
+        for exp in experiences:
+            all_skills.update(exp["skills"])
+
+        keyword_list = sorted(list(all_skills))
+        data = {
+            "experiences": experiences,
+            "title": "",
+            "creator": "Joe Ferreira Scholtz",
+            "nickname": "Joe",
+            "keyword": keyword_list,
+            "description": "",
+            "category": "Resume",
+        }
+        self.generate_cv(data)
+
+    def generate_cv(self, data):
         self.output_pdf.unlink(missing_ok=True)
         self.compressed_pdf.unlink(missing_ok=True)
 
         self.db.sync()
 
-        data = {"experiences": self.get_default_cv()}
-
-        # Jinja2 setup with Path
-        jinja2env = Environment(
-            block_start_string="((%",
-            block_end_string="%))",
-            variable_start_string="((",
-            variable_end_string="))",
-            comment_start_string="((#",
-            trim_blocks=True,
-            lstrip_blocks=True,
-            comment_end_string="#))",
-            loader=FileSystemLoader(str(self.tex_dir)),
-        )
-
-        jinja2_tex_template = jinja2env.get_template(str(self.template_tex.name))
-        rendered_tex = jinja2_tex_template.render(data)
+        rendered_tex = self.jinja2_tex_template.render(data)
 
         self.output_tex.write_text(rendered_tex)
 
@@ -140,18 +178,15 @@ class ResumeFactory:
             cwd=str(self.tex_dir),
             check=True,
         )
-
-        # update_pdf_metadata(
-        #     self.output_pdf,
-        #     {
-        #     "DC: TITLE": "", # target job title
-        #     "DC: CREATOR": "Joe Ferreira Scholtz",
-        #     "CP: KEYWORD": "",
-        #     "CP: DESCRIPTION": "", # short version of the target job description
-        #     "CP: CATEGORY": "Resume",
-        #     }
-        # )
+        self.update_pdf_metadata(self.output_pdf, data)
+        self.update_pdf_metadata(self.compressed_pdf, data)
 
 
 if __name__ == "__main__":
-    resume_factory = ResumeFactory()
+    parser = argparse.ArgumentParser(description="CV builder utility.")
+    parser.add_argument(
+        "--force", action="store_true", help="Force default cv generation."
+    )
+
+    args = parser.parse_args()
+    resume_factory = ResumeFactory(args.force)

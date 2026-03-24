@@ -25,6 +25,7 @@ My LaTeX Curriculum Vitae builder.
 
 - lualatex
 - Ghostscript
+- exiftool
 - uv
 - just (Optional)
 - Zhatura (Optional)

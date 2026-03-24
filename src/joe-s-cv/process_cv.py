@@ -17,14 +17,17 @@ class ResumeFactory:
         self.compressed_pdf = self.output_pdf.with_name(
             f"{self.output_pdf.stem}_compressed{self.output_pdf.suffix}"
         )
+        if not self.check_for_changes():
+            print("─ No changes detected. Skipping default cv generation.")
+        else:
+            self.generate_default_cv()
 
     def check_for_changes(self):
-        return (
-            (not self.output_pdf.is_file())
-            or (not self.compressed_pdf.is_file())
-            or self.db.check_for_changes()
-            or self.db.check_for_changes([self.template_tex])
-        )
+        files_missing = not self.output_pdf.exists() or not self.compressed_pdf.exists()
+        db_changed = self.db.check_for_changes()
+        template_changed = self.db.check_for_changes([self.template_tex])
+
+        return files_missing or db_changed or template_changed
 
     def get_default_cv(self):
         conn = self.db.get_conn()
@@ -43,7 +46,7 @@ class ResumeFactory:
             exp_id = exp["id"]
 
             sub_cursor.execute(
-                "SELECT * FROM descriptions WHERE exp_id=? AND is_default=1",
+                "SELECT text FROM descriptions WHERE exp_id=? AND is_default=1",
                 (exp_id,),
             )
             exp_dict["description"] = " ".join([b[0] for b in sub_cursor.fetchall()])
@@ -89,6 +92,9 @@ class ResumeFactory:
         print(f"✔ Metadata updated: {str(pdf_path)}")
 
     def generate_default_cv(self):
+        self.output_pdf.unlink(missing_ok=True)
+        self.compressed_pdf.unlink(missing_ok=True)
+
         self.db.sync()
 
         data = {"experiences": self.get_default_cv()}
@@ -106,7 +112,7 @@ class ResumeFactory:
             loader=FileSystemLoader(str(self.tex_dir)),
         )
 
-        jinja2_tex_template = jinja2env.get_template(self.template_tex)
+        jinja2_tex_template = jinja2env.get_template(str(self.template_tex.name))
         rendered_tex = jinja2_tex_template.render(data)
 
         self.output_tex.write_text(rendered_tex)
@@ -128,8 +134,8 @@ class ResumeFactory:
                 "-dNOPAUSE",
                 "-dQUIET",
                 "-dBATCH",
-                f"-sOutputFile={self.compressed_pdf.name}",
-                self.output_pdf.name,
+                f"-sOutputFile={self.compressed_pdf.resolve()}",
+                str(self.output_pdf.resolve()),
             ],
             cwd=str(self.tex_dir),
             check=True,
@@ -149,7 +155,3 @@ class ResumeFactory:
 
 if __name__ == "__main__":
     resume_factory = ResumeFactory()
-    if not resume_factory.check_for_changes():
-        print("─ No changes detected. Skipping default cv generation.")
-    else:
-        resume_factory.generate_default_cv()

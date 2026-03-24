@@ -24,27 +24,37 @@ class Db:
         return hashlib.md5(filepath.read_bytes()).hexdigest()
 
     def check_for_changes(self, files=None):
-        """Returns True if any file hash has changed since the last sync."""
         if files is None:
             files = self.data_files
 
         if not self.db_path.is_file():
             return True
 
-        # Ensure 'data' directory exists
         self.cache_file.parent.mkdir(parents=True, exist_ok=True)
 
-        current_hashes = {str(f): self.get_file_hash(f) for f in files}
+        # 1. Load existing cache
+        old_hashes = {}
+        if self.cache_file.exists():
+            try:
+                old_hashes = yaml.safe_load(self.cache_file.read_text()) or {}
+            except yaml.YAMLError:
+                old_hashes = {}
 
-        if not self.cache_file.exists():
-            self.cache_file.write_text(yaml.dump(current_hashes))
+        # 2. Calculate current hashes for the requested files
+        current_hashes = {str(f.resolve()): self.get_file_hash(f) for f in files}
+
+        # 3. Determine if anything in THIS set has changed
+        changed = False
+        for filepath, h in current_hashes.items():
+            if old_hashes.get(filepath) != h:
+                changed = True
+                old_hashes[filepath] = h  # Update the local dictionary
+
+        # 4. If changed, write the MERGED dictionary back to disk
+        if changed:
+            self.cache_file.write_text(yaml.dump(old_hashes))
             return True
 
-        old_hashes = yaml.safe_load(self.cache_file.read_text()) or {}
-
-        if current_hashes != old_hashes:
-            self.cache_file.write_text(yaml.dump(current_hashes))
-            return True
         return False
 
     def get_conn(self):

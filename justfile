@@ -12,4 +12,4 @@ open_default:
   xdg-open ./tex/default_resume_compressed.pdf
 
 open_zathura:
-  zathura ./tex/default_resume_compressed.pdf
+  zathura ./tex/default_resume.pdf

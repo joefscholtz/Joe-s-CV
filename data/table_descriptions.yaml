@@ -1,0 +1,64 @@
+- exp_id: "conceptu"
+  text: "Shifted 25\\% of bugs from production to development stage by implementing comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop for feature testing."
+  tags: "DevOps, QA, Embedded Systems, CI/CD, Testing"
+  is_default: 1
+
+- exp_id: "conceptu"
+  text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs, such as ESP32, Nxp MCX, STM32, AVR and SAM, using RTOS and bare-metal."
+  tags: "Embedded Systems, C++, Software Development, Embedded Systems, RTOS, bare-metal"
+  is_default: 0
+
+- exp_id: "senai"
+  text: "Developed real-time kinematic control system for double Ackermann steering vehicle in C++ using ros2\\_control framework."
+  tags: "Robotics, ROS 2, Control, C++"
+  is_default: 1
+
+- exp_id: "senai"
+  text: "Implemented full autonomous navigation stack including SLAM, A* based path finding, model predictive control with ROS 2 and Nav2 for mobile robots with LiDAR-based perception systems."
+  tags: "Robotics, ROS 2, Control, Navigation, Nav2, SLAM, Autonomous Vehicles, Path-Finding"
+  is_default: 1
+
+- exp_id: "senai"
+  text: "Architected a fleet manager server for multiple robots with multi-agent path finding in C++ and Python using Open-RMF. "
+  tags: "Robotics, ROS 2, C++, Python, Back-end, Navigation, Path-finding"
+  is_default: 0
+
+- exp_id: "aprix"
+  text: "Enhanced price optimization machine learning models leveraging geolocated market data analytics, deployed via a web platform for oil and gas clients."
+  tags: "Machine Learning, Data Science, Python, Back-end, SQL, Cloud, Price Optimization, Analytics"
+  is_default: 1
+
+- exp_id: "trimble"
+  text: "Eliminated time-dependent position drift for a inertial only positioning method compared to double integration approaches by implementing a physics-informed machine learning model in Python."
+  tags: "Positioning, IMU, GNSS, Machine Learning, Python, Signal Processing, Navigation"
+  is_default: 1
+
+- exp_id: "laeromec"
+  text: "Developed electric actuated mechanical system with embedded computing."
+  tags: "Mechanical Design, CAD, Mechatronics, Automation, Agricultural Machinery, Electronics"
+  is_default: 1
+
+- exp_id: "axter"
+  text: "Deployed WiFi and radar robot-server communication for a fleet of mobile robots."
+  tags: "AGV, Industrial Robotics, Delphi, Pascal, Mobile Robots, Back-end"
+  is_default: 0
+
+- exp_id: "axter"
+  text: "Implemented SLAM stack in ROS for LiDAR-based perception system with adverse weather resilience with robust outlier filtering in C++."
+  tags: "AGV, SLAM, Perception, ROS, Mobile Robots, C++"
+  is_default: 1
+
+- exp_id: "axter"
+  text: "Developed desktop application for configuring laser obstacle detection system."
+  tags: "AGV, SLAM, Perception, ROS, Mobile Robots, Qt, Obstacle Detection"
+  is_default: 0
+
+- exp_id: "auros"
+  text: "Deployed full-stack Web and Android application with geolocated data for agriculture robotic inspection using computer vision."
+  tags: "Full-Stack, Web Development, Java, Javascript, Computer Vision, Agriculture, AI"
+  is_default: 1
+
+- exp_id: "lamecc"
+  text: "Implemented robot movement tracking system with minimal sensors for high-pressure under oil environment."
+  tags: "R&D, Prototyping, Mechatronics, Instrumentation, Oil & Gas, Robotics Design"
+  is_default: 1

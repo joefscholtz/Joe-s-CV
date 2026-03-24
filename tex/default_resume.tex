@@ -45,6 +45,28 @@
 \usepackage{svg}
 \usepackage{circledsteps}
 
+%colors
+
+\definecolor{green1}{rgb}{0.35,0.70,0.30}% green
+\definecolor{darkgrey}{rgb}{0.529,0.52,0.588}% dark grey
+\definecolor{bluegrey}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{bluelightgrey}{rgb}{0.935,0.925,1}% blue gray
+
+%\definecolor{darkdarkgrey}{rgb}{0.184,0.184,0.227}% dark dark grey
+
+\definecolor{darkdarkgrey}{rgb}{0.22,0.22,0.23}% dark dark grey
+\definecolor{draculared}{rgb}{1, 0.33, 0.33}% dracula red
+
+
+
+\definecolor{color0}{rgb}{0,0,0}
+\definecolor{color1}{rgb}{0.529,0.52,0.588}% blue gray
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+\definecolor{dockercolor}{HTML}{384d54}
+\definecolor{cppcolor}{HTML}{f34b7d}
+\definecolor{reponamecolor}{HTML}{4493f8}
+
 %override commands
 
 \newlength{\hintscolumnwidth}
@@ -62,6 +84,7 @@
 }
 
 %New commands
+\newcommand{\highlight}[1]{\textbf{\textcolor{draculared}{#1}}}
 \newcommand{\CPP}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny \textbf{+}}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny \textbf{+}}\hspace{1mm}}
 
 \newcommand{\Cs}{C\nolinebreak\raisebox{.4ex}{\scriptsize \textbf{\#}}}
@@ -161,7 +184,7 @@
         \footnotesize \skills \textbf{Skills:} #9
     \end{minipage}
     
-    \vspace{5mm} % Vertical gap between items
+    \vspace{3mm} % Vertical gap between items
 }
 
 \newcommand{\connectjobs}[2]{
@@ -186,24 +209,6 @@
 
 \setlength{\hintscolumnwidth}{1cm} 
 
-\definecolor{green1}{rgb}{0.35,0.70,0.30}% green
-\definecolor{darkgrey}{rgb}{0.529,0.52,0.588}% dark grey
-\definecolor{bluegrey}{rgb}{0.529,0.52,0.588}% blue gray
-\definecolor{bluelightgrey}{rgb}{0.935,0.925,1}% blue gray
-
-%\definecolor{darkdarkgrey}{rgb}{0.184,0.184,0.227}% dark dark grey
-
-\definecolor{darkdarkgrey}{rgb}{0.22,0.22,0.23}% dark dark grey
-
-
-
-\definecolor{color0}{rgb}{0,0,0}
-\definecolor{color1}{rgb}{0.529,0.52,0.588}% blue gray
-\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
-
-\definecolor{dockercolor}{HTML}{384d54}
-\definecolor{cppcolor}{HTML}{f34b7d}
-\definecolor{reponamecolor}{HTML}{4493f8}
 %multi-language settings
 %
 \newif\ifen
@@ -546,105 +551,80 @@
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
 
             \vspace*{-6mm}
-
             \begin{center}
               \jobitemtimeline
-                  {conceptu}
-                  {Conceptu Protótipos \& Sistemas} % Company
-                  {pictures/conceptu_logo.jpg} % Logo
-                  {Porto Alegre, Brazil} % Location
-                  {Senior QA C++ Engineer} % Role
-                  {Jun 2025} % Start
-                  {Dec 2025}  % End
-                  {\textbf{DevOps for embedded systems:}} % Description
-                  {Embedded C and C++, Python, Linux, ESP32, ESP-IDF, AVR, SAM, ASF, CMISIS, Nxp MCX, STM32, FreeRTOS, GNU Arm Embedded Toolchain, GCC, Clang, CMake, makefile, Ninja, Docker, bash, CI/CD, Git} % Skills
+                  {conceptu} 
+                  {Conceptu Protótipos \& Sistemas} 
+                  {pictures/conceptu_logo.jpg} 
+                  {Porto Alegre, Brazil} 
+                  {Senior QA C++ Engineer} 
+                  {Jun 2025} 
+                  {Dec 2025}  
+                  {\textbf{DevOps for embedded systems: }Shifted 25\% of bugs from production to development stage by implementing comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop for feature testing.} 
+                  {Embedded C, Embedded C++, Python, Linux, ESP32, ESP-IDF, AVR, SAM, Nxp MCX, STM32, GNU Arm Embedded Toolchain, Clang, Docker, bash, CI/CD, Git}
               \jobitemtimeline
-                  {senai}
-                  {SENAI ISI Sistemas de Sensoriamento}
-                  {pictures/senai_logo.jpg}
-                  {São Leopoldo, Brazil}
-                  {Mobile Robotics Researcher}
-                  {Nov 2023}
-                  {Apr 2025}
-                  {\textbf{Autonomous mobile robots for logistics and transportation:} }
-                  {ROS 2, hardware drivers, ros2\_control, SLAM, Nav2, fleet management, Open-RMF, simulation, Gazebo, Isaac Sim, Unreal Engine}
-              % \jobitemtimeline
-              %     {aprix}
-              %     {Aprix}
-              %     {pictures/aprix_logo.jpg}
-              %     {Porto Alegre, Brazil}
-              %     {Machine Learning Intern}
-              %     {Mar 2023}
-              %     {Aug 2023}
-              %     {\textbf{Data Science for price optimization:} Experience with Python (NumPy, Pandas, back-end), data analysis and visualization, SQL, limited experience with: Machine Learning, cloud, Microsoft Azure.}
-              %     {Python, NumPy, Pandas, Back-end, Data analysis,Data visualization, SQL,Machine Learning, Cloud, Microsoft Azure.}
+                  {senai} 
+                  {SENAI ISI Sistemas de Sensoriamento} 
+                  {pictures/senai_logo.jpg} 
+                  {São Leopoldo, Brazil} 
+                  {Mobile Robotics Researcher} 
+                  {Nov 2023} 
+                  {Apr 2025}  
+                  {\textbf{Autonomous mobile robots for logistics and transportation: }Developed real-time kinematic control system for double Ackermann steering vehicle in C++ using ros2\_control framework. Implemented full autonomous navigation stack including SLAM, A* based path finding, model predictive control with ROS 2 and Nav2 for mobile robots with LiDAR-based perception systems.} 
+                  {ROS 2, C++, Python, Linux, Hardware Drivers, ros2\_control, SLAM, Nav2, Fleet Management, Open-RMF, Simulation, Gazebo, Isaac Sim}
               \jobitemtimeline
-                  {trimble}
-                  {Trimble Nantes}
-                  {pictures/trimble_logo.jpg}
-                  {Carquefou, France}
-                  {Software Engineer Intern}
-                  {Sep 2021}
-                  {Mar 2022}
-                  {\textbf{IMU-only Data-driven Positioning:}.}
-                  {Experience with Python, Linux, IMUs, GNSS, Machine Learning.}
+                  {trimble} 
+                  {Trimble Nantes} 
+                  {pictures/trimble_logo.jpg} 
+                  {Carquefou, France} 
+                  {Software Engineer Intern} 
+                  {Sep 2021} 
+                  {Mar 2022}  
+                  {\textbf{IMU-only Data-driven Positioning: }Eliminated time-dependent position drift for a inertial only positioning method compared to double integration approaches by implementing a physics-informed machine learning model in Python.} 
+                  {Python, Linux, IMUs, GNSS, Machine Learning, Simulation, CARLA}
               \jobitemtimeline
-                  {laeromec}
-                  {LAEROMEC Engenheria}
-                  {pictures/laeromec_logo.jpg}
-                  {Porto Alegre, Brazil - Remote}
-                  {Mechatronics Designer}
-                  {Mai 2021}
-                  {Jul 2021}
-                  {\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor.}
-                  {Mechatronics, Electronics, Mechanical design.}
+                  {laeromec} 
+                  {LAEROMEC Engenheria} 
+                  {pictures/laeromec_logo.jpg} 
+                  {Porto Alegre, Brazil - Remote} 
+                  {Mechatronics Designer} 
+                  {May 2021} 
+                  {Jul 2021}  
+                  {\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Developed electric actuated mechanical system with embedded computing.} 
+                  {Mechatronics, Electronics, Embedded C, Mechanical design, SolidWorks}
               \jobitemtimeline
-                  {axter}
-                  {Axter Automation}
-                  {pictures/axter_logo.jpg}
-                  {Vaucresson, France}
-                  {Robotics Intern}
-                  {Mar 2021}
-                  {Aug 2021}
-                  {\textbf{Development with industrial mobile robots (\textit{AGV}):}}
-                  {Cross-Plataform Desktop App Development, Communication Protocols, ROS, SLAM, Obstacle Detection, Robot-Server Communication, Delphi, Pascal.}
-              % \jobitemtimeline
-              %     {auros}
-              %     {AuRos Robotics}
-              %     {pictures/auros_logo.jpg}
-              %     {Rio Grande, Brazil - Remote}
-              %     {Full-Stack Developer}
-              %     {Jul 2020}
-              %     {Dec 2020}
-              %     {\textbf{Decision making in the agricultural context with the help of AI and visual recognition:} Experience in web development and mobile applications, using various sensors.}
-              %     {Java, Javascript, HTML, CSS}
-          % \jobitem{\august\text{ }2018 \newline \hspace*{-.5mm}\july\text{ }2020}{LAMECC - UFRGS \footnotesize(\en{Mechatronics and Control Lab}\fr{Laboratoire de Mécatronique et Commande}\pt{Laboratório de Mecatrônica e Controle})\normalsize}{Porto Alegre, \brazil}{
-          % \en{Undergrad Researcher}\fr{Élève Chercheuse}\pt{Aluna Pesquisadora}}{\en{\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}\fr{\textbf{Projet Annelida:} Développement d'un \textit{inchworm robot} pour nettoyage de conduits de pétrole de 4" à 10". Expérience en mécatronique, électronique, instrumentation, hydraulique et conception mécanique.}\pt{\textbf{Projeto Annelida:} Desenvolvimento de um robô do tipo \textit{inchworm} para limpeza de dutos de petróleo de 4" a 10". Experiência em mecatrônica, eletrônica, instrumentação e concepção mecânica.}}
+                  {axter} 
+                  {Axter Automation} 
+                  {pictures/axter_logo.jpg} 
+                  {Vaucresson, France} 
+                  {Robotics Intern} 
+                  {Mar 2021} 
+                  {Aug 2021}  
+                  {\textbf{Development with industrial mobile robots (\textit{AGVs}): }Implemented SLAM stack in ROS for LiDAR-based perception system with adverse weather resilience with robust outlier filtering in C++.} 
+                  {C++, Python, ROS, SLAM, Obstacle Detection}
               \jobitemtimeline
-                  {lamecc}
-                  {LAMECC - UFRGS}
-                  {pictures/lamecc_logo.jpg}
-                  {Porto Alegre, Brazil}
-                  {Undergrad Researcher}
-                  {Aug 2018}
-                  {Jul 2020}
-                  {\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10".}
-                  {Experience in mechatronics, electronics, instrumentation, hydraulics and mechanical design.}
+                  {lamecc} 
+                  {LAMECC - UFRGS} 
+                  {pictures/lamecc_logo.jpg} 
+                  {Porto Alegre, Brazil} 
+                  {Undergrad Researcher} 
+                  {Aug 2018} 
+                  {Jul 2020}  
+                  {\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Implemented robot movement tracking system with minimal sensors for high-pressure under oil environment.} 
+                  {Mechatronics, Electronics, Embedded C, Instrumentation, Hydraulics, Mechanical design, SolidWorks}
           \end{center}
-          \connectjobs{conceptu}{senai}
-          \connectjobs{senai}{trimble}
-          \connectjobs{trimble}{axter}
-          \connectjobs{axter}{laeromec}
-          \connectjobs{laeromec}{lamecc}
+                  \connectjobs{conceptu}{senai}
+                  \connectjobs{senai}{trimble}
+                  \connectjobs{trimble}{laeromec}
+                  \connectjobs{laeromec}{axter}
+                  \connectjobs{axter}{lamecc}
 
-          \vspace*{-10mm}
+          \vspace*{-8mm}
             
         \end{tcolorbox}
     \end{minipage}
     
-    \vfill
-    
-    \vspace*{-1mm}
+    \vspace*{-2mm}
 \end{tcolorbox}
 
 

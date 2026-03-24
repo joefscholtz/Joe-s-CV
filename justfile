@@ -6,8 +6,7 @@ default:
   just --list
 
 run:
-  uv run sync_data.py
-  uv run main.py
+  uv run src/joe-s-cv/process_cv.py
 
 open_default:
   xdg-open ./tex/default_resume.pdf

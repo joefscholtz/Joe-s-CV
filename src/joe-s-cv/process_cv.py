@@ -3,6 +3,7 @@ from datetime import datetime
 import sqlite3
 from jinja2 import Environment, FileSystemLoader
 from pypdf import PdfReader, PdfWriter
+import db
 
 # Custom delimiters to avoid LaTeX conflict
 env = Environment(
@@ -66,6 +67,7 @@ def get_default_cv():
 
 
 if __name__ == "__main__":
+    db.sync()
     data = {"experiences": get_default_cv()}
     tex = env.get_template("resume_template.tex").render(data)
 

@@ -20,3 +20,4 @@
 svg-inkscape
 *.synctex*
 .venv
+**__pycache__**

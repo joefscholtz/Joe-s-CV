@@ -45,7 +45,7 @@
   role: "Robotics Intern"
   start_date: "Mar 2021"
   end_date: "Aug 2021"
-  intro: "\\textbf{Development with industrial mobile robots (\\textit{AGV}): }"
+  intro: "\\textbf{Development with industrial mobile robots (\\textit{AGVs}): }"
   is_default: 1
 
 - id: "auros"

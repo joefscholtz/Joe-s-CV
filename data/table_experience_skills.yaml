@@ -18,6 +18,7 @@
 - {exp_id: "conceptu", skill_id: "makefile", is_default: 0}
 - {exp_id: "conceptu", skill_id: "ninja", is_default: 0}
 - {exp_id: "conceptu", skill_id: "docker", is_default: 1}
+- {exp_id: "conceptu", skill_id: "docker_compose", is_default: 0}
 - {exp_id: "conceptu", skill_id: "bash", is_default: 1}
 - {exp_id: "conceptu", skill_id: "ci_cd", is_default: 1}
 - {exp_id: "conceptu", skill_id: "git", is_default: 1}

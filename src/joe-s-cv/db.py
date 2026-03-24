@@ -23,8 +23,14 @@ class Db:
             return None
         return hashlib.md5(filepath.read_bytes()).hexdigest()
 
-    def check_for_changes(self, files):
+    def check_for_changes(self, files=None):
         """Returns True if any file hash has changed since the last sync."""
+        if files is None:
+            files = self.data_files
+
+        if not self.db_path.is_file():
+            return True
+
         # Ensure 'data' directory exists
         self.cache_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -45,7 +51,7 @@ class Db:
         return sqlite3.connect(self.db_path)
 
     def sync(self):
-        if not self.check_for_changes(self.data_files):
+        if not self.check_for_changes():
             print("─ No changes detected in YAML files. Skipping sync.")
             return
 

@@ -9,7 +9,7 @@ run:
   uv run src/joe-s-cv/process_cv.py
 
 open_default:
-  xdg-open ./tex/default_resume.pdf
+  xdg-open ./tex/default_resume_compressed.pdf
 
 open_zathura:
-  zathura ./tex/default_resume.pdf
+  zathura ./tex/default_resume_compressed.pdf

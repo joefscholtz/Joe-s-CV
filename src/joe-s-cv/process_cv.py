@@ -107,10 +107,14 @@ class ResumeFactory:
             f"-XMP-dc:Title={data['title']}",
             f"-XMP-dc:Creator={data['creator']}",
             f"-XMP-dc:Description={data['description']}",
+            f"-XMP-cp:Description={data['description']}",
             f"-XMP-dc:Subject={kw_str}",  # DC Subject is often used for keywords
+            f"-XMP-cp:Subject={kw_str}",  # DC Subject is often used for keywords
             f"-XMP-pdf:Keywords={kw_str}",
+            f"-XMP-cp:Keywords={kw_str}",
             f"-XMP-xmp:Nickname={data['nickname']}",
             f"-Category={data['category']}",
+            f"-XMP-cp:Category={data['category']}",
             # --- DC/CP ---
             f"-DC:TITLE={data['title']}",
             f"-DC:CREATOR={data['creator']}",

@@ -2,14 +2,15 @@ import argparse
 from pathlib import Path
 import subprocess
 from datetime import datetime
+import json
 import sqlite3
 from jinja2 import Environment, FileSystemLoader
-from pypdf import PdfReader, PdfWriter
 from db import Db
+from ai_assistant import AIAssistant
 
 
 class ResumeFactory:
-    def __init__(self, force_default_generation=False):
+    def __init__(self, force_default_generation=False, jd_path=None):
         self.db = Db()
         self.tex_dir = Path("tex")
         self.template_tex = self.tex_dir / "resume_template.tex"
@@ -36,6 +37,9 @@ class ResumeFactory:
             print("─ No changes detected. Skipping default cv generation.")
         else:
             self.generate_default_cv()
+        if jd_path:
+            print(f"── Tailoring CV for: {jd_path}")
+            self.generate_tailored_cv(Path(jd_path))
 
     def check_for_changes(self):
         files_missing = not self.output_pdf.exists() or not self.compressed_pdf.exists()
@@ -45,48 +49,58 @@ class ResumeFactory:
         return files_missing or db_changed or template_changed
 
     def get_default_cv(self):
-        conn = self.db.get_conn()
-        conn.row_factory = sqlite3.Row
+        all_exp = self.db.get_experiences()
+        default_list = []
 
-        exp_cursor = conn.cursor()
-        sub_cursor = conn.cursor()
+        for exp in all_exp:
+            if exp.get("is_default") == 1:
+                exp["description"] = " ".join(
+                    [d["text"] for d in exp["descriptions"] if d["is_default"] == 1]
+                )
 
-        experiences = []
-        exp_cursor.execute(
-            "SELECT * FROM experiences WHERE is_default = 1 ORDER BY id ASC"
+                exp["skills"] = [
+                    s["name"] for s in exp["skills"] if s["is_default"] == 1
+                ]
+
+                default_list.append(exp)
+        return default_list
+
+    def generate_tailored_cv(self, jd_path):
+        ai = AIAssistant()
+
+        all_exp = self.db.get_experiences()
+
+        plan = ai.analyze_job(jd_path, json.dumps(all_exp))
+        print(json.dumps(plan, indent=2))
+
+        experiences = self.db.get_experiences_by_id(plan["selected_exp_ids"])
+
+        for exp in experiences:
+            for word in plan["highlights"]:
+                exp["description"] = exp["description"].replace(
+                    word, f"\\highlight{{{word}}}"
+                )
+
+            exp["skills"] = [
+                s.replace(word, f"\\highlight{{{word}}}")
+                for s in exp["skills"]
+                if word in s
+            ] or exp["skills"]
+
+        data = {
+            "experiences": experiences,
+            "title": plan["title"],
+            "creator": "Joe Ferreira Scholtz",
+            "nickname": "Joe",
+            "keyword": plan["highlights"],
+            "description": plan["description"],
+            "category": "Resume",
+        }
+
+        self.output_pdf = (
+            self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.pdf"
         )
-
-        for exp in exp_cursor:
-            exp_dict = dict(exp)
-            exp_id = exp["id"]
-
-            sub_cursor.execute(
-                "SELECT text FROM descriptions WHERE exp_id=? AND is_default=1",
-                (exp_id,),
-            )
-            exp_dict["description"] = " ".join([b[0] for b in sub_cursor.fetchall()])
-
-            sub_cursor.execute(
-                """
-                SELECT s.name FROM skills s 
-                JOIN experience_skills es ON s.id = es.skill_id 
-                WHERE es.exp_id=? AND es.is_default=1""",
-                (exp_id,),
-            )
-            exp_dict["skills"] = [s[0] for s in sub_cursor.fetchall()]
-
-            experiences.append(exp_dict)
-
-        conn.close()
-
-        experiences.sort(
-            key=lambda x: (
-                1 if x["end_date"] == "Present" else 0,
-                datetime.strptime(x["start_date"], "%b %Y"),
-            ),
-            reverse=True,
-        )
-        return experiences
+        self.generate_cv(data)
 
     def update_pdf_metadata(self, pdf_path, data):
         if not pdf_path.exists():
@@ -191,6 +205,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--force", action="store_true", help="Force default cv generation."
     )
+    parser.add_argument(
+        "--jd", type=str, default=None, help="Path to job description file."
+    )
 
     args = parser.parse_args()
-    resume_factory = ResumeFactory(args.force)
+    resume_factory = ResumeFactory(args.force, args.jd)

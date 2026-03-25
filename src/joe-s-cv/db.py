@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import datetime
 import yaml
 import sqlite3
 import hashlib
@@ -65,7 +66,7 @@ class Db:
             print("─ No changes detected in YAML files. Skipping sync.")
             return
 
-        conn = self.get_conn()  # Fixed: added parentheses
+        conn = self.get_conn()
         cursor = conn.cursor()
 
         cursor.execute("PRAGMA foreign_keys = OFF;")
@@ -127,6 +128,86 @@ class Db:
             sys.exit(1)
         finally:
             conn.close()
+
+    def get_experiences(self):
+        conn = self.get_conn()
+        conn.row_factory = sqlite3.Row
+        exp_cursor = conn.cursor()
+        sub_cursor = conn.cursor()
+
+        experiences = []
+        exp_cursor.execute("SELECT * FROM experiences ORDER BY id ASC")
+
+        for exp in exp_cursor:
+            exp_dict = dict(exp)
+            exp_id = exp["id"]
+
+            sub_cursor.execute(
+                "SELECT id, text, is_default FROM descriptions WHERE exp_id=?",
+                (exp_id,),
+            )
+            exp_dict["descriptions"] = [dict(row) for row in sub_cursor.fetchall()]
+
+            sub_cursor.execute(
+                """
+                SELECT s.id, s.name, es.is_default FROM skills s 
+                JOIN experience_skills es ON s.id = es.skill_id 
+                WHERE es.exp_id=?""",
+                (exp_id,),
+            )
+            exp_dict["skills"] = [dict(row) for row in sub_cursor.fetchall()]
+
+            experiences.append(exp_dict)
+
+        conn.close()
+
+        experiences.sort(
+            key=lambda x: (
+                1 if x["end_date"] == "Present" else 0,
+                datetime.strptime(x["start_date"], "%b %Y"),
+            ),
+            reverse=True,
+        )
+        return experiences
+
+    def get_experiences_by_id(self, exp_ids):
+        experiences = self.get_experiences()
+        matched_experiences = []
+        for exp in experiences:
+            if exp["id"] in exp_ids:
+                matched_experiences.append(exp)
+        return matched_experiences
+
+    def get_tailored_experiences(self, selected_plan):
+        all_pool = self.get_experiences()
+        tailored_list = []
+        pool_map = {str(exp["id"]): exp for exp in all_pool}
+
+        for selection in selected_plan:
+            exp_id = str(selection["experience_id"])
+            if exp_id in pool_map:
+                # Deepish copy to avoid mutating the pool
+                base_exp = pool_map[exp_id].copy()
+
+                # Process Descriptions (Ids -> Joined String)
+                base_exp["description"] = " ".join(
+                    [
+                        d["text"]
+                        for d in base_exp["descriptions"]
+                        if d["id"] in selection["descriptions_ids"]
+                    ]
+                )
+
+                # Process Skills (Ids -> List of Strings)
+                # We filter the dicts and extract only the 'name'
+                base_exp["skills"] = [
+                    s["name"]
+                    for s in base_exp["skills"]
+                    if s["id"] in selection["skills_ids"]
+                ]
+
+                tailored_list.append(base_exp)
+        return tailored_list
 
 
 if __name__ == "__main__":

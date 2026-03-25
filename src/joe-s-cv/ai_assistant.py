@@ -10,10 +10,30 @@ class AIAssistant:
         self.prompt_path = Path(prompt_path)
         self.schema_path = Path(schema_path)
 
-    def analyze_job(self, jd_path: Path, db_json_content: str):
+    def analyze_job(
+        self, jd_path: Path, db_json_content: str, use_previous_result=False
+    ):
         if not jd_path.exists():
             raise FileNotFoundError(f"Job Description not found at {jd_path}")
         output_json = jd_path.with_name(f"{jd_path.stem}.json")
+        if use_previous_result:
+            if output_json.is_file():
+                try:
+                    with output_json.open(mode="r", encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    print(f"Loaded previous result from file {output_json}")
+                    return data
+
+                except json.JSONDecodeError:
+                    print(
+                        f"✘ Error: Failed to decode JSON from file {output_json} (invalid JSON format)."
+                    )
+            else:
+                print(
+                    f"✘ Error: File {output_json} not found, unable to use the last result."
+                )
+                sys.exit(1)
 
         # Load context files
         jd_text = jd_path.read_text()

@@ -10,8 +10,11 @@ from ai_assistant import AIAssistant
 
 
 class ResumeFactory:
-    def __init__(self, force_default_generation=False, jd_path=None):
+    def __init__(
+        self, force_default_generation=False, jd_path=None, use_previous_result=False
+    ):
         self.db = Db()
+
         self.tex_dir = Path("tex")
         self.template_tex = self.tex_dir / "resume_template.tex"
         self.output_tex = self.tex_dir / "default_resume.tex"
@@ -19,6 +22,9 @@ class ResumeFactory:
         self.compressed_pdf = self.output_pdf.with_name(
             f"{self.output_pdf.stem}_compressed{self.output_pdf.suffix}"
         )
+
+        self.use_previous_result = use_previous_result
+
         self.jinja2env = Environment(
             block_start_string="((%",
             block_end_string="%))",
@@ -88,7 +94,7 @@ class ResumeFactory:
                 }
             )
 
-        plan = ai.analyze_job(jd_path, json.dumps(ai_pool))
+        plan = ai.analyze_job(jd_path, json.dumps(ai_pool), self.use_previous_result)
 
         experiences = self.db.get_tailored_experiences(plan["selected_experiences"])
 
@@ -264,6 +270,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--jd", type=str, default=None, help="Path to job description file."
     )
+    parser.add_argument(
+        "--use_previous_result",
+        action="store_true",
+        help="Use previous json dump result instead of recomputing with AI",
+    )
 
     args = parser.parse_args()
-    resume_factory = ResumeFactory(args.force, args.jd)
+    resume_factory = ResumeFactory(args.force, args.jd, args.use_previous_result)

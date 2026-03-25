@@ -15,7 +15,7 @@ class ResumeFactory:
         self.tex_dir = Path("tex")
         self.template_tex = self.tex_dir / "resume_template.tex"
         self.output_tex = self.tex_dir / "default_resume.tex"
-        self.output_pdf = self.tex_dir / "default_resume.pdf"
+        self.output_pdf = self.output_tex.with_name(f"{self.output_tex.stem}.pdf")
         self.compressed_pdf = self.output_pdf.with_name(
             f"{self.output_pdf.stem}_compressed{self.output_pdf.suffix}"
         )
@@ -68,12 +68,28 @@ class ResumeFactory:
     def generate_tailored_cv(self, jd_path):
         ai = AIAssistant()
 
-        all_exp = self.db.get_experiences()
+        raw_pool = self.db.get_experiences()
 
-        plan = ai.analyze_job(jd_path, json.dumps(all_exp))
+        ai_pool = []
+        for exp in raw_pool:
+            ai_pool.append(
+                {
+                    "id": exp["id"],
+                    "role": exp["role"],
+                    "company": exp["company"],
+                    "descriptions": [
+                        {"id": d["id"], "text": d["text"]} for d in exp["descriptions"]
+                    ],
+                    "skills": [
+                        {"id": s["id"], "name": s["name"]} for s in exp["skills"]
+                    ],
+                }
+            )
+
+        plan = ai.analyze_job(jd_path, json.dumps(ai_pool))
         print(json.dumps(plan, indent=2))
 
-        experiences = self.db.get_experiences_by_id(plan["selected_exp_ids"])
+        experiences = self.db.get_experiences_by_id(plan["selected_experiences"])
 
         for exp in experiences:
             for word in plan["highlights"]:
@@ -100,7 +116,20 @@ class ResumeFactory:
         self.output_pdf = (
             self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.pdf"
         )
-        self.generate_cv(data)
+
+        jd_pathlib = Path(jd_path)
+        output_tex = self.tex_dir / jd_pathlib.name
+        output_pdf = output_tex.with_name(f"{output_tex.stem}.pdf")
+        compressed_pdf = output_pdf.with_name(
+            f"{output_pdf.stem}_compressed{output_pdf.suffix}"
+        )
+
+        self.generate_cv(
+            data,
+            output_tex=output_tex,
+            output_pdf=output_pdf,
+            compressed_pdf=compressed_pdf,
+        )
 
     def update_pdf_metadata(self, pdf_path, data):
         if not pdf_path.exists():
@@ -163,20 +192,26 @@ class ResumeFactory:
         }
         self.generate_cv(data)
 
-    def generate_cv(self, data):
-        self.output_pdf.unlink(missing_ok=True)
-        self.compressed_pdf.unlink(missing_ok=True)
+    def generate_cv(self, data, output_tex=None, output_pdf=None, compressed_pdf=None):
+        if output_tex is None:
+            output_tex = self.output_tex
+        if output_pdf is None:
+            output_pdf = self.output_pdf
+        if compressed_pdf is None:
+            compressed_pdf = self.compressed_pdf
+        output_pdf.unlink(missing_ok=True)
+        compressed_pdf.unlink(missing_ok=True)
 
         self.db.sync()
 
         rendered_tex = self.jinja2_tex_template.render(data)
 
-        self.output_tex.write_text(rendered_tex)
+        output_tex.write_text(rendered_tex)
 
         # Run lualatex twice for TikZ/geometry resolution
         for _ in range(2):
             subprocess.run(
-                ["lualatex", "--interaction=nonstopmode", self.output_tex.name],
+                ["lualatex", "--interaction=nonstopmode", output_tex.name],
                 cwd=str(self.tex_dir),
             )
 
@@ -190,14 +225,14 @@ class ResumeFactory:
                 "-dNOPAUSE",
                 "-dQUIET",
                 "-dBATCH",
-                f"-sOutputFile={self.compressed_pdf.resolve()}",
-                str(self.output_pdf.resolve()),
+                f"-sOutputFile={compressed_pdf.resolve()}",
+                str(output_pdf.resolve()),
             ],
             cwd=str(self.tex_dir),
             check=True,
         )
-        self.update_pdf_metadata(self.output_pdf, data)
-        self.update_pdf_metadata(self.compressed_pdf, data)
+        self.update_pdf_metadata(output_pdf, data)
+        self.update_pdf_metadata(compressed_pdf, data)
 
 
 if __name__ == "__main__":

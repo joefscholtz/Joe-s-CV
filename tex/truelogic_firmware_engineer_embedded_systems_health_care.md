@@ -552,26 +552,7 @@
 
             \vspace*{-6mm}
             \begin{center}
-          ((% for job in experiences %))
-              \jobitemtimeline
-                  {((job.id))} 
-                  {((job.company))} 
-                  {((job.logo_path))} 
-                  {((job.location))} 
-                  {((job.role))} 
-                  {((job.start_date))} 
-                  {((job.end_date))}  
-                  {((job.intro | safe))((job.description | safe))} 
-                  {(( job.skills | join(', ') | safe))}
-          ((% endfor %))
           \end{center}
-          ((% set ns = namespace(prev_id=none) %))
-          ((% for job in experiences %))
-              ((% if ns.prev_id is not none %))
-                  \connectjobs{((ns.prev_id))}{((job.id))}
-              ((% endif %))
-              ((% set ns.prev_id = job.id %))
-          ((% endfor %))
 
           \vspace*{-8mm}
             

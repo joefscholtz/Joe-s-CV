@@ -128,6 +128,7 @@ class ResumeFactory:
             output_tex=output_tex,
             output_pdf=output_pdf,
             compressed_pdf=compressed_pdf,
+            use_double_degree_tcolorbox=False,
         )
 
     def update_pdf_metadata(self, pdf_path, data):
@@ -189,9 +190,16 @@ class ResumeFactory:
             "description": "",
             "category": "Resume",
         }
-        self.generate_cv(data)
+        self.generate_cv(data, use_double_degree_tcolorbox=True)
 
-    def generate_cv(self, data, output_tex=None, output_pdf=None, compressed_pdf=None):
+    def generate_cv(
+        self,
+        data,
+        output_tex=None,
+        output_pdf=None,
+        compressed_pdf=None,
+        use_double_degree_tcolorbox=True,
+    ):
         if output_tex is None:
             output_tex = self.output_tex
         if output_pdf is None:
@@ -215,6 +223,7 @@ class ResumeFactory:
             reverse=True,
         )
         data["experiences"] = experiences
+        data["use_double_degree_tcolorbox"] = use_double_degree_tcolorbox
 
         rendered_tex = self.jinja2_tex_template.render(data)
 

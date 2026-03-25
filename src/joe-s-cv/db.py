@@ -186,10 +186,8 @@ class Db:
         for selection in selected_plan:
             exp_id = str(selection["experience_id"])
             if exp_id in pool_map:
-                # Deepish copy to avoid mutating the pool
                 base_exp = pool_map[exp_id].copy()
 
-                # Process Descriptions (Ids -> Joined String)
                 base_exp["description"] = " ".join(
                     [
                         d["text"]
@@ -198,8 +196,6 @@ class Db:
                     ]
                 )
 
-                # Process Skills (Ids -> List of Strings)
-                # We filter the dicts and extract only the 'name'
                 base_exp["skills"] = [
                     s["name"]
                     for s in base_exp["skills"]

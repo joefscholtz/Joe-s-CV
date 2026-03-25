@@ -552,26 +552,72 @@
 
             \vspace*{-6mm}
             \begin{center}
-          ((% for job in experiences %))
               \jobitemtimeline
-                  {((job.id))} 
-                  {((job.company))} 
-                  {((job.logo_path))} 
-                  {((job.location))} 
-                  {((job.role))} 
-                  {((job.start_date))} 
-                  {((job.end_date))}  
-                  {((job.intro))((job.description))} 
-                  {(( job.skills | join(', ') ))}
-          ((% endfor %))
+                  {conceptu} 
+                  {Conceptu Protótipos \& Sistemas} 
+                  {pictures/conceptu_logo.jpg} 
+                  {Porto Alegre, Brazil} 
+                  {Senior QA C++ Engineer} 
+                  {Jun 2025} 
+                  {Dec 2025}  
+                  {\textbf{DevOps for embedded systems: }Shifted 25\% of bugs from production to development stage by implementing comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop for feature testing. Restructured embedded software architecture for DevOps pipeline with build automation and \highlight{OTA} deploy for multiple MCUs, such as ESP32, Nxp MCX, STM32, AVR and SAM, using RTOS and bare-metal.} 
+                  {\highlight{Embedded \highlight{C++}}, \highlight{Docker}, bluetooth, WiFi, \highlight{Watchdog}, \highlight{OTA}}
+              \jobitemtimeline
+                  {senai} 
+                  {SENAI ISI Sistemas de Sensoriamento} 
+                  {pictures/senai_logo.jpg} 
+                  {São Leopoldo, Brazil} 
+                  {Mobile Robotics Researcher} 
+                  {Nov 2023} 
+                  {Apr 2025}  
+                  {\textbf{Autonomous mobile robots for logistics and transportation: }Developed real-time kinematic control system for double Ackermann steering vehicle in \highlight{C++} using ros2\_control framework. Implemented full autonomous navigation stack including \highlight{SLAM}, A* based path finding, model predictive control with \highlight{ROS 2} and Nav2 for mobile robots with \highlight{LiDAR}-based perception systems.} 
+                  {\highlight{ROS 2}, \highlight{C++}, \highlight{SLAM}, \highlight{LiDAR}}
+              \jobitemtimeline
+                  {axter} 
+                  {Axter Automation} 
+                  {pictures/axter_logo.jpg} 
+                  {Vaucresson, France} 
+                  {Robotics Intern} 
+                  {Mar 2021} 
+                  {Aug 2021}  
+                  {\textbf{Development with industrial mobile robots (\textit{AGVs}): }Deployed WiFi and radar robot-server communication for a fleet of mobile robots. Implemented \highlight{SLAM} stack in ROS for \highlight{LiDAR}-based perception system with adverse weather resilience with robust outlier filtering in \highlight{C++}.} 
+                  {\highlight{C++}, \highlight{SLAM}, \highlight{Radio}, WiFi}
+              \jobitemtimeline
+                  {trimble} 
+                  {Trimble Nantes} 
+                  {pictures/trimble_logo.jpg} 
+                  {Carquefou, France} 
+                  {Software Engineer Intern} 
+                  {Sep 2021} 
+                  {Mar 2022}  
+                  {\textbf{IMU-only Data-driven Positioning: }Eliminated time-dependent position drift for a inertial only positioning method compared to double integration approaches by implementing a physics-informed machine learning model in \highlight{Python}.} 
+                  {\highlight{Python}, \highlight{IMUs}, \highlight{GNSS}, \highlight{Machine Learning}}
+              \jobitemtimeline
+                  {laeromec} 
+                  {LAEROMEC Engenheria} 
+                  {pictures/laeromec_logo.jpg} 
+                  {Porto Alegre, Brazil - Remote} 
+                  {Mechatronics Designer} 
+                  {May 2021} 
+                  {Jul 2021}  
+                  {\textbf{Project in conjunction with AGCO South America:} Design of an automated agricultural distributor. Developed electric actuated mechanical system with embedded computing.} 
+                  {\highlight{Mechatronics}, \highlight{Electronics}, \highlight{Embedded C}}
+              \jobitemtimeline
+                  {lamecc} 
+                  {LAMECC - UFRGS} 
+                  {pictures/lamecc_logo.jpg} 
+                  {Porto Alegre, Brazil} 
+                  {Undergrad Researcher} 
+                  {Aug 2018} 
+                  {Jul 2020}  
+                  {\textbf{Annelida Project:} Development of a inchworm-type robot for cleaning oil pipelines from 4" to 10". Implemented robot movement tracking system with minimal sensors for high-pressure under oil environment.} 
+                  {\highlight{Embedded C}, \highlight{Instrumentation}, \highlight{Hydraulics}}
           \end{center}
-          ((% set ns = namespace(prev_id=none) %))
-          ((% for job in experiences %))
-              ((% if ns.prev_id is not none %))
-                  \connectjobs{((ns.prev_id))}{((job.id))}
-              ((% endif %))
-              ((% set ns.prev_id = job.id %))
-          ((% endfor %))
+                  \connectjobs{conceptu}{senai}
+                  \connectjobs{senai}{axter}
+                  \connectjobs{axter}{trimble}
+                  \connectjobs{trimble}{laeromec}
+                  \connectjobs{laeromec}{lamecc}
 
           \vspace*{-8mm}
             

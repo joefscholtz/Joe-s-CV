@@ -87,21 +87,21 @@ class ResumeFactory:
             )
 
         plan = ai.analyze_job(jd_path, json.dumps(ai_pool))
-        print(json.dumps(plan, indent=2))
 
-        experiences = self.db.get_experiences_by_id(plan["selected_experiences"])
+        experiences = self.db.get_tailored_experiences(plan["selected_experiences"])
 
         for exp in experiences:
             for word in plan["highlights"]:
-                exp["description"] = exp["description"].replace(
-                    word, f"\\highlight{{{word}}}"
-                )
+                # Highlighting descriptions
+                if word in exp["description"]:
+                    exp["description"] = exp["description"].replace(
+                        word, f"\\highlight{{{word}}}"
+                    )
 
-            exp["skills"] = [
-                s.replace(word, f"\\highlight{{{word}}}")
-                for s in exp["skills"]
-                if word in s
-            ] or exp["skills"]
+                exp["skills"] = [
+                    s.replace(word, f"\\highlight{{{word}}}") if word in s else s
+                    for s in exp["skills"]
+                ]
 
         data = {
             "experiences": experiences,
@@ -113,12 +113,13 @@ class ResumeFactory:
             "category": "Resume",
         }
 
-        self.output_pdf = (
-            self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.pdf"
-        )
+        # self.output_pdf = (
+        #     self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.pdf"
+        # )
 
-        jd_pathlib = Path(jd_path)
-        output_tex = self.tex_dir / jd_pathlib.name
+        output_tex = (
+            self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.tex"
+        )
         output_pdf = output_tex.with_name(f"{output_tex.stem}.pdf")
         compressed_pdf = output_pdf.with_name(
             f"{output_pdf.stem}_compressed{output_pdf.suffix}"

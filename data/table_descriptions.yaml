@@ -4,9 +4,10 @@
   is_default: 1
 
 - exp_id: "conceptu"
-  text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs, such as ESP32, Nxp MCX, STM32, AVR and SAM, using RTOS and bare-metal."
+  # text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs, such as ESP32, Nxp MCX, STM32, AVR and SAM, using RTOS and bare-metal."
+  text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs."
   tags: "Embedded Systems, C++, Software Development, Embedded Systems, RTOS, bare-metal"
-  is_default: 0
+  is_default: 1
 
 - exp_id: "senai"
   text: "Developed real-time kinematic control system for double Ackermann steering vehicle in C++ using ros2\\_control framework."

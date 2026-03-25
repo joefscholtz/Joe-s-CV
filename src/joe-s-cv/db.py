@@ -17,8 +17,7 @@ class Db:
             Path("data/table_skills.yaml"),
             Path("data/table_experience_skills.yaml"),
         ]
-        if self.check_for_changes():
-            self.sync()
+        self.sync()
 
     def get_file_hash(self, filepath):
         """Generates an MD5 hash of a file to detect changes."""
@@ -64,10 +63,6 @@ class Db:
         return sqlite3.connect(self.db_path)
 
     def sync(self):
-        if not self.check_for_changes():
-            print("─ No changes detected in YAML files. Skipping sync.")
-            return
-
         conn = self.get_conn()
         cursor = conn.cursor()
 

@@ -115,10 +115,6 @@ class ResumeFactory:
             "category": "Resume",
         }
 
-        # self.output_pdf = (
-        #     self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.pdf"
-        # )
-
         output_tex = (
             self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.tex"
         )
@@ -206,6 +202,19 @@ class ResumeFactory:
         compressed_pdf.unlink(missing_ok=True)
 
         self.db.sync()
+
+        experiences = data["experiences"]
+        experiences.sort(
+            key=lambda x: (
+                1 if x["end_date"] == "Present" else 0,
+                datetime.strptime(
+                    x["start_date"],
+                    "%b %Y",
+                ),
+            ),
+            reverse=True,
+        )
+        data["experiences"] = experiences
 
         rendered_tex = self.jinja2_tex_template.render(data)
 

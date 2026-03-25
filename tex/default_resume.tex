@@ -168,23 +168,22 @@
         \par\vspace{2mm}
         \footnotesize #6\par
         \footnotesize #7
-        \vspace{2mm}
     \end{minipage}%
     \begin{minipage}[t]{0.8\textwidth}
         \vspace{0pt}
-        \normalsize \textbf{#2} \small\textcolor{darkgrey}{\textit{(#4)}} \par
-        \footnotesize #5 \par
+        \normalsize \textbf{#5} \par
+        \footnotesize #2 \textcolor{darkgrey}{\textit{(#4)}} \par
         \vspace{1mm}
         \footnotesize \trig #8
     \end{minipage}
 
-    \vspace{2mm}
+    \par\vspace{2mm}
     \noindent
     \begin{minipage}[t]{0.9\textwidth}
         \footnotesize \skills \textbf{Skills:} #9
     \end{minipage}
     
-    \vspace{3mm} % Vertical gap between items
+    \par\vspace{3mm} % Fixed gap between job blocks
 }
 
 \newcommand{\connectjobs}[2]{
@@ -199,7 +198,7 @@
             \centering#1&\small#2
         \end{tabular}
     \end{center}
-    \vspace*{-8.5mm}
+    \vspace{-8.5mm}
     \normalsize
 }
 
@@ -466,7 +465,7 @@
         \end{tcolorbox}
     \end{minipage}
     \begin{minipage}[t]{0.68\textwidth}
-    \vspace*{-0.2cm}
+      \vspace*{-0.2cm}
             
             % \begin{tcolorbox}[grow to right by=0.1cm,grow to left by=0.2cm,left = 0mm,right = 0mm,colback=white,colframe=white,arc=2mm]
 
@@ -511,10 +510,6 @@
             \section{\textbf{\faGraduationCap\hspace{1mm}\en{Academic}\fr{Formation}\pt{Formação Acadêmica}}}
             \vspace*{-3mm}
             
-            \begin{tcolorbox}[breakable,colback=white, left = -2mm,right = -2mm, boxrule=1mm, title=\textbf{\hspace{2mm} \faGraduationCap \hspace{1mm}
-            \en{Double Degree}
-            \fr{Double Diplôme}
-            \pt{Duplo Diploma}}]
             
                 % \academicitem{\september\text{ }2020 \newline \hspace*{-1mm}\september\text{ }2022}
             % {ECN - École Centrale de Nantes}
@@ -540,12 +535,12 @@
                   {Porto Alegre, Brazil} % Location
                   {Feb 2017} % Start
                   {Nov 2023}  % End
-                  {\en{\textbf{Control and Automation Engineering}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}} % Description
+                  {\en{\textbf{Control and Automation Engineering (Mechatronics)}. Among the best universities in \brazil\text{ }and twice the best control and automation/mechatronics engineering program according to ENADE.}\fr{\textbf{Ingénierie Mécatronique}. Parmi les meilleurs universités brésiliennes et le meilleur cours d'Ingénierie Mécatronique du Brésil deux fois consécutives selon ENADE.}\pt{\textbf{Engenharia de Controle e Automação}. Entre as melhores universidades brasileiras e melhor curso de Engenharia de Controle e Automação do Brasil duas vezes consecutivas segundo o ENADE.}} % Description
                   {Control Theory, Automation, Electronics, Electric Machines, Solid Mechanics, Mechanisms, Mathematical Modeling, C.} % Skills
+                  % {Control, Electronics, Electric Machines, Mathematical Modeling, C.} % Skills
                 
             \vspace*{-1mm}
-            \end{tcolorbox}
-            \vspace*{-4mm}
+            \vspace*{-1mm}
             
 %--------------Expérience------------------------            
           \section{\textbf{\faSuitcase\hspace{1mm}\en{Professional Experience}\fr{Expérience Professionnelle}\pt{Experiência Profissional}}}
@@ -560,7 +555,7 @@
                   {Senior QA C++ Engineer} 
                   {Jun 2025} 
                   {Dec 2025}  
-                  {\textbf{DevOps for embedded systems: }Shifted 25\% of bugs from production to development stage by implementing comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop for feature testing.} 
+                  {\textbf{DevOps for embedded systems: }Implemented a comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop. Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs.} 
                   {Embedded C, Embedded C++, Python, Linux, ESP32, ESP-IDF, AVR, SAM, Nxp MCX, STM32, GNU Arm Embedded Toolchain, Clang, Docker, bash, CI/CD, Git}
               \jobitemtimeline
                   {senai} 

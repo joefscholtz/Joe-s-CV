@@ -11,6 +11,7 @@
 - {exp_id: "conceptu", skill_id: "nxp_mcx", is_default: 1}
 - {exp_id: "conceptu", skill_id: "stm32", is_default: 1}
 - {exp_id: "conceptu", skill_id: "freertos", is_default: 0}
+- {exp_id: "conceptu", skill_id: "bare_metal", is_default: 0}
 - {exp_id: "conceptu", skill_id: "gnu_arm_toolchain", is_default: 1}
 - {exp_id: "conceptu", skill_id: "gcc", is_default: 0}
 - {exp_id: "conceptu", skill_id: "clang", is_default: 1}
@@ -18,6 +19,7 @@
 - {exp_id: "conceptu", skill_id: "makefile", is_default: 0}
 - {exp_id: "conceptu", skill_id: "ninja", is_default: 0}
 - {exp_id: "conceptu", skill_id: "docker", is_default: 1}
+- {exp_id: "conceptu", skill_id: "docker_compose", is_default: 0}
 - {exp_id: "conceptu", skill_id: "bash", is_default: 1}
 - {exp_id: "conceptu", skill_id: "ci_cd", is_default: 1}
 - {exp_id: "conceptu", skill_id: "git", is_default: 1}
@@ -28,11 +30,13 @@
 - {exp_id: "conceptu", skill_id: "wifi", is_default: 0}
 - {exp_id: "conceptu", skill_id: "watchdog", is_default: 0}
 - {exp_id: "conceptu", skill_id: "ota", is_default: 0}
+- {exp_id: "conceptu", skill_id: "jtag", is_default: 0}
 
 - {exp_id: "senai", skill_id: "ros2", is_default: 1}
 - {exp_id: "senai", skill_id: "cpp", is_default: 1}
 - {exp_id: "senai", skill_id: "embedded_cpp", is_default: 0}
 - {exp_id: "senai", skill_id: "rtos", is_default: 0}
+- {exp_id: "senai", skill_id: "bare_metal", is_default: 0}
 - {exp_id: "senai", skill_id: "python", is_default: 1}
 - {exp_id: "senai", skill_id: "linux", is_default: 1}
 - {exp_id: "senai", skill_id: "hardware_drivers", is_default: 1}
@@ -75,6 +79,7 @@
 - {exp_id: "laeromec", skill_id: "mechatronics", is_default: 1}
 - {exp_id: "laeromec", skill_id: "electronics", is_default: 1}
 - {exp_id: "laeromec", skill_id: "embedded_c", is_default: 1}
+- {exp_id: "laeromec", skill_id: "bare_metal", is_default: 0}
 - {exp_id: "laeromec", skill_id: "mechanical_design", is_default: 1}
 - {exp_id: "laeromec", skill_id: "solidworks", is_default: 1}
 
@@ -101,6 +106,7 @@
 - {exp_id: "lamecc", skill_id: "mechatronics", is_default: 1}
 - {exp_id: "lamecc", skill_id: "electronics", is_default: 1}
 - {exp_id: "lamecc", skill_id: "embedded_c", is_default: 1}
+- {exp_id: "lamecc", skill_id: "bare_metal", is_default: 0}
 - {exp_id: "lamecc", skill_id: "instrumentation", is_default: 1}
 - {exp_id: "lamecc", skill_id: "hydraulics", is_default: 1}
 - {exp_id: "lamecc", skill_id: "mechanical_design", is_default: 1}

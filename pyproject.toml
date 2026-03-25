@@ -6,6 +6,8 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "jinja2>=3.1.6",
+    "ollama>=0.6.1",
+    "pillow>=12.1.1",
     "pypdf>=6.9.1",
     "pyyaml>=6.0.3",
 ]

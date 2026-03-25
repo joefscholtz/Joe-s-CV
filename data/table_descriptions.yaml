@@ -1,12 +1,13 @@
 - exp_id: "conceptu"
-  text: "Shifted 25\\% of bugs from production to development stage by implementing comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop for feature testing."
+  text: "Implemented a comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop."
   tags: "DevOps, QA, Embedded Systems, CI/CD, Testing"
   is_default: 1
 
 - exp_id: "conceptu"
-  text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs, such as ESP32, Nxp MCX, STM32, AVR and SAM, using RTOS and bare-metal."
+  # text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs, such as ESP32, Nxp MCX, STM32, AVR and SAM, using RTOS and bare-metal."
+  text: "Restructured embedded software architecture for DevOps pipeline with build automation and OTA deploy for multiple MCUs."
   tags: "Embedded Systems, C++, Software Development, Embedded Systems, RTOS, bare-metal"
-  is_default: 0
+  is_default: 1
 
 - exp_id: "senai"
   text: "Developed real-time kinematic control system for double Ackermann steering vehicle in C++ using ros2\\_control framework."
@@ -39,7 +40,7 @@
   is_default: 1
 
 - exp_id: "axter"
-  text: "Deployed WiFi and radar robot-server communication for a fleet of mobile robots."
+  text: "Deployed WiFi and radar robot-server communication for a fleet of mobile robots including Cross-Plataform Desktop App."
   tags: "AGV, Industrial Robotics, Delphi, Pascal, Mobile Robots, Back-end"
   is_default: 0
 

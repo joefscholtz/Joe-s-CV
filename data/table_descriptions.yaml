@@ -39,7 +39,7 @@
   is_default: 1
 
 - exp_id: "axter"
-  text: "Deployed WiFi and radar robot-server communication for a fleet of mobile robots."
+  text: "Deployed WiFi and radar robot-server communication for a fleet of mobile robots including Cross-Plataform Desktop App."
   tags: "AGV, Industrial Robotics, Delphi, Pascal, Mobile Robots, Back-end"
   is_default: 0
 

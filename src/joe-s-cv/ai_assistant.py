@@ -31,7 +31,10 @@ class AIAssistant:
             f"TARGET JOB DESCRIPTION:\n{jd_text}"
         )
         # model_name = "qwen2.5-coder:32b"
-        model_name = "qwen3-coder:480b-cloud"
+        # model_name = "qwen3-coder:480b-cloud"
+        # model_name = "qwen3-coder:480b-cloud"
+        # kimi-k2.5:cloud
+        model_name = "qwen3.5:397b-cloud"
         print(f"── Context loaded for model: {model_name}")
 
         try:

@@ -29,6 +29,7 @@
 - {exp_id: "conceptu", skill_id: "wifi", is_default: 0}
 - {exp_id: "conceptu", skill_id: "watchdog", is_default: 0}
 - {exp_id: "conceptu", skill_id: "ota", is_default: 0}
+- {exp_id: "conceptu", skill_id: "jtag", is_default: 0}
 
 - {exp_id: "senai", skill_id: "ros2", is_default: 1}
 - {exp_id: "senai", skill_id: "cpp", is_default: 1}

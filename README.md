@@ -40,5 +40,6 @@ or using just `just run`.
 
 ## TODOs
 
-[ ] Add the option to rerun without using the previous output for that job description file
-[ ] Flag to hide the Double Degree `tcolorbox`
+- [ ] Add the option to rerun without using the previous output for that job description file
+- [ ] Flag to hide the Double Degree `tcolorbox`
+- [ ] Docker setup

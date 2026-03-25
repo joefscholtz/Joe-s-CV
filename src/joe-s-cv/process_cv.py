@@ -36,8 +36,10 @@ class ResumeFactory:
         if not self.check_for_changes() and not force_default_generation:
             print("─ No changes detected. Skipping default cv generation.")
         else:
+            self.db.sync()
             self.generate_default_cv()
         if jd_path:
+            self.db.sync()
             print(f"── Tailoring CV for: {jd_path}")
             self.generate_tailored_cv(Path(jd_path))
 

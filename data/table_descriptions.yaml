@@ -1,5 +1,5 @@
 - exp_id: "conceptu"
-  text: "Shifted 25\\% of bugs from production to development stage by implementing comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop for feature testing."
+  text: "Implemented a comprehensive DevOps pipeline encompassing static code analysis, unit testing, build automation, cryptography through to embedded systems simulation and Hardware-in-the-loop."
   tags: "DevOps, QA, Embedded Systems, CI/CD, Testing"
   is_default: 1
 

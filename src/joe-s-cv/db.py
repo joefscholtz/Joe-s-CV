@@ -17,6 +17,8 @@ class Db:
             Path("data/table_skills.yaml"),
             Path("data/table_experience_skills.yaml"),
         ]
+        if self.check_for_changes():
+            self.sync()
 
     def get_file_hash(self, filepath):
         """Generates an MD5 hash of a file to detect changes."""
@@ -94,6 +96,14 @@ class Db:
 
                 # Table name discovery based on filename
                 table_name = file_path.name.replace("table_", "").replace(".yaml", "")
+                print(f"── Processing table: {table_name}")  # DEBUG
+
+                rows = yaml.safe_load(file_path.read_text())
+                if not rows:
+                    print(f"   ! No data found in {file_path.name}")  # DEBUG
+                    continue
+
+                print(f"   + Inserting {len(rows)} rows into {table_name}")  # DEBUG
 
                 if not file_path.exists():
                     continue
@@ -208,4 +218,3 @@ class Db:
 
 if __name__ == "__main__":
     db = Db()
-    db.sync()

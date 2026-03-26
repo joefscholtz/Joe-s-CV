@@ -41,4 +41,4 @@ or using just `just run`.
 ## TODOs
 
 - [ ] Docker setup
-- [ ] Serve Backend with Python for a React App
+- [ ] Serve Backend with Python for a React App or maybe a Desktop App???

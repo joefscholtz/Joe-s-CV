@@ -14,6 +14,7 @@ Your output must maintain perfect visual balance.
   - If JD asks for "BT" and DB has "Bluetooth", include "Bluetooth" as a highlight.
   - If JD asks for "LTE" and DB has "4G", include "4G" as a highlight.
   - If there is variants such as "RTOS" and "FreeRTOS", include both as highlighs.
+  - Don't match highlights that are note in the job description
   - The goal is to highlight terms in your CV that prove you meet the JD's specific needs, even if the terminology varies slightly.
 
 # FILENAME SAFETY

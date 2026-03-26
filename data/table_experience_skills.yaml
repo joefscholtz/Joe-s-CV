@@ -1,5 +1,6 @@
 - {exp_id: "conceptu", skill_id: "embedded_c", is_default: 1}
 - {exp_id: "conceptu", skill_id: "embedded_cpp", is_default: 1}
+- {exp_id: "conceptu", skill_id: "firmware", is_default: 0}
 - {exp_id: "conceptu", skill_id: "python", is_default: 1}
 - {exp_id: "conceptu", skill_id: "linux", is_default: 1}
 - {exp_id: "conceptu", skill_id: "esp32", is_default: 1}

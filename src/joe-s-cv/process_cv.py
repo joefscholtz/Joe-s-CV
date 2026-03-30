@@ -17,7 +17,7 @@ class ResumeFactory:
 
         self.tex_dir = Path("tex")
         self.template_tex = self.tex_dir / "resume_template.tex"
-        self.output_tex = self.tex_dir / "default_resume.tex"
+        self.output_tex = self.tex_dir / "joe_fs_default_resume.tex"
         self.output_pdf = self.output_tex.with_name(f"{self.output_tex.stem}.pdf")
         self.compressed_pdf = self.output_pdf.with_name(
             f"{self.output_pdf.stem}_compressed{self.output_pdf.suffix}"

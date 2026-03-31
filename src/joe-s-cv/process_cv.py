@@ -215,6 +215,29 @@ class ResumeFactory:
     ):
         if parent_dir is None:
             parent_dir = self.tex_dir
+        else:
+            dest_fonts_dir = parent_dir / "fonts"
+            dest_fonts_dir.mkdir(exist_ok=True)
+
+            src_fonts_dir = self.tex_dir / "fonts"
+            if src_fonts_dir.exists():
+                for src_file in src_fonts_dir.glob("*"):
+                    if src_file.is_file():
+                        dest_file = dest_fonts_dir / src_file.name
+                        if not dest_file.exists():
+                            dest_file.write_bytes(src_file.read_bytes())
+
+        abs_tex_dir = self.tex_dir.resolve()
+        abs_parent_dir = parent_dir.resolve()
+
+        try:
+            # relative_to only works 'downwards', so we use it to find the depth
+            depth = len(abs_parent_dir.relative_to(abs_tex_dir).parts)
+            # Create a string like "../../"
+            parent_prefix = "../" * depth
+        except ValueError:
+            # If parent_dir is NOT a subdirectory of tex_dir (e.g. they are the same)
+            parent_prefix = ""
         if output_tex is None:
             output_tex = self.output_tex
         if output_pdf is None:
@@ -238,6 +261,7 @@ class ResumeFactory:
             reverse=True,
         )
         data["experiences"] = experiences
+        data["parent_prefix"] = parent_prefix
         data["use_double_degree_tcolorbox"] = use_double_degree_tcolorbox
 
         rendered_tex = self.jinja2_tex_template.render(data)

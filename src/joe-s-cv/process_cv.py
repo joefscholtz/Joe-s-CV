@@ -7,6 +7,7 @@ import sqlite3
 from jinja2 import Environment, FileSystemLoader
 from db import Db
 from ai_assistant import AIAssistant
+from camel_converter import to_snake
 
 
 class ResumeFactory:
@@ -111,6 +112,8 @@ class ResumeFactory:
                     for s in exp["skills"]
                 ]
 
+        plan["company"] = to_snake(plan["company"])
+
         data = {
             "experiences": experiences,
             "title": plan["title"],
@@ -120,10 +123,6 @@ class ResumeFactory:
             "description": plan["description"],
             "category": "Resume",
         }
-
-        # output_tex = (
-        #     self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.tex"
-        # )
 
         company_dir = self.tex_dir / "companies" / f"{plan["company"]}"
         company_dir.mkdir(parents=True, exist_ok=True)

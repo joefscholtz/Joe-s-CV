@@ -25,6 +25,15 @@ wheels = [
 ]
 
 [[package]]
+name = "camel-converter"
+version = "5.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cd/cb/55feabf13527c464db60145e2e0dccd2f190b0a4a417cac2473bd2b18508/camel_converter-5.1.0.tar.gz", hash = "sha256:d979f23de232aa262dcf15a263ed9af934ff4378644dae23a7c2f8d40f4fff8f", size = 71481, upload-time = "2026-03-05T15:30:58.957Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d5/c3/8fc18a914da9747b7a652180758a46a3d5f22efd0dffd5a8b97acfb1ebf3/camel_converter-5.1.0-py3-none-any.whl", hash = "sha256:93f05d7d84a4353ddfd87bca909d1de45c11f5757f6a460de10534397146fe88", size = 6960, upload-time = "2026-03-05T15:31:00.135Z" },
+]
+
+[[package]]
 name = "certifi"
 version = "2026.2.25"
 source = { registry = "https://pypi.org/simple" }
@@ -96,6 +105,7 @@ name = "joe-s-cv"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "camel-converter" },
     { name = "jinja2" },
     { name = "ollama" },
     { name = "pillow" },
@@ -105,6 +115,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "camel-converter", specifier = ">=5.1.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "ollama", specifier = ">=0.6.1" },
     { name = "pillow", specifier = ">=12.1.1" },

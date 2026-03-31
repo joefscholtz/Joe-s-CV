@@ -121,9 +121,14 @@ class ResumeFactory:
             "category": "Resume",
         }
 
-        output_tex = (
-            self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.tex"
-        )
+        # output_tex = (
+        #     self.tex_dir / f"joe_fs_resume_{plan["company"]}_{plan["title"]}.tex"
+        # )
+
+        company_dir = self.tex_dir / "companies" / f"{plan["company"]}"
+        company_dir.mkdir(parents=True, exist_ok=True)
+
+        output_tex = company_dir / f"joe_fs_resume_{Path(jd_path).stem}.tex"
         output_pdf = output_tex.with_name(f"{output_tex.stem}.pdf")
         compressed_pdf = output_pdf.with_name(
             f"{output_pdf.stem}_compressed{output_pdf.suffix}"
@@ -135,6 +140,7 @@ class ResumeFactory:
             output_pdf=output_pdf,
             compressed_pdf=compressed_pdf,
             use_double_degree_tcolorbox=False,
+            parent_dir=company_dir,
         )
 
     def update_pdf_metadata(self, pdf_path, data):
@@ -205,7 +211,10 @@ class ResumeFactory:
         output_pdf=None,
         compressed_pdf=None,
         use_double_degree_tcolorbox=True,
+        parent_dir=None,
     ):
+        if parent_dir is None:
+            parent_dir = self.tex_dir
         if output_tex is None:
             output_tex = self.output_tex
         if output_pdf is None:
@@ -239,7 +248,7 @@ class ResumeFactory:
         for _ in range(2):
             subprocess.run(
                 ["lualatex", "--interaction=nonstopmode", output_tex.name],
-                cwd=str(self.tex_dir),
+                cwd=str(parent_dir),
             )
 
         # Compress PDF
@@ -255,7 +264,7 @@ class ResumeFactory:
                 f"-sOutputFile={compressed_pdf.resolve()}",
                 str(output_pdf.resolve()),
             ],
-            cwd=str(self.tex_dir),
+            cwd=str(parent_dir),
             check=True,
         )
         self.update_pdf_metadata(output_pdf, data)

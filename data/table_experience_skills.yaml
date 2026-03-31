@@ -98,6 +98,7 @@
 - {exp_id: "axter", skill_id: "radio", is_default: 0}
 - {exp_id: "axter", skill_id: "wifi", is_default: 0}
 - {exp_id: "axter", skill_id: "watchdog", is_default: 0}
+- {exp_id: "axter", skill_id: "wireshark", is_default: 0}
 
 - {exp_id: "auros", skill_id: "java", is_default: 1}
 - {exp_id: "auros", skill_id: "javascript", is_default: 1}

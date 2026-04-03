@@ -15,7 +15,7 @@
   is_default: 1
 
 - exp_id: "senai"
-  text: "Implemented full autonomous navigation stack including SLAM, A* based path finding, model predictive control with ROS 2 and Nav2 for mobile robots with LiDAR-based perception systems."
+  text: "Implemented full autonomous navigation stack including SLAM, A* based path finding and model predictive control with ROS 2 and Nav2 for mobile robots with LiDAR-based perception systems."
   tags: "Robotics, ROS 2, Control, Navigation, Nav2, SLAM, Autonomous Vehicles, Path-Finding"
   is_default: 1
 
@@ -30,7 +30,7 @@
   is_default: 1
 
 - exp_id: "trimble"
-  text: "Eliminated time-dependent position drift for a inertial only positioning method compared to double integration approaches by implementing a physics-informed machine learning model in Python."
+  text: "Eliminated time-dependent position drift for an inertial-only positioning method compared to double integration approaches by implementing a physics-informed ResNet model in Python."
   tags: "Positioning, IMU, GNSS, Machine Learning, Python, Signal Processing, Navigation"
   is_default: 1
 
@@ -40,7 +40,7 @@
   is_default: 1
 
 - exp_id: "axter"
-  text: "Deployed WiFi and radar robot-server communication for a fleet of mobile robots including Cross-Plataform Desktop App."
+  text: "Deployed Cross-Plataform Desktop App for robot-server communication, using WiFi and radar, for a fleet of mobile robots."
   tags: "AGV, Industrial Robotics, Delphi, Pascal, Mobile Robots, Back-end"
   is_default: 0
 
@@ -60,6 +60,6 @@
   is_default: 1
 
 - exp_id: "lamecc"
-  text: "Implemented robot movement tracking system with minimal sensors for high-pressure under oil environment."
+  text: "Implemented robot movement tracking system with electromagnetic sensors for high-pressure under oil environment."
   tags: "R&D, Prototyping, Mechatronics, Instrumentation, Oil & Gas, Robotics Design"
   is_default: 1

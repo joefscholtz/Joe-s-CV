@@ -6,7 +6,7 @@ default:
   just --list
 
 run +args="":
-  uv run src/joe-s-cv/process_cv.py {{args}}
+  uv run src/joe-s-cv/core/engine.py {{args}}
 
 open_default:
   xdg-open ./tex/joe_fs_default_resume_compressed.pdf

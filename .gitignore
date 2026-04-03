@@ -4,7 +4,7 @@
 *.log
 *.out
 #ignores pdf just in the root dir
-/*.pdf
+*.pdf
 *.gz
 *.zip
 *.tar
@@ -19,3 +19,5 @@
 *.blg
 svg-inkscape
 *.synctex*
+.venv
+**__pycache__**

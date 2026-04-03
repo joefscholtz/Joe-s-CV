@@ -1,0 +1,14 @@
+[project]
+name = "joe-s-cv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "camel-converter>=5.1.0",
+    "jinja2>=3.1.6",
+    "ollama>=0.6.1",
+    "pillow>=12.1.1",
+    "pypdf>=6.9.1",
+    "pyyaml>=6.0.3",
+]

@@ -10,13 +10,22 @@ from ai_assistant import AIAssistant
 from camel_converter import to_snake
 
 
+def get_project_root() -> Path:
+    """Find the project root by searching for a marker file."""
+    for parent in Path(__file__).resolve().parents:
+        if (parent / ".git").exists() or (parent / "pyproject.toml").exists():
+            return parent
+    return Path(__file__).resolve().parent
+
+
 class ResumeFactory:
     def __init__(
         self, force_default_generation=False, jd_path=None, use_previous_result=False
     ):
         self.db = Db()
 
-        self.tex_dir = Path("tex")
+        self.project_root = get_project_root()
+        self.tex_dir = self.project_root / "tex"
         self.template_tex = self.tex_dir / "resume_template.tex"
         self.output_tex = self.tex_dir / "joe_fs_default_resume.tex"
         self.output_pdf = self.output_tex.with_name(f"{self.output_tex.stem}.pdf")
@@ -124,7 +133,7 @@ class ResumeFactory:
             "category": "Resume",
         }
 
-        company_dir = self.tex_dir / "companies" / f"{plan["company"]}"
+        company_dir = self.tex_dir / "companies" / f"{plan['company']}"
         company_dir.mkdir(parents=True, exist_ok=True)
 
         output_tex = company_dir / f"joe_fs_resume_{Path(jd_path).stem}.tex"

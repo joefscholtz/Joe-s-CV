@@ -28,6 +28,12 @@ remaining:
 [no-cd]
 pick:
     #!/usr/bin/env bash
+    remaining=$(just remaining)
+    echo $remaining
+    if [ remaining[@] -eq 0 ]; then
+      echo "No .md remaining"
+      exit 0
+    fi
     selected=$(just remaining | gum filter \
         --placeholder "Select Job Description..." \
         --header "Navigate: Ctrl+n (Down) / Ctrl+p (Up)" \

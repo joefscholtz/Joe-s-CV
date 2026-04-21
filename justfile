@@ -47,3 +47,7 @@ pick:
     else
         echo "✘ No file selected."
     fi
+
+# export PYTHONPATH=$PYTHONPATH:$(pwd)/src && uv run python src/joe_s_cv/app/main.py {{args}}
+app +args="":
+  uv run python src/joe_s_cv/app/main.py {{args}}

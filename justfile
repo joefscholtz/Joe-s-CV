@@ -17,7 +17,7 @@ open_zathura:
 [no-cd]
 remaining:
     #!/usr/bin/env bash
-    find . -maxdepth 5 -type f -name "*.md" -print0 | while IFS= read -r -d '' f; do
+    find ./data/jobs -maxdepth 5 -type f -name "*.md" -print0 | while IFS= read -r -d '' f; do
         # Remove the leading ./ for cleaner output
         clean_f="${f#./}"
         if [[ ! -f "${clean_f%.md}.json" ]]; then
@@ -35,7 +35,7 @@ pick:
       exit 0
     fi
 
-    selected=$(echo $remaining_files | gum filter \
+    selected=$(echo "$remaining_files" | gum filter \
         --placeholder "Select Job Description..." \
         --header "Navigate: Ctrl+n (Down) / Ctrl+p (Up)" \
         --indicator "➜" \

@@ -9,10 +9,12 @@ QtObject {
     readonly property color draculaGreen: "#50fa7b"
     readonly property color draculaRed: "#ff5555"
     readonly property color draculaPink: "#ff79c6"
-    
+
     readonly property int paddingLarge: 30
     readonly property int paddingSmall: 15
-    
-    
-    readonly property font monoFont: Qt.font({ family: "JetBrainsMono Nerd Font Mono", pixelSize: 13 })
+
+    readonly property font monoFont: Qt.font({
+        family: "JetBrainsMono Nerd Font Mono",
+        pixelSize: 13
+    })
 }

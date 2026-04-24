@@ -57,7 +57,6 @@ Rectangle {
                 model: [
                         { icon: "󰷉", label: "Processing" },
                         { icon: " ", label: "Database" },
-                        // { icon: "", label: "Settings" }
                     ]
                 MyButton {
                     Layout.fillWidth: true
@@ -66,7 +65,7 @@ Rectangle {
             }
         }
 
-        Item { Layout.fillHeight: true } // Bottom Spacer
+        Item { Layout.fillHeight: true }
 
         MyButton {
             text: root.collapsed ? " " : "  Settings"

@@ -1,5 +1,6 @@
 module Joe_s_CV
 singleton Config 1.0 Config.qml
-JobEditor 1.0 components/JobEditor.qml
 Sidebar 1.0 components/Sidebar.qml
+JobTabBar 1.0 components/JobTabBar.qml
+JobEditor 1.0 components/JobEditor.qml
 Main 1.0 Main.qml

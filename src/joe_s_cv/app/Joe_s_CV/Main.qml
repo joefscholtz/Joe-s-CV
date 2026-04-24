@@ -17,46 +17,17 @@ ApplicationWindow {
         Sidebar {
             id: sideNav
             Layout.fillHeight: true
-            
+
             Layout.preferredWidth: sideNav.collapsed ? 60 : 220
-            
+
             Behavior on Layout.preferredWidth {
-                NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
-            }
-        }
-
-        ColumnLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            spacing: 0
-
-            TabBar {
-                id: bar
-                Layout.fillWidth: true
-                background: Rectangle { color: "#191a21" }
-
-                Repeater {
-                    model: Backend.activeTabs
-                    TabButton {
-                        width: 150
-                        text: modelData.company || "Unnamed"
-                    }
-                }
-            }
-
-            StackLayout {
-                currentIndex: bar.currentIndex
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                Repeater {
-                    model: Backend.activeTabs
-                    JobEditor {
-                        jobIndex: index
-                        jobData: modelData
-                    }
+                NumberAnimation {
+                    duration: 200
+                    easing.type: Easing.InOutQuad
                 }
             }
         }
+
+        JobTabBar {}
     }
 }

@@ -13,9 +13,9 @@ Rectangle {
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Config.paddingLarge
-        
+
         Text {
-            text: "Editing: " + (root.jobData.company || "New Job")
+            // text: "Editing: " + (root.jobData.company || "New Job")
             color: "white"
             font.pixelSize: 18
         }
@@ -27,7 +27,7 @@ Rectangle {
             color: "#282a36"
             border.color: "#44475a"
             radius: 8
-            
+
             Text {
                 anchors.centerIn: parent
                 text: "Editor Content for Tab " + root.jobIndex

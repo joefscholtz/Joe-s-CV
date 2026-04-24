@@ -10,7 +10,7 @@ Button {
     height: 30
     Layout.preferredHeight: 30
     flat: true
-    
+
     contentItem: Text {
         text: button.text
         font.pixelSize: 14
@@ -21,8 +21,8 @@ Button {
     }
 
     background: Rectangle {
-        anchors.fill: parent 
-        
+        anchors.fill: parent
+
         // color: hoverHandler.hovered ? Config.draculaPink : Config.bg
         color: Config.bg
         // border.color: Config.bg

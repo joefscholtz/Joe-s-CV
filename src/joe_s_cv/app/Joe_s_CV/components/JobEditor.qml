@@ -20,7 +20,6 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        // Add your TextFields and TextAreas here as developed previously
         Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true

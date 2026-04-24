@@ -15,6 +15,6 @@ QtObject {
 
     readonly property font monoFont: Qt.font({
         family: "JetBrainsMono Nerd Font Mono",
-        pixelSize: 13
+        pixelSize: 14
     })
 }

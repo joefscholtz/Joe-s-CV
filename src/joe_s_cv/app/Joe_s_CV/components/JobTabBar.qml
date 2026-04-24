@@ -9,23 +9,31 @@ ColumnLayout {
     spacing: 0
 
     property var tabModel: [
-        { icon: "󰷉", label: "Tab 1" },
-        { icon: "", label: "Tab 2" }
+        {
+            icon: "󰷉",
+            label: "Tab 1"
+        },
+        {
+            icon: "",
+            label: "Tab 2"
+        }
     ]
 
     RowLayout {
         Layout.fillWidth: true
         spacing: 0
-        
+
         Rectangle {
             z: -1
             anchors.fill: parent
-            color: Config.bg 
+            color: Config.bg
         }
 
         TabBar {
             id: bar
-            background: Rectangle { color: "transparent" }
+            background: Rectangle {
+                color: "transparent"
+            }
 
             Repeater {
                 model: tabModel
@@ -43,7 +51,9 @@ ColumnLayout {
             // onClicked: Backend.createNewJob()
         }
 
-        Item { Layout.fillWidth: true }
+        Item {
+            Layout.fillWidth: true
+        }
     }
 
     StackLayout {
